@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<library>
+    <book>
+        <title>The Great Gatsby</title>
+        <author>F. Scott Fitzgerald</author>
+        <genre>Fiction</genre>
+        <year>1925</year>
+        <isbn>9780743273565</isbn>
+    </book>
+    <book>
+        <title>To Kill a Mockingbird</title>
+        <author>Harper Lee</author>
+        <genre>Fiction</genre>
+        <year>1960</year>
+        <isbn>9780061120084</isbn>
+    </book>
+    <book>
+        <title>1984</title>
+        <author>George Orwell</author>
+        <genre>Dystopian</genre>
+        <year>1949</year>
+        <isbn>9780451524935</isbn>
+    </book>
+    <book>
+        <title>Pride and Prejudice</title>
+        <author>Jane Austen</author>
+        <genre>Romance</genre>
+        <year>1813</year>
+        <isbn>9780141439518</isbn>
+    </book>
+    <book>
+        <title>The Catcher in the Rye</title>
+        <author>J.D. Salinger</author>
+        <genre>Fiction</genre>
+        <year>1951</year>
+        <isbn>9780316769488</isbn>
+    </book>
+    <book>
+        <title>The Hobbit</title>
+        <author>J.R.R. Tolkien</author>
+        <genre>Fantasy</genre>
+        <year>1937</year>
+        <isbn>9780261102217</isbn>
+    </book>
+    <book>
+        <title>Harry Potter and the Sorcerer's Stone</title>
+        <author>J.K. Rowling</author>
+        <genre>Fantasy</genre>
+        <year>1997</year>
+        <isbn>9780590353427</isbn>
+    </book>
+    <book>
+        <title>The Lord of the Rings</title>
+        <author>J.R.R. Tolkien</author>
+        <genre>Fantasy</genre>
+        <year>1954</year>
+        <isbn>9780261102385</isbn>
+    </book>
+    <book>
+        <title>The Da Vinci Code</title>
+        <author>Dan Brown</author>
+        <genre>Thriller</genre>
+        <year>2003</year>
+        <isbn>9780385504201</isbn>
+    </book>
+    <book>
+        <title>The Alchemist</title>
+        <author>Paulo Coelho</author>
+        <genre>Fiction</genre>
+        <year>1988</year>
+        <isbn>9780062315007</isbn>
+    </book>
+</library>

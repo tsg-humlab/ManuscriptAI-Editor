@@ -1,0 +1,16 @@
+.btn{
+    background-color: #cb8a05 !important;
+}
+
+.btn:hover{
+    background-color: teal !important;
+    /*background-color: #E76F51 !important;*/
+}
+
+.section-label {
+  font-size: 0.875em;
+  font-weight: 500;
+  color: #6B7280;
+  margin-bottom: 8px;
+  display: inline-block;
+}

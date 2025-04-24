@@ -1,0 +1,2055 @@
+[
+[
+    {
+        "_index": "manoscritti",
+        "_id": "14286",
+        "_score": 2,
+        "_ignored": [
+            "manoscritto.sezione.bibliografia._sigla_completa.keyword",
+            "manoscritto.sezione.bibliografia._scioglimento.keyword"
+        ],
+        "_source": {
+            "folder": "CManoscritti",
+            "project": "manoscritti",
+            "_nome_order": "Z\u00fcrich, Zentralbibliothek, C 078 (olim 451; cat. 109)",
+            "manoscritto": {
+                "_id": 14286,
+                "_nome": "Z\u00fcrich, Zentralbibliothek, C 78 (olim 451; cat. 109)",
+                "_nome_lista": "Z\u00fcrich, Zentralbibliothek, C 78 (olim 451; cat. 109)",
+                "_nome_rw": "z\u00fcrich-zentralbibliothek-c-78-(olim-451-cat-109)",
+                "_nome_order": "Z\u00fcrich, Zentralbibliothek, C 078 (olim 451; cat. 109)",
+                "_free_view": 1,
+                "_citta": "Z\u00fcrich",
+                "_biblioteca": "Zentralbibliothek",
+                "_fondo": "C",
+                "_segnatura": "78 (olim 451; cat. 109)",
+                "_segnatura_norm": "078 (olim 451; cat. 109)",
+                "_descrizione_diretta": 0,
+                "_descrizione_mf": 0,
+                "_descrizione_desunta": 0,
+                "_scheda_definitiva": 1,
+                "_composito": 1,
+                "_palinsesto": 0,
+                "_disperso": false,
+                "_restauro": false,
+                "_manoscritto_notificato": false,
+                "_fragm": 0,
+                "_owner": "MEL",
+                "_flg_scheda_stampa": 0,
+                "_flg_atlante_schindler": 0,
+                "PROJECTS": {
+                    "PROJECT": [
+                        {
+                            "_id": 2,
+                            "_active": 1,
+                            "__text": "CALMA"
+                        },
+                        {
+                            "_id": 1,
+                            "_active": 1,
+                            "__text": "MEL"
+                        },
+                        {
+                            "_id": 20,
+                            "_active": 1,
+                            "__text": "TETRA"
+                        },
+                        {
+                            "_id": 34,
+                            "_active": 1,
+                            "__text": "OPA"
+                        }
+                    ]
+                },
+                "alias": [],
+                "area_dialettale": [],
+                "caratteri_tipografici": [],
+                "collaboratori": [],
+                "color": [],
+                "colore_rigo": [],
+                "copisti_musicali": [],
+                "formati": [],
+                "luoghi_stampa": [],
+                "manoscritti_derivati": [],
+                "progetti_interessati": [],
+                "risorse_esterne_link_esterno": [
+                    {
+                        "_idmanoscritto": 14286,
+                        "_nome": "Lexicon musicum Latinum",
+                        "_url": "http://www.lml.badw.de",
+                        "_idgruppo": 1000
+                    },
+                    {
+                        "_idmanoscritto": 14286,
+                        "_nome": "e-codices (descrizione)",
+                        "_url": "http://www.e-codices.unifr.ch/it/description/zbz/C0078",
+                        "_idgruppo": 1000
+                    },
+                    {
+                        "_idmanoscritto": 14286,
+                        "_nome": "Handschriftencensus",
+                        "_url": "http://www.handschriftencensus.de/11025",
+                        "_visualizza_mirabile": 1,
+                        "_idgruppo": 1000
+                    },
+                    {
+                        "_idmanoscritto": 14286,
+                        "_nome": "e-codices (riproduzione digitale)",
+                        "_url": "http://www.e-codices.unifr.ch/it/preview/zbz/C0078",
+                        "_idgruppo": 1000
+                    },
+                    {
+                        "_idmanoscritto": 14286,
+                        "_nome": "e-codices (permalink)",
+                        "_url": "http://www.e-codices.unifr.ch/it/list/one/zbz/C0078",
+                        "_visualizza_mirabile": 1,
+                        "_idgruppo": 1000
+                    },
+                    {
+                        "_idmanoscritto": 14286,
+                        "_nome": "UCLA Reichenau-St. Gall Virtual Library",
+                        "_url": "http://www.stgallplan.org/stgallmss/viewItem.do?ark=p21198-zz002b3k2t",
+                        "_idgruppo": 1000
+                    },
+                    {
+                        "_idmanoscritto": 14286,
+                        "_nome": "BStK Online",
+                        "_url": "https://glossen.germ-ling.uni-bamberg.de/bstk/1019b",
+                        "_visualizza_mirabile": 1,
+                        "_idgruppo": 1000
+                    }
+                ],
+                "risorse_esterne_mirabile_madre": [],
+                "risorse_esterne_mirabile_pdf": [],
+                "risorse_esterne_mirabile_spoglio": [],
+                "sezione": [
+                    {
+                        "_idmanoscritto": 14286,
+                        "_idsezionemanoscritto": 49504,
+                        "_principale": 1,
+                        "_data_prefisso": "sec.",
+                        "_datazione": "IX-XV",
+                        "_data_inizio": 801,
+                        "_data_fine": 1500,
+                        "_sottoscritto": 0,
+                        "_autografo": 0,
+                        "_datato": 0,
+                        "_decorato": 0,
+                        "_parzialmente_datato": 0,
+                        "_parzialmente_autografo": 0,
+                        "_data_stimata": 0,
+                        "_filigranato": 0,
+                        "_sono_palinsesto": 0,
+                        "_sono_frammento": 0,
+                        "_fogli": "ff. 162",
+                        "_inizio_lato_carne": 0,
+                        "_inizio_lato_pelo": 0,
+                        "_peciato": 0,
+                        "_doganale": 0,
+                        "_ebraico": 0,
+                        "_figure": 0,
+                        "_presenza_glosse": 0,
+                        "_presenza_note": 0,
+                        "_presenza_correzioni": 0,
+                        "_rubriche": 0,
+                        "_presenza_notazione_musicale": 0,
+                        "_flag_colophon": 0,
+                        "_stemma": 0,
+                        "_riproduzione_sismel": 1,
+                        "altre_datazioni": [],
+                        "rigature": [],
+                        "scritture": [],
+                        "lingue_copisti": [],
+                        "area_dialettale": [],
+                        "precedenti_segnature": [],
+                        "decorazioni_pennello": [],
+                        "enti": [
+                            {
+                                "_idsezionemanoscritto": 49504,
+                                "_idente": 6490,
+                                "_idente_origine_provenienza_false": 6490,
+                                "_nome": "Svizzera Sankt Gallen Sankt Gallen St. Gallen, abbazia OSB ",
+                                "_nome_origine_provenienza_false": "Svizzera Sankt Gallen Sankt Gallen St. Gallen, abbazia OSB ",
+                                "_nome_rw": "svizzera-sankt-gallen-sankt-gallen-st-gallen-abbaz",
+                                "_origine_provenienza": 0,
+                                "_nazione": "Svizzera",
+                                "_regione": "Sankt Gallen",
+                                "_id_luogo": 2341,
+                                "_luogo": "Sankt Gallen",
+                                "_ente": "St. Gallen, abbazia OSB",
+                                "_id": 13260,
+                                "_idordinereligioso": 17,
+                                "_ordinereligioso": "OSB",
+                                "enti_alias": []
+                            }
+                        ],
+                        "enti_collegati": [],
+                        "nomi": [],
+                        "autori": [],
+                        "opere": [
+                            {
+                                "_idsezionemanoscritto": 49504,
+                                "_idopera": 6031,
+                                "_idautore": 19676,
+                                "_autore": "Eugenius II Toletanus archiepiscopus sedit 646-657",
+                                "_autore_rw": "eugenius-ii-toletanus-archiepiscopus-sedit-646-657",
+                                "_opera": "Libellus carminum",
+                                "_opera_rw": "libellus-carminum",
+                                "_notetitolo": "101",
+                                "_dubbia": 0,
+                                "_nota": "nn. 30-33",
+                                "_opera_ordinamento2": "Libellus carminum Eugenius Toletanus 02 archiepiscopus sedit 646-657",
+                                "opere_vide": [
+                                    {
+                                        "_idopera": 6031,
+                                        "_nome": "Libellus diversi carminis metro"
+                                    }
+                                ],
+                                "opere_santi": [],
+                                "opere_autori_vide": [
+                                    {
+                                        "_idopera": 6031,
+                                        "_autore": "Eug\u00e8ne de Deuil"
+                                    },
+                                    {
+                                        "_idopera": 6031,
+                                        "_autore": "Eug\u00e8ne de Tol\u00e8de"
+                                    },
+                                    {
+                                        "_idopera": 6031,
+                                        "_autore": "Eug\u00e8ne I de Tol\u00e8de"
+                                    },
+                                    {
+                                        "_idopera": 6031,
+                                        "_autore": "Eug\u00e8ne II de Tol\u00e8de"
+                                    },
+                                    {
+                                        "_idopera": 6031,
+                                        "_autore": "Eug\u00e8ne III de Tol\u00e8de"
+                                    },
+                                    {
+                                        "_idopera": 6031,
+                                        "_autore": "Eugenio"
+                                    },
+                                    {
+                                        "_idopera": 6031,
+                                        "_autore": "Eugenio de Toledo"
+                                    },
+                                    {
+                                        "_idopera": 6031,
+                                        "_autore": "Eugenio di Toledo"
+                                    },
+                                    {
+                                        "_idopera": 6031,
+                                        "_autore": "Eugenio I de Toledo"
+                                    },
+                                    {
+                                        "_idopera": 6031,
+                                        "_autore": "Eugenio III de Toledo"
+                                    },
+                                    {
+                                        "_idopera": 6031,
+                                        "_autore": "Eugenius"
+                                    },
+                                    {
+                                        "_idopera": 6031,
+                                        "_autore": "Eugenius de Toledo"
+                                    },
+                                    {
+                                        "_idopera": 6031,
+                                        "_autore": "Eugenius I Toletanus"
+                                    },
+                                    {
+                                        "_idopera": 6031,
+                                        "_autore": "Eugenius II von Toledo"
+                                    },
+                                    {
+                                        "_idopera": 6031,
+                                        "_autore": "Eugenius III Toletanus"
+                                    },
+                                    {
+                                        "_idopera": 6031,
+                                        "_autore": "Eugenius III von Toledo"
+                                    },
+                                    {
+                                        "_idopera": 6031,
+                                        "_autore": "Eugenius of Toledo"
+                                    },
+                                    {
+                                        "_idopera": 6031,
+                                        "_autore": "Eugenius von Toledo"
+                                    }
+                                ],
+                                "opere_incipit": []
+                            },
+                            {
+                                "_idsezionemanoscritto": 49504,
+                                "_idopera": 223900,
+                                "_opera": "Libellus fidei ad Innocentium papam",
+                                "_opera_rw": "libellus-fidei-ad-innocentium-papam",
+                                "_notetitolo": "Keefe cat. 39",
+                                "_dubbia": 0,
+                                "_fogli": "ff. 54v-57r",
+                                "_opera_ordinamento2": "Libellus fidei ",
+                                "opere_vide": [
+                                    {
+                                        "_idopera": 223900,
+                                        "_nome": "Ad Augustinum et Alipium episcopos missa, Symbolum fidei a B. Hieronymo compositum"
+                                    },
+                                    {
+                                        "_idopera": 223900,
+                                        "_nome": "Explanatio fidei ad Damasum"
+                                    },
+                                    {
+                                        "_idopera": 223900,
+                                        "_nome": "Libellus fidei ad Innocentium I"
+                                    }
+                                ],
+                                "opere_santi": [],
+                                "opere_autori_vide": [],
+                                "opere_incipit": [
+                                    {
+                                        "_idopera": 223900,
+                                        "_incipit": "Credimus in Deum, Patrem omnipotentem, visibilium et invisibilium conditorem",
+                                        "_normalizzato": "Credimus in Deum, Patrem omnipotentem, visibilium et invisibilium conditorem"
+                                    }
+                                ]
+                            }
+                        ],
+                        "tipologia_testuale": [],
+                        "ricabim_inventario": [],
+                        "bibliografia": [
+                            {
+                                "_idmanoscritto": 14286,
+                                "_idsezionemanoscritto": 49504,
+                                "_idbibliografia": 5982,
+                                "_idsigla": 5982,
+                                "_sigla_completa": "Munk Olsen&nbsp;<i>Etude, Catalogue </i> Birger Munk Olsen, <i>L'\u00e8tude des auteurs classiques latins aux XIe et XIIe si\u00e8cles&nbsp;</i>I-II&nbsp;<i>Catalogue des manuscrits classiques latins copi\u00e9s du IXe au XIIe si\u00e8cle&nbsp;</i>Paris, 1982-1985 &#091;I:&nbsp;https://www.persee.fr/doc/dirht_0073-8212_1982_cat_26_1; II: https://www.persee.fr/doc/dirht_0073-8212_1985_cat_26_2&#093;",
+                                "_sigla": "Munk Olsen&nbsp;<i>Etude, Catalogue </i>",
+                                "_scioglimento": "Birger Munk Olsen, <i>L'\u00e8tude des auteurs classiques latins aux XIe et XIIe si\u00e8cles&nbsp;</i>I-II&nbsp;<i>Catalogue des manuscrits classiques latins copi\u00e9s du IXe au XIIe si\u00e8cle&nbsp;</i>Paris, 1982-1985 &#091;I:&nbsp;https://www.persee.fr/doc/dirht_0073-8212_1982_cat_26_1; II: https://www.persee.fr/doc/dirht_0073-8212_1985_cat_26_2&#093;",
+                                "_anno": 1982,
+                                "_volume": "I",
+                                "_riferimento": 0,
+                                "bibliografia_pagine": [
+                                    {
+                                        "_idmanoscritto": 14286,
+                                        "_idbibliografia": 5982,
+                                        "_pagina_prefisso": "pp.",
+                                        "_testo": "84-5"
+                                    },
+                                    {
+                                        "_idmanoscritto": 14286,
+                                        "_idbibliografia": 5982,
+                                        "_pagina_prefisso": "pp.",
+                                        "_testo": "288, 484"
+                                    }
+                                ]
+                            },
+                            {
+                                "_idmanoscritto": 14286,
+                                "_idsezionemanoscritto": 49504,
+                                "_idbibliografia": 5982,
+                                "_idsigla": 5982,
+                                "_sigla_completa": "Munk Olsen&nbsp;<i>Etude, Catalogue </i> Birger Munk Olsen, <i>L'\u00e8tude des auteurs classiques latins aux XIe et XIIe si\u00e8cles&nbsp;</i>I-II&nbsp;<i>Catalogue des manuscrits classiques latins copi\u00e9s du IXe au XIIe si\u00e8cle&nbsp;</i>Paris, 1982-1985 &#091;I:&nbsp;https://www.persee.fr/doc/dirht_0073-8212_1982_cat_26_1; II: https://www.persee.fr/doc/dirht_0073-8212_1985_cat_26_2&#093;",
+                                "_sigla": "Munk Olsen&nbsp;<i>Etude, Catalogue </i>",
+                                "_scioglimento": "Birger Munk Olsen, <i>L'\u00e8tude des auteurs classiques latins aux XIe et XIIe si\u00e8cles&nbsp;</i>I-II&nbsp;<i>Catalogue des manuscrits classiques latins copi\u00e9s du IXe au XIIe si\u00e8cle&nbsp;</i>Paris, 1982-1985 &#091;I:&nbsp;https://www.persee.fr/doc/dirht_0073-8212_1982_cat_26_1; II: https://www.persee.fr/doc/dirht_0073-8212_1985_cat_26_2&#093;",
+                                "_anno": 1985,
+                                "_volume": "II",
+                                "_riferimento": 0,
+                                "bibliografia_pagine": [
+                                    {
+                                        "_idmanoscritto": 14286,
+                                        "_idbibliografia": 5982,
+                                        "_pagina_prefisso": "pp.",
+                                        "_testo": "84-5"
+                                    },
+                                    {
+                                        "_idmanoscritto": 14286,
+                                        "_idbibliografia": 5982,
+                                        "_pagina_prefisso": "pp.",
+                                        "_testo": "288, 484"
+                                    }
+                                ]
+                            },
+                            {
+                                "_idmanoscritto": 14286,
+                                "_idsezionemanoscritto": 49504,
+                                "_idbibliografia": 8741,
+                                "_idsigla": 8741,
+                                "_sigla_completa": "Mohlberg&nbsp;<i>MA Hss. ZB Z\u00fcrich</i> Leo Cunibert Mohlberg <i>Katalog der Handschriften der Zentralbibliothek Z\u00fcrich</i> I&nbsp;<i>Mittelalterliche Handschriften</i>&nbsp;Z\u00fcrich 1951",
+                                "_sigla": "Mohlberg&nbsp;<i>MA Hss. ZB Z\u00fcrich</i>",
+                                "_scioglimento": "Leo Cunibert Mohlberg <i>Katalog der Handschriften der Zentralbibliothek Z\u00fcrich</i> I&nbsp;<i>Mittelalterliche Handschriften</i>&nbsp;Z\u00fcrich 1951",
+                                "_anno": 1952,
+                                "_riferimento": 0,
+                                "bibliografia_pagine": [
+                                    {
+                                        "_idmanoscritto": 14286,
+                                        "_idbibliografia": 8741,
+                                        "_pagina_prefisso": "pp.",
+                                        "_testo": "42-4, 358"
+                                    }
+                                ]
+                            },
+                            {
+                                "_idmanoscritto": 14286,
+                                "_idsezionemanoscritto": 49504,
+                                "_idbibliografia": 9538,
+                                "_idsigla": 9538,
+                                "_sigla_completa": "CMD-CH III Beat Matthias von Scarpatetti <i>Katalog der datierten Handschriften in der Schweiz in lateinischer Schrift vom Anfang des Mittelalters bis 1550 </i>III <i>Die Handschriften der Bibliotheken St. Gallen - Z\u00fcrich Text- und Abbildungsband </i>Dietikon-Z\u00fcrich 1991",
+                                "_sigla": "CMD-CH III",
+                                "_scioglimento": "Beat Matthias von Scarpatetti <i>Katalog der datierten Handschriften in der Schweiz in lateinischer Schrift vom Anfang des Mittelalters bis 1550 </i>III <i>Die Handschriften der Bibliotheken St. Gallen - Z\u00fcrich Text- und Abbildungsband </i>Dietikon-Z\u00fcrich 1991",
+                                "_anno": 1991,
+                                "_riferimento": 0,
+                                "bibliografia_pagine": [
+                                    {
+                                        "_idmanoscritto": 14286,
+                                        "_idbibliografia": 9538,
+                                        "_pagina_prefisso": "p.",
+                                        "_testo": "276"
+                                    }
+                                ]
+                            },
+                            {
+                                "_idmanoscritto": 14286,
+                                "_idsezionemanoscritto": 49504,
+                                "_idbibliografia": 12523,
+                                "_idsigla": 12523,
+                                "_sigla_completa": "Passalacqua <i>Prisciano</i> Marina Passalacqua <i>I codici di Prisciano </i>Roma, Edizioni di storia e letteratura 1978 (Sussidi eruditi 29)",
+                                "_sigla": "Passalacqua <i>Prisciano</i>",
+                                "_scioglimento": "Marina Passalacqua <i>I codici di Prisciano </i>Roma, Edizioni di storia e letteratura 1978 (Sussidi eruditi 29)",
+                                "_anno": 1978,
+                                "_riferimento": 0,
+                                "bibliografia_pagine": [
+                                    {
+                                        "_idmanoscritto": 14286,
+                                        "_idbibliografia": 12523,
+                                        "_pagina_prefisso": "p.",
+                                        "_testo": "385"
+                                    }
+                                ]
+                            },
+                            {
+                                "_idmanoscritto": 14286,
+                                "_idsezionemanoscritto": 49504,
+                                "_idbibliografia": 15354,
+                                "_idsigla": 15354,
+                                "_sigla_completa": "Keefe <i>Catalogue</i> Susan A. Keefe <i>A Catalogue of Works Pertaining to the Explanation of the Creed in Carolingian Manuscripts </i>Turnhout, Brepols 2012 (Instrumenta patristica et mediaevalia. Research on the Inheritance of Early and Medieval Christianity 63)",
+                                "_sigla": "Keefe <i>Catalogue</i>",
+                                "_scioglimento": "Susan A. Keefe <i>A Catalogue of Works Pertaining to the Explanation of the Creed in Carolingian Manuscripts </i>Turnhout, Brepols 2012 (Instrumenta patristica et mediaevalia. Research on the Inheritance of Early and Medieval Christianity 63)",
+                                "_anno": 2012,
+                                "_riferimento": 0,
+                                "bibliografia_pagine": [
+                                    {
+                                        "_idmanoscritto": 14286,
+                                        "_idbibliografia": 15354,
+                                        "_pagina_prefisso": "p.",
+                                        "_testo": "391"
+                                    }
+                                ]
+                            },
+                            {
+                                "_idmanoscritto": 14286,
+                                "_idsezionemanoscritto": 49504,
+                                "_idbibliografia": 16848,
+                                "_idsigla": 16848,
+                                "_sigla_completa": "BStK Rolf Bergmann - Stefanie Stricker, Yvonne Goldammer - Claudia Wich-Reif (adiuv.) <i>Katalog der althochdeutschen und alts\u00e4chsischen Glossenhandschriften </i>Berlin-New York, W. de Gruyter 2005 voll. 6",
+                                "_sigla": "BStK",
+                                "_scioglimento": "Rolf Bergmann - Stefanie Stricker, Yvonne Goldammer - Claudia Wich-Reif (adiuv.) <i>Katalog der althochdeutschen und alts\u00e4chsischen Glossenhandschriften </i>Berlin-New York, W. de Gruyter 2005 voll. 6",
+                                "_anno": 2005,
+                                "_volume": "IV",
+                                "_riferimento": 0,
+                                "bibliografia_pagine": [
+                                    {
+                                        "_idmanoscritto": 14286,
+                                        "_idbibliografia": 16848,
+                                        "_pagina_prefisso": "n.",
+                                        "_testo": "1019b"
+                                    }
+                                ]
+                            },
+                            {
+                                "_idmanoscritto": 14286,
+                                "_idsezionemanoscritto": 49504,
+                                "_idbibliografia": 20033,
+                                "_idsigla": 20033,
+                                "_sigla_completa": "<i>Credo</i> <i>Credo. Christianisierung Europas im Mittelalter </i>II <i>Katalog </i>cur. Christoph Stiegemann - Martin Kroker - Wolfgang Walter, Petersberg, Imhof 2013",
+                                "_sigla": "<i>Credo</i>",
+                                "_scioglimento": "<i>Credo. Christianisierung Europas im Mittelalter </i>II <i>Katalog </i>cur. Christoph Stiegemann - Martin Kroker - Wolfgang Walter, Petersberg, Imhof 2013",
+                                "_anno": 2013,
+                                "_riferimento": 0,
+                                "bibliografia_pagine": [
+                                    {
+                                        "_idmanoscritto": 14286,
+                                        "_idbibliografia": 20033,
+                                        "_pagina_prefisso": "p.",
+                                        "_testo": "431"
+                                    },
+                                    {
+                                        "_idmanoscritto": 14286,
+                                        "_idbibliografia": 20033,
+                                        "_pagina_prefisso": "n.",
+                                        "_testo": "368"
+                                    }
+                                ]
+                            }
+                        ],
+                        "attribuzioni_spogli": [],
+                        "manoscrittodatazione": [
+                            {
+                                "IDMANOSCRITTO": 14286,
+                                "IDSEZIONEMANOSCRITTO": 49504,
+                                "DATAZIONE": "IX-XV",
+                                "DATA_INIZIO": 801,
+                                "DATA_FINE": 1500,
+                                "DATA_PREFISSO": "sec.",
+                                "NOME": "Z\u00fcrich, Zentralbibliothek, C 78 (olim 451; cat. 109)",
+                                "NOME_ORDER": "Z\u00fcrich, Zentralbibliothek, C 078 (olim 451; cat. 109)"
+                            }
+                        ]
+                    },
+                    {
+                        "_idmanoscritto": 14286,
+                        "_idsezionemanoscritto": 102295,
+                        "_principale": 0,
+                        "_sezione": "I",
+                        "_sezione_ordinamento": "1",
+                        "_data_prefisso": "sec.",
+                        "_datazione": "IX primo quarto e primo-secondo quarto",
+                        "_data_inizio": 801,
+                        "_data_fine": 850,
+                        "_sottoscritto": 0,
+                        "_autografo": 0,
+                        "_datato": 0,
+                        "_idmateriale": 6,
+                        "_materiale": "membr.",
+                        "_formato": "185 x 115",
+                        "_decorato": 0,
+                        "_parzialmente_datato": 0,
+                        "_parzialmente_autografo": 0,
+                        "_data_stimata": 0,
+                        "_filigranato": 0,
+                        "_sono_palinsesto": 0,
+                        "_sono_frammento": 0,
+                        "_fogli": "ff. 1-6",
+                        "_inizio_lato_carne": 0,
+                        "_inizio_lato_pelo": 0,
+                        "_peciato": 0,
+                        "_doganale": 0,
+                        "_ebraico": 0,
+                        "_figure": 0,
+                        "_presenza_glosse": 0,
+                        "_presenza_note": 0,
+                        "_presenza_correzioni": 0,
+                        "_rubriche": 0,
+                        "_presenza_notazione_musicale": 0,
+                        "_flag_colophon": 0,
+                        "_stemma": 0,
+                        "_riproduzione_sismel": 0,
+                        "altre_datazioni": [],
+                        "rigature": [],
+                        "scritture": [],
+                        "lingue_copisti": [],
+                        "area_dialettale": [],
+                        "precedenti_segnature": [],
+                        "decorazioni_pennello": [],
+                        "enti": [
+                            {
+                                "_idsezionemanoscritto": 102295,
+                                "_idente": 8844,
+                                "_idente_origine_provenienza_true": 8844,
+                                "_nome": "Svizzera ",
+                                "_nome_origine_provenienza_true": "Svizzera ",
+                                "_nome_rw": "svizzera-",
+                                "_origine_provenienza": 1,
+                                "_nazione": "Svizzera",
+                                "_id_luogo": 2389,
+                                "_luogo_latitudine": 46.818188,
+                                "_luogo_longitudine": 8.227512,
+                                "_ente_latitudine": 46.818188,
+                                "_ente_longitudine": 8.227512,
+                                "_id": 79393,
+                                "_ordinamento": "1",
+                                "enti_alias": []
+                            },
+                            {
+                                "_idsezionemanoscritto": 102295,
+                                "_idente": 22637,
+                                "_idente_origine_provenienza_true": 22637,
+                                "_nome": "Svizzera occidentale ",
+                                "_nome_origine_provenienza_true": "Svizzera occidentale ",
+                                "_nome_rw": "svizzera-occidentale-",
+                                "_origine_provenienza": 1,
+                                "_nazione": "Svizzera occidentale",
+                                "_id_luogo": 14633,
+                                "_luogo_latitudine": 46.5606635401,
+                                "_luogo_longitudine": 6.64770396872,
+                                "_ente_latitudine": 46.5606635401,
+                                "_ente_longitudine": 6.64770396872,
+                                "_dubbia": 1,
+                                "_id": 79394,
+                                "_ordinamento": "2",
+                                "enti_alias": []
+                            }
+                        ],
+                        "enti_collegati": [],
+                        "nomi": [],
+                        "autori": [],
+                        "opere": [
+                            {
+                                "_idsezionemanoscritto": 102295,
+                                "_idopera": 2378,
+                                "_idautore": 19182,
+                                "_autore": "Alcuinus n. 730/735, m. 19-5-804",
+                                "_autore_rw": "alcuinus-n-730-735-m-19-5-804",
+                                "_opera": "De virtutibus et vitiis",
+                                "_opera_rw": "de-virtutibus-et-vitiis",
+                                "_dubbia": 0,
+                                "_fogli": "ff. 1r-6v",
+                                "_opera_ordinamento2": "De virtutibus et vitiis Alcuinus n. 730/735, m. 19-5-804",
+                                "opere_vide": [],
+                                "opere_santi": [],
+                                "opere_autori_vide": [
+                                    {
+                                        "_idopera": 2378,
+                                        "_autore": "Albinus"
+                                    },
+                                    {
+                                        "_idopera": 2378,
+                                        "_autore": "Albinus Flaccus"
+                                    },
+                                    {
+                                        "_idopera": 2378,
+                                        "_autore": "Alboinus"
+                                    },
+                                    {
+                                        "_idopera": 2378,
+                                        "_autore": "Albuin"
+                                    },
+                                    {
+                                        "_idopera": 2378,
+                                        "_autore": "Alchuine"
+                                    },
+                                    {
+                                        "_idopera": 2378,
+                                        "_autore": "Alchuinus"
+                                    },
+                                    {
+                                        "_idopera": 2378,
+                                        "_autore": "Alchuuinus"
+                                    },
+                                    {
+                                        "_idopera": 2378,
+                                        "_autore": "Alchvin"
+                                    },
+                                    {
+                                        "_idopera": 2378,
+                                        "_autore": "Alchvine"
+                                    },
+                                    {
+                                        "_idopera": 2378,
+                                        "_autore": "Alchvinus"
+                                    },
+                                    {
+                                        "_idopera": 2378,
+                                        "_autore": "Alchvvinus"
+                                    },
+                                    {
+                                        "_idopera": 2378,
+                                        "_autore": "Alchwine"
+                                    },
+                                    {
+                                        "_idopera": 2378,
+                                        "_autore": "Alchwinus"
+                                    },
+                                    {
+                                        "_idopera": 2378,
+                                        "_autore": "Alcuin"
+                                    },
+                                    {
+                                        "_idopera": 2378,
+                                        "_autore": "Alcuin of York"
+                                    },
+                                    {
+                                        "_idopera": 2378,
+                                        "_autore": "Alcuino"
+                                    },
+                                    {
+                                        "_idopera": 2378,
+                                        "_autore": "Alcuino di York"
+                                    },
+                                    {
+                                        "_idopera": 2378,
+                                        "_autore": "Alcuinus Eboracensis"
+                                    },
+                                    {
+                                        "_idopera": 2378,
+                                        "_autore": "Alcuinus Flaccus"
+                                    },
+                                    {
+                                        "_idopera": 2378,
+                                        "_autore": "Alcuinus Puplius"
+                                    },
+                                    {
+                                        "_idopera": 2378,
+                                        "_autore": "Alcuinus Sancti Martini Turonensis"
+                                    },
+                                    {
+                                        "_idopera": 2378,
+                                        "_autore": "Alcuinus Turonensis"
+                                    },
+                                    {
+                                        "_idopera": 2378,
+                                        "_autore": "Alcvinus"
+                                    },
+                                    {
+                                        "_idopera": 2378,
+                                        "_autore": "Alcwinus"
+                                    },
+                                    {
+                                        "_idopera": 2378,
+                                        "_autore": "Alhwin"
+                                    },
+                                    {
+                                        "_idopera": 2378,
+                                        "_autore": "Alkoinus"
+                                    },
+                                    {
+                                        "_idopera": 2378,
+                                        "_autore": "Alkuin"
+                                    },
+                                    {
+                                        "_idopera": 2378,
+                                        "_autore": "Alquinus"
+                                    },
+                                    {
+                                        "_idopera": 2378,
+                                        "_autore": "Alvuinus"
+                                    },
+                                    {
+                                        "_idopera": 2378,
+                                        "_autore": "Ealhwine"
+                                    },
+                                    {
+                                        "_idopera": 2378,
+                                        "_autore": "Flaccus"
+                                    },
+                                    {
+                                        "_idopera": 2378,
+                                        "_autore": "Flaccus Albinus"
+                                    },
+                                    {
+                                        "_idopera": 2378,
+                                        "_autore": "Flaccus Alcuinus"
+                                    },
+                                    {
+                                        "_idopera": 2378,
+                                        "_autore": "Puplius Albinus"
+                                    }
+                                ],
+                                "opere_incipit": []
+                            }
+                        ],
+                        "tipologia_testuale": [],
+                        "ricabim_inventario": [],
+                        "bibliografia": [
+                            {
+                                "_idmanoscritto": 14286,
+                                "_idsezionemanoscritto": 102295,
+                                "_idbibliografia": 17669,
+                                "_idsigla": 17669,
+                                "_sigla_completa": "Bischoff <i>Festl\u00e4ndische Hss. III</i> Bernhard Bischoff <i>Katalog der festl\u00e4ndischen Handschriften des neunten Jahrhunderts (mit Ausnahme der wisigotischen) </i>III <i>Padua-Zwickau </i>cur. Birgit Ebersperger, Wiesbaden, Harrassowitz 2014",
+                                "_sigla": "Bischoff <i>Festl\u00e4ndische Hss. III</i>",
+                                "_scioglimento": "Bernhard Bischoff <i>Katalog der festl\u00e4ndischen Handschriften des neunten Jahrhunderts (mit Ausnahme der wisigotischen) </i>III <i>Padua-Zwickau </i>cur. Birgit Ebersperger, Wiesbaden, Harrassowitz 2014",
+                                "_anno": 2014,
+                                "_riferimento": 0,
+                                "bibliografia_pagine": [
+                                    {
+                                        "_idmanoscritto": 14286,
+                                        "_idbibliografia": 17669,
+                                        "_pagina_prefisso": "p.",
+                                        "_testo": "536"
+                                    },
+                                    {
+                                        "_idmanoscritto": 14286,
+                                        "_idbibliografia": 17669,
+                                        "_pagina_prefisso": "n.",
+                                        "_testo": "7577"
+                                    },
+                                    {
+                                        "_idmanoscritto": 14286,
+                                        "_idbibliografia": 17669,
+                                        "_pagina_prefisso": "p.",
+                                        "_testo": "536"
+                                    },
+                                    {
+                                        "_idmanoscritto": 14286,
+                                        "_idbibliografia": 17669,
+                                        "_pagina_prefisso": "n.",
+                                        "_testo": "7578"
+                                    }
+                                ]
+                            }
+                        ],
+                        "attribuzioni_spogli": [],
+                        "manoscrittodatazione": [
+                            {
+                                "IDMANOSCRITTO": 14286,
+                                "IDSEZIONEMANOSCRITTO": 102295,
+                                "DATAZIONE": "IX primo quarto e primo-secondo quarto",
+                                "DATA_INIZIO": 801,
+                                "DATA_FINE": 850,
+                                "DATA_PREFISSO": "sec.",
+                                "NOME": "Z\u00fcrich, Zentralbibliothek, C 78 (olim 451; cat. 109)",
+                                "NOME_ORDER": "Z\u00fcrich, Zentralbibliothek, C 078 (olim 451; cat. 109)"
+                            }
+                        ]
+                    },
+                    {
+                        "_idmanoscritto": 14286,
+                        "_idsezionemanoscritto": 102296,
+                        "_principale": 0,
+                        "_sezione": "II",
+                        "_sezione_ordinamento": "2",
+                        "_data_prefisso": "sec.",
+                        "_datazione": "XIV-XV",
+                        "_data_inizio": 1376,
+                        "_data_fine": 1425,
+                        "_sottoscritto": 0,
+                        "_autografo": 0,
+                        "_datato": 0,
+                        "_idmateriale": 6,
+                        "_materiale": "membr.",
+                        "_formato": "195 x 141",
+                        "_decorato": 0,
+                        "_parzialmente_datato": 0,
+                        "_parzialmente_autografo": 0,
+                        "_data_stimata": 0,
+                        "_filigranato": 0,
+                        "_sono_palinsesto": 0,
+                        "_sono_frammento": 0,
+                        "_fogli": "ff. 7-33",
+                        "_peciato": 0,
+                        "_presenza_glosse": 0,
+                        "_presenza_note": 0,
+                        "_presenza_correzioni": 0,
+                        "_rubriche": 0,
+                        "_presenza_notazione_musicale": 0,
+                        "_flag_colophon": 0,
+                        "_stemma": 0,
+                        "_riproduzione_sismel": 0,
+                        "altre_datazioni": [],
+                        "rigature": [],
+                        "scritture": [],
+                        "lingue_copisti": [],
+                        "area_dialettale": [],
+                        "precedenti_segnature": [],
+                        "decorazioni_pennello": [],
+                        "enti": [],
+                        "enti_collegati": [],
+                        "nomi": [],
+                        "autori": [],
+                        "opere": [
+                            {
+                                "_idsezionemanoscritto": 102296,
+                                "_idopera": 1071,
+                                "_idautore": 24648,
+                                "_autore": "Adam Magister fl. 1235-1272",
+                                "_autore_rw": "adam-magister-fl-1235-1272",
+                                "_opera": "Summula metrice conscripta ex Raymundi de Penyaforti \u00abSumma de casibus conscientiae\u00bb",
+                                "_opera_rw": "summula-metrice-conscripta-ex-raymundi-de-penyafor",
+                                "_dubbia": 0,
+                                "_nota": "incompleto",
+                                "_fogli": "ff. 7r-11r",
+                                "_opera_ordinamento2": "Summula metrice conscripta ex Raymundi de Penyaforti \u00abSumma de casibus conscientiae\u00bb Adam Magister 00 fl. 1235-1272",
+                                "opere_vide": [
+                                    {
+                                        "_idopera": 1071,
+                                        "_nome": "Summula pauperum"
+                                    }
+                                ],
+                                "opere_santi": [],
+                                "opere_autori_vide": [
+                                    {
+                                        "_idopera": 1071,
+                                        "_autore": "Adam Alderspacensis"
+                                    },
+                                    {
+                                        "_idopera": 1071,
+                                        "_autore": "Adam d' Aldersbach"
+                                    },
+                                    {
+                                        "_idopera": 1071,
+                                        "_autore": "Adam de Aldersbach"
+                                    },
+                                    {
+                                        "_idopera": 1071,
+                                        "_autore": "Adam von Aldersbach"
+                                    },
+                                    {
+                                        "_idopera": 1071,
+                                        "_autore": "Magister Adam"
+                                    }
+                                ],
+                                "opere_incipit": []
+                            }
+                        ],
+                        "tipologia_testuale": [],
+                        "ricabim_inventario": [],
+                        "bibliografia": [],
+                        "attribuzioni_spogli": [],
+                        "manoscrittodatazione": [
+                            {
+                                "IDMANOSCRITTO": 14286,
+                                "IDSEZIONEMANOSCRITTO": 102296,
+                                "DATAZIONE": "XIV-XV",
+                                "DATA_INIZIO": 1376,
+                                "DATA_FINE": 1425,
+                                "DATA_PREFISSO": "sec.",
+                                "NOME": "Z\u00fcrich, Zentralbibliothek, C 78 (olim 451; cat. 109)",
+                                "NOME_ORDER": "Z\u00fcrich, Zentralbibliothek, C 078 (olim 451; cat. 109)"
+                            }
+                        ]
+                    },
+                    {
+                        "_idmanoscritto": 14286,
+                        "_idsezionemanoscritto": 102297,
+                        "_principale": 0,
+                        "_sezione": "III",
+                        "_sezione_ordinamento": "3",
+                        "_data_prefisso": "sec.",
+                        "_datazione": "XIV-XV",
+                        "_data_inizio": 1376,
+                        "_data_fine": 1425,
+                        "_sottoscritto": 0,
+                        "_autografo": 0,
+                        "_datato": 0,
+                        "_idmateriale": 6,
+                        "_materiale": "membr.",
+                        "_formato": "197 x 142",
+                        "_decorato": 0,
+                        "_parzialmente_datato": 0,
+                        "_parzialmente_autografo": 0,
+                        "_data_stimata": 0,
+                        "_filigranato": 0,
+                        "_sono_palinsesto": 0,
+                        "_sono_frammento": 0,
+                        "_fogli": "ff. 34-46",
+                        "_peciato": 0,
+                        "_presenza_glosse": 0,
+                        "_presenza_note": 0,
+                        "_presenza_correzioni": 0,
+                        "_rubriche": 0,
+                        "_presenza_notazione_musicale": 0,
+                        "_flag_colophon": 0,
+                        "_stemma": 0,
+                        "_riproduzione_sismel": 0,
+                        "altre_datazioni": [],
+                        "rigature": [],
+                        "scritture": [],
+                        "lingue_copisti": [],
+                        "area_dialettale": [],
+                        "precedenti_segnature": [],
+                        "decorazioni_pennello": [],
+                        "enti": [],
+                        "enti_collegati": [],
+                        "nomi": [],
+                        "autori": [],
+                        "opere": [],
+                        "tipologia_testuale": [],
+                        "ricabim_inventario": [],
+                        "bibliografia": [],
+                        "attribuzioni_spogli": [],
+                        "manoscrittodatazione": [
+                            {
+                                "IDMANOSCRITTO": 14286,
+                                "IDSEZIONEMANOSCRITTO": 102297,
+                                "DATAZIONE": "XIV-XV",
+                                "DATA_INIZIO": 1376,
+                                "DATA_FINE": 1425,
+                                "DATA_PREFISSO": "sec.",
+                                "NOME": "Z\u00fcrich, Zentralbibliothek, C 78 (olim 451; cat. 109)",
+                                "NOME_ORDER": "Z\u00fcrich, Zentralbibliothek, C 078 (olim 451; cat. 109)"
+                            }
+                        ]
+                    },
+                    {
+                        "_idmanoscritto": 14286,
+                        "_idsezionemanoscritto": 102298,
+                        "_principale": 0,
+                        "_sezione": "IV",
+                        "_sezione_ordinamento": "4",
+                        "_data_prefisso": "ca.",
+                        "_datazione": "900",
+                        "_data_inizio": 900,
+                        "_data_fine": 900,
+                        "_sottoscritto": 0,
+                        "_autografo": 0,
+                        "_datato": 0,
+                        "_idmateriale": 6,
+                        "_materiale": "membr.",
+                        "_decorato": 0,
+                        "_parzialmente_datato": 0,
+                        "_parzialmente_autografo": 0,
+                        "_data_stimata": 0,
+                        "_filigranato": 0,
+                        "_sono_palinsesto": 0,
+                        "_sono_frammento": 0,
+                        "_fogli": "ff. 47-162",
+                        "_inizio_lato_carne": 0,
+                        "_inizio_lato_pelo": 0,
+                        "_peciato": 0,
+                        "_doganale": 0,
+                        "_ebraico": 0,
+                        "_figure": 0,
+                        "_presenza_glosse": 0,
+                        "_presenza_note": 0,
+                        "_presenza_correzioni": 0,
+                        "_rubriche": 0,
+                        "_presenza_notazione_musicale": 0,
+                        "_flag_colophon": 0,
+                        "_stemma": 0,
+                        "_riproduzione_sismel": 0,
+                        "altre_datazioni": [],
+                        "rigature": [],
+                        "scritture": [],
+                        "lingue_copisti": [],
+                        "area_dialettale": [],
+                        "precedenti_segnature": [],
+                        "decorazioni_pennello": [],
+                        "enti": [
+                            {
+                                "_idsezionemanoscritto": 102298,
+                                "_idente": 6490,
+                                "_idente_origine_provenienza_true": 6490,
+                                "_nome": "Svizzera Sankt Gallen Sankt Gallen St. Gallen, abbazia OSB ",
+                                "_nome_origine_provenienza_true": "Svizzera Sankt Gallen Sankt Gallen St. Gallen, abbazia OSB ",
+                                "_nome_rw": "svizzera-sankt-gallen-sankt-gallen-st-gallen-abbaz",
+                                "_origine_provenienza": 1,
+                                "_nazione": "Svizzera",
+                                "_regione": "Sankt Gallen",
+                                "_id_luogo": 2341,
+                                "_luogo": "Sankt Gallen",
+                                "_ente": "St. Gallen, abbazia OSB",
+                                "_id": 79395,
+                                "_idordinereligioso": 17,
+                                "_ordinereligioso": "OSB",
+                                "enti_alias": []
+                            }
+                        ],
+                        "enti_collegati": [],
+                        "nomi": [],
+                        "autori": [],
+                        "opere": [
+                            {
+                                "_idsezionemanoscritto": 102298,
+                                "_idopera": 7111,
+                                "_idautore": 19204,
+                                "_autore": "Isidorus Hispalensis episcopus n. 560 ca., m. 4-4-636",
+                                "_autore_rw": "isidorus-hispalensis-episcopus-n-560-ca-m-4-4-636",
+                                "_opera": "Versus",
+                                "_opera_rw": "versus",
+                                "_dubbia": 0,
+                                "_nota": "V-VIII, recensione lunga",
+                                "_fogli": "ff. 117v-118r",
+                                "_opera_ordinamento2": "Versus Isidorus Hispalensis 00 episcopus n. 560 ca., m. 4-4-636",
+                                "opere_vide": [
+                                    {
+                                        "_idopera": 7111,
+                                        "_nome": "Carmina XXVII"
+                                    }
+                                ],
+                                "opere_santi": [],
+                                "opere_autori_vide": [
+                                    {
+                                        "_idopera": 7111,
+                                        "_autore": "Isidero Menore"
+                                    },
+                                    {
+                                        "_idopera": 7111,
+                                        "_autore": "Isidor"
+                                    },
+                                    {
+                                        "_idopera": 7111,
+                                        "_autore": "Isidor di Siviglia"
+                                    },
+                                    {
+                                        "_idopera": 7111,
+                                        "_autore": "Isidor of Seville"
+                                    },
+                                    {
+                                        "_idopera": 7111,
+                                        "_autore": "Isidor von Sevilla"
+                                    },
+                                    {
+                                        "_idopera": 7111,
+                                        "_autore": "Isidore de Seville"
+                                    },
+                                    {
+                                        "_idopera": 7111,
+                                        "_autore": "Isidore de S\u00e9ville"
+                                    },
+                                    {
+                                        "_idopera": 7111,
+                                        "_autore": "Isidore of Seville"
+                                    },
+                                    {
+                                        "_idopera": 7111,
+                                        "_autore": "Isidoro"
+                                    },
+                                    {
+                                        "_idopera": 7111,
+                                        "_autore": "Isidoro de Sevilla"
+                                    },
+                                    {
+                                        "_idopera": 7111,
+                                        "_autore": "Isidoro di Siviglia"
+                                    },
+                                    {
+                                        "_idopera": 7111,
+                                        "_autore": "Isidorus"
+                                    },
+                                    {
+                                        "_idopera": 7111,
+                                        "_autore": "Isidorus de Sevilla"
+                                    },
+                                    {
+                                        "_idopera": 7111,
+                                        "_autore": "Isidorus Hispaliensis"
+                                    },
+                                    {
+                                        "_idopera": 7111,
+                                        "_autore": "Isidorus iunior"
+                                    },
+                                    {
+                                        "_idopera": 7111,
+                                        "_autore": "Isidorus Spaliensis"
+                                    },
+                                    {
+                                        "_idopera": 7111,
+                                        "_autore": "Isidorus Spaniensis"
+                                    },
+                                    {
+                                        "_idopera": 7111,
+                                        "_autore": "Isidorus von Sevilla"
+                                    },
+                                    {
+                                        "_idopera": 7111,
+                                        "_autore": "Izydor z Sewilli"
+                                    },
+                                    {
+                                        "_idopera": 7111,
+                                        "_autore": "Ysidorus"
+                                    }
+                                ],
+                                "opere_incipit": []
+                            },
+                            {
+                                "_idsezionemanoscritto": 102298,
+                                "_idopera": 117648,
+                                "_idautore": 19182,
+                                "_autore": "Alcuinus n. 730/735, m. 19-5-804",
+                                "_autore_rw": "alcuinus-n-730-735-m-19-5-804",
+                                "_opera": "Conflictus veris et hiemis",
+                                "_opera_rw": "conflictus-veris-et-hiemis",
+                                "_dubbia": 1,
+                                "_fogli": "ff. 116v-117v",
+                                "_opera_ordinamento2": "Conflictus veris et hiemis Alcuinus n. 730/735, m. 19-5-804",
+                                "opere_vide": [
+                                    {
+                                        "_idopera": 117648,
+                                        "_nome": "De cuculo"
+                                    }
+                                ],
+                                "opere_santi": [],
+                                "opere_autori_vide": [
+                                    {
+                                        "_idopera": 117648,
+                                        "_autore": "Albinus"
+                                    },
+                                    {
+                                        "_idopera": 117648,
+                                        "_autore": "Albinus Flaccus"
+                                    },
+                                    {
+                                        "_idopera": 117648,
+                                        "_autore": "Alboinus"
+                                    },
+                                    {
+                                        "_idopera": 117648,
+                                        "_autore": "Albuin"
+                                    },
+                                    {
+                                        "_idopera": 117648,
+                                        "_autore": "Alchuine"
+                                    },
+                                    {
+                                        "_idopera": 117648,
+                                        "_autore": "Alchuinus"
+                                    },
+                                    {
+                                        "_idopera": 117648,
+                                        "_autore": "Alchuuinus"
+                                    },
+                                    {
+                                        "_idopera": 117648,
+                                        "_autore": "Alchvin"
+                                    },
+                                    {
+                                        "_idopera": 117648,
+                                        "_autore": "Alchvine"
+                                    },
+                                    {
+                                        "_idopera": 117648,
+                                        "_autore": "Alchvinus"
+                                    },
+                                    {
+                                        "_idopera": 117648,
+                                        "_autore": "Alchvvinus"
+                                    },
+                                    {
+                                        "_idopera": 117648,
+                                        "_autore": "Alchwine"
+                                    },
+                                    {
+                                        "_idopera": 117648,
+                                        "_autore": "Alchwinus"
+                                    },
+                                    {
+                                        "_idopera": 117648,
+                                        "_autore": "Alcuin"
+                                    },
+                                    {
+                                        "_idopera": 117648,
+                                        "_autore": "Alcuin of York"
+                                    },
+                                    {
+                                        "_idopera": 117648,
+                                        "_autore": "Alcuino"
+                                    },
+                                    {
+                                        "_idopera": 117648,
+                                        "_autore": "Alcuino di York"
+                                    },
+                                    {
+                                        "_idopera": 117648,
+                                        "_autore": "Alcuinus Eboracensis"
+                                    },
+                                    {
+                                        "_idopera": 117648,
+                                        "_autore": "Alcuinus Flaccus"
+                                    },
+                                    {
+                                        "_idopera": 117648,
+                                        "_autore": "Alcuinus Puplius"
+                                    },
+                                    {
+                                        "_idopera": 117648,
+                                        "_autore": "Alcuinus Sancti Martini Turonensis"
+                                    },
+                                    {
+                                        "_idopera": 117648,
+                                        "_autore": "Alcuinus Turonensis"
+                                    },
+                                    {
+                                        "_idopera": 117648,
+                                        "_autore": "Alcvinus"
+                                    },
+                                    {
+                                        "_idopera": 117648,
+                                        "_autore": "Alcwinus"
+                                    },
+                                    {
+                                        "_idopera": 117648,
+                                        "_autore": "Alhwin"
+                                    },
+                                    {
+                                        "_idopera": 117648,
+                                        "_autore": "Alkoinus"
+                                    },
+                                    {
+                                        "_idopera": 117648,
+                                        "_autore": "Alkuin"
+                                    },
+                                    {
+                                        "_idopera": 117648,
+                                        "_autore": "Alquinus"
+                                    },
+                                    {
+                                        "_idopera": 117648,
+                                        "_autore": "Alvuinus"
+                                    },
+                                    {
+                                        "_idopera": 117648,
+                                        "_autore": "Ealhwine"
+                                    },
+                                    {
+                                        "_idopera": 117648,
+                                        "_autore": "Flaccus"
+                                    },
+                                    {
+                                        "_idopera": 117648,
+                                        "_autore": "Flaccus Albinus"
+                                    },
+                                    {
+                                        "_idopera": 117648,
+                                        "_autore": "Flaccus Alcuinus"
+                                    },
+                                    {
+                                        "_idopera": 117648,
+                                        "_autore": "Puplius Albinus"
+                                    }
+                                ],
+                                "opere_incipit": [
+                                    {
+                                        "_idopera": 117648,
+                                        "_incipit": "Conveniunt subito cuncti de montibus altis",
+                                        "_normalizzato": "Conveniunt subito cuncti de montibus altis"
+                                    }
+                                ]
+                            },
+                            {
+                                "_idsezionemanoscritto": 102298,
+                                "_idopera": 17763,
+                                "_idautore": 42792,
+                                "_autore": "Ovidius pseudo",
+                                "_autore_rw": "ovidius-pseudo",
+                                "_opera": "Conflictus veris et hiemis",
+                                "_opera_rw": "conflictus-veris-et-hiemis",
+                                "_dubbia": 0,
+                                "_fogli": "ff. 116v-117v",
+                                "_opera_ordinamento2": "Conflictus veris et hiemis Ovidius 00 pseudo",
+                                "opere_vide": [
+                                    {
+                                        "_idopera": 17763,
+                                        "_nome": "De cuculo"
+                                    }
+                                ],
+                                "opere_santi": [],
+                                "opere_autori_vide": [],
+                                "opere_incipit": [
+                                    {
+                                        "_idopera": 17763,
+                                        "_incipit": "Conveniunt subito cuncti de montibus altis",
+                                        "_normalizzato": "Conveniunt subito cuncti de montibus altis"
+                                    }
+                                ]
+                            },
+                            {
+                                "_idsezionemanoscritto": 102298,
+                                "_idopera": 4749,
+                                "_idautore": 19182,
+                                "_autore": "Alcuinus n. 730/735, m. 19-5-804",
+                                "_autore_rw": "alcuinus-n-730-735-m-19-5-804",
+                                "_opera": "Epistolae",
+                                "_opera_rw": "epistolae",
+                                "_dubbia": 0,
+                                "_nota": "<i>Epistola ad Daphnin </i>(ALC 45.133)",
+                                "_fogli": "ff. 84r-86r",
+                                "_opera_ordinamento2": "Epistolae Alcuinus n. 730/735, m. 19-5-804",
+                                "opere_vide": [],
+                                "opere_santi": [],
+                                "opere_autori_vide": [
+                                    {
+                                        "_idopera": 4749,
+                                        "_autore": "Albinus"
+                                    },
+                                    {
+                                        "_idopera": 4749,
+                                        "_autore": "Albinus Flaccus"
+                                    },
+                                    {
+                                        "_idopera": 4749,
+                                        "_autore": "Alboinus"
+                                    },
+                                    {
+                                        "_idopera": 4749,
+                                        "_autore": "Albuin"
+                                    },
+                                    {
+                                        "_idopera": 4749,
+                                        "_autore": "Alchuine"
+                                    },
+                                    {
+                                        "_idopera": 4749,
+                                        "_autore": "Alchuinus"
+                                    },
+                                    {
+                                        "_idopera": 4749,
+                                        "_autore": "Alchuuinus"
+                                    },
+                                    {
+                                        "_idopera": 4749,
+                                        "_autore": "Alchvin"
+                                    },
+                                    {
+                                        "_idopera": 4749,
+                                        "_autore": "Alchvine"
+                                    },
+                                    {
+                                        "_idopera": 4749,
+                                        "_autore": "Alchvinus"
+                                    },
+                                    {
+                                        "_idopera": 4749,
+                                        "_autore": "Alchvvinus"
+                                    },
+                                    {
+                                        "_idopera": 4749,
+                                        "_autore": "Alchwine"
+                                    },
+                                    {
+                                        "_idopera": 4749,
+                                        "_autore": "Alchwinus"
+                                    },
+                                    {
+                                        "_idopera": 4749,
+                                        "_autore": "Alcuin"
+                                    },
+                                    {
+                                        "_idopera": 4749,
+                                        "_autore": "Alcuin of York"
+                                    },
+                                    {
+                                        "_idopera": 4749,
+                                        "_autore": "Alcuino"
+                                    },
+                                    {
+                                        "_idopera": 4749,
+                                        "_autore": "Alcuino di York"
+                                    },
+                                    {
+                                        "_idopera": 4749,
+                                        "_autore": "Alcuinus Eboracensis"
+                                    },
+                                    {
+                                        "_idopera": 4749,
+                                        "_autore": "Alcuinus Flaccus"
+                                    },
+                                    {
+                                        "_idopera": 4749,
+                                        "_autore": "Alcuinus Puplius"
+                                    },
+                                    {
+                                        "_idopera": 4749,
+                                        "_autore": "Alcuinus Sancti Martini Turonensis"
+                                    },
+                                    {
+                                        "_idopera": 4749,
+                                        "_autore": "Alcuinus Turonensis"
+                                    },
+                                    {
+                                        "_idopera": 4749,
+                                        "_autore": "Alcvinus"
+                                    },
+                                    {
+                                        "_idopera": 4749,
+                                        "_autore": "Alcwinus"
+                                    },
+                                    {
+                                        "_idopera": 4749,
+                                        "_autore": "Alhwin"
+                                    },
+                                    {
+                                        "_idopera": 4749,
+                                        "_autore": "Alkoinus"
+                                    },
+                                    {
+                                        "_idopera": 4749,
+                                        "_autore": "Alkuin"
+                                    },
+                                    {
+                                        "_idopera": 4749,
+                                        "_autore": "Alquinus"
+                                    },
+                                    {
+                                        "_idopera": 4749,
+                                        "_autore": "Alvuinus"
+                                    },
+                                    {
+                                        "_idopera": 4749,
+                                        "_autore": "Ealhwine"
+                                    },
+                                    {
+                                        "_idopera": 4749,
+                                        "_autore": "Flaccus"
+                                    },
+                                    {
+                                        "_idopera": 4749,
+                                        "_autore": "Flaccus Albinus"
+                                    },
+                                    {
+                                        "_idopera": 4749,
+                                        "_autore": "Flaccus Alcuinus"
+                                    },
+                                    {
+                                        "_idopera": 4749,
+                                        "_autore": "Puplius Albinus"
+                                    }
+                                ],
+                                "opere_incipit": []
+                            },
+                            {
+                                "_idsezionemanoscritto": 102298,
+                                "_idopera": 16987,
+                                "_idautore": 42760,
+                                "_autore": "Serenus Sammonicus Quintus",
+                                "_autore_rw": "serenus-sammonicus-quintus",
+                                "_opera": "Liber medicinalis",
+                                "_opera_rw": "liber-medicinalis",
+                                "_dubbia": 0,
+                                "_fogli": "ff. 59r-82v",
+                                "_opera_ordinamento2": "Liber medicinalis Serenus Sammonicus Quintus 00",
+                                "opere_vide": [],
+                                "opere_santi": [],
+                                "opere_autori_vide": [],
+                                "opere_incipit": []
+                            },
+                            {
+                                "_idsezionemanoscritto": 102298,
+                                "_idopera": 6258,
+                                "_idautore": 19183,
+                                "_autore": "Theodulphus Aurelianensis episcopus n. 760 ca., m. 821",
+                                "_autore_rw": "theodulphus-aurelianensis-episcopus-n-760-ca-m-821",
+                                "_opera": "Carmina",
+                                "_opera_rw": "carmina",
+                                "_dubbia": 0,
+                                "_fogli": "ff. 86v-91r",
+                                "_opera_ordinamento2": "Carmina Theodulphus Aurelianensis 00 episcopus n. 760 ca., m. 821",
+                                "opere_vide": [],
+                                "opere_santi": [],
+                                "opere_autori_vide": [
+                                    {
+                                        "_idopera": 6258,
+                                        "_autore": "Teodolfo di Orl\u00e9ans"
+                                    },
+                                    {
+                                        "_idopera": 6258,
+                                        "_autore": "Teodulfo de Orleans"
+                                    },
+                                    {
+                                        "_idopera": 6258,
+                                        "_autore": "Theodulf"
+                                    },
+                                    {
+                                        "_idopera": 6258,
+                                        "_autore": "Th\u00e9odulf"
+                                    },
+                                    {
+                                        "_idopera": 6258,
+                                        "_autore": "Th\u00e9odulf d' Orl\u00e9ans"
+                                    },
+                                    {
+                                        "_idopera": 6258,
+                                        "_autore": "Theodulf of Orl\u00e9ans"
+                                    },
+                                    {
+                                        "_idopera": 6258,
+                                        "_autore": "Theodulf von Orl\u00e9ans"
+                                    },
+                                    {
+                                        "_idopera": 6258,
+                                        "_autore": "Th\u00e9odulfe d' Orl\u00e9ans"
+                                    },
+                                    {
+                                        "_idopera": 6258,
+                                        "_autore": "Theodulfo d' Orl\u00e9ans"
+                                    },
+                                    {
+                                        "_idopera": 6258,
+                                        "_autore": "Th\u00e9odulphe"
+                                    },
+                                    {
+                                        "_idopera": 6258,
+                                        "_autore": "Th\u00e9odulphe d' Orl\u00e9ans"
+                                    },
+                                    {
+                                        "_idopera": 6258,
+                                        "_autore": "Theodulphus"
+                                    }
+                                ],
+                                "opere_incipit": []
+                            },
+                            {
+                                "_idsezionemanoscritto": 102298,
+                                "_idopera": 27742,
+                                "_idautore": 19245,
+                                "_autore": "Columbanus Luxoviensis et Bobiensis abbas n. 543 ca., m. 23-11-615",
+                                "_autore_rw": "columbanus-luxoviensis-et-bobiensis-abbas-n-543-ca",
+                                "_opera": "Carmen rhythmicum",
+                                "_opera_rw": "carmen-rhythmicum",
+                                "_dubbia": 0,
+                                "_fogli": "ff. 159r-160r",
+                                "_opera_ordinamento2": "Carmen rhythmicum Columbanus Luxoviensis et Bobiensis abbas n. 543 ca., m. 23-11-615",
+                                "opere_vide": [
+                                    {
+                                        "_idopera": 27742,
+                                        "_nome": "Carmen de mundi transitu"
+                                    },
+                                    {
+                                        "_idopera": 27742,
+                                        "_nome": "Epistola ad quemdam discipulum"
+                                    }
+                                ],
+                                "opere_santi": [],
+                                "opere_autori_vide": [
+                                    {
+                                        "_idopera": 27742,
+                                        "_autore": "Colman"
+                                    },
+                                    {
+                                        "_idopera": 27742,
+                                        "_autore": "Colomba le jeune"
+                                    },
+                                    {
+                                        "_idopera": 27742,
+                                        "_autore": "Colomban"
+                                    },
+                                    {
+                                        "_idopera": 27742,
+                                        "_autore": "Colomban de Bangor"
+                                    },
+                                    {
+                                        "_idopera": 27742,
+                                        "_autore": "Colombano"
+                                    },
+                                    {
+                                        "_idopera": 27742,
+                                        "_autore": "Colombano di Bobbio"
+                                    },
+                                    {
+                                        "_idopera": 27742,
+                                        "_autore": "Colum"
+                                    },
+                                    {
+                                        "_idopera": 27742,
+                                        "_autore": "Columba"
+                                    },
+                                    {
+                                        "_idopera": 27742,
+                                        "_autore": "Columba beatus"
+                                    },
+                                    {
+                                        "_idopera": 27742,
+                                        "_autore": "Columba Bobiensis"
+                                    },
+                                    {
+                                        "_idopera": 27742,
+                                        "_autore": "Columba the Younger"
+                                    },
+                                    {
+                                        "_idopera": 27742,
+                                        "_autore": "Columba von Luxeuils"
+                                    },
+                                    {
+                                        "_idopera": 27742,
+                                        "_autore": "Columban"
+                                    },
+                                    {
+                                        "_idopera": 27742,
+                                        "_autore": "Columbanus"
+                                    },
+                                    {
+                                        "_idopera": 27742,
+                                        "_autore": "Columbanus Bobbiensis"
+                                    },
+                                    {
+                                        "_idopera": 27742,
+                                        "_autore": "Columbanus Bobiensis"
+                                    },
+                                    {
+                                        "_idopera": 27742,
+                                        "_autore": "Columbanus Luxoviensis"
+                                    },
+                                    {
+                                        "_idopera": 27742,
+                                        "_autore": "Columbanus of Bobbio"
+                                    },
+                                    {
+                                        "_idopera": 27742,
+                                        "_autore": "Columbanus of Luxeuil"
+                                    },
+                                    {
+                                        "_idopera": 27742,
+                                        "_autore": "Kolumban"
+                                    },
+                                    {
+                                        "_idopera": 27742,
+                                        "_autore": "Kolumban von Luxeuil"
+                                    }
+                                ],
+                                "opere_incipit": [
+                                    {
+                                        "_idopera": 27742,
+                                        "_incipit": "\u00abMundus iste transibit\u00bb",
+                                        "_normalizzato": "\u00abMundus iste transibit\u00bb"
+                                    }
+                                ]
+                            },
+                            {
+                                "_idsezionemanoscritto": 102298,
+                                "_idopera": 169080,
+                                "_opera": "Conflictus veris et hiemis",
+                                "_opera_rw": "conflictus-veris-et-hiemis",
+                                "_dubbia": 0,
+                                "_fogli": "ff. 116v-117v",
+                                "_opera_ordinamento2": "Conflictus veris et hiemis ",
+                                "opere_vide": [
+                                    {
+                                        "_idopera": 169080,
+                                        "_nome": "De cuculo"
+                                    }
+                                ],
+                                "opere_santi": [],
+                                "opere_autori_vide": [],
+                                "opere_incipit": [
+                                    {
+                                        "_idopera": 169080,
+                                        "_incipit": "Conveniunt subito cuncti de montibus altis",
+                                        "_normalizzato": "Conveniunt subito cuncti de montibus altis"
+                                    }
+                                ]
+                            },
+                            {
+                                "_idsezionemanoscritto": 102298,
+                                "_idopera": 172104,
+                                "_opera": "Versus Panos",
+                                "_opera_rw": "versus-panos",
+                                "_dubbia": 0,
+                                "_fogli": "ff. 82v-83r",
+                                "_opera_ordinamento2": "Versus Panos ",
+                                "opere_vide": [],
+                                "opere_santi": [],
+                                "opere_autori_vide": [],
+                                "opere_incipit": [
+                                    {
+                                        "_idopera": 172104,
+                                        "_incipit": "Rustice lustrivage capripes cornute bimembris",
+                                        "_normalizzato": "Rustice lustrivage capripes cornute bimembris"
+                                    }
+                                ]
+                            },
+                            {
+                                "_idsezionemanoscritto": 102298,
+                                "_idopera": 172735,
+                                "_opera": "Karolus Magnus et Leo papa",
+                                "_opera_rw": "karolus-magnus-et-leo-papa",
+                                "_dubbia": 0,
+                                "_fogli": "ff. 104r-114v",
+                                "_opera_ordinamento2": "Karolus Magnus et Leo papa ",
+                                "opere_vide": [],
+                                "opere_santi": [
+                                    {
+                                        "_idsezionemanoscritto": 102298,
+                                        "_idopera": 172735,
+                                        "_idsanto": 91,
+                                        "_nome": "Karolus Magnus rex",
+                                        "_inttipo": 0,
+                                        "opere_santi_vide": []
+                                    }
+                                ],
+                                "opere_autori_vide": [],
+                                "opere_incipit": []
+                            },
+                            {
+                                "_idsezionemanoscritto": 102298,
+                                "_idopera": 177610,
+                                "_opera": "Ars grammatica",
+                                "_opera_rw": "ars-grammatica",
+                                "_dubbia": 0,
+                                "_nota": "<i>fragm.</i> (= cap. 1 ed. Mai)",
+                                "_fogli": "ff. 156v-157r",
+                                "_opera_ordinamento2": "Ars grammatica ",
+                                "opere_vide": [],
+                                "opere_santi": [],
+                                "opere_autori_vide": [],
+                                "opere_incipit": [
+                                    {
+                                        "_idopera": 177610,
+                                        "_tipo_incipit": "epist.",
+                                        "_incipit": "Dynamius grammaticus ad discipulum suum ait. O quam dolenda conditio et fortiter execranda",
+                                        "_normalizzato": "Dynamius grammaticus ad discipulum suum ait. O quam dolenda conditio et fortiter execranda"
+                                    },
+                                    {
+                                        "_idopera": 177610,
+                                        "_tipo_incipit": "introd.",
+                                        "_incipit": "Int. Quis primus philosophi nomine nuncupatus est?",
+                                        "_normalizzato": "Int. Quis primus philosophi nomine nuncupatus est?"
+                                    },
+                                    {
+                                        "_idopera": 177610,
+                                        "_tipo_incipit": "text.",
+                                        "_incipit": "Int. Ars quid est? Resp. Rei cuiusque scientia ad utilitatem delectationemque tendens, usu vel ratione conprehensa",
+                                        "_normalizzato": "Int. Ars quid est? Resp. Rei cuiusque scientia ad utilitatem delectationemque tendens, usu vel ratione conprehensa"
+                                    }
+                                ]
+                            },
+                            {
+                                "_idsezionemanoscritto": 102298,
+                                "_idopera": 179353,
+                                "_opera": "Iudicii signum tellus sudore madescet",
+                                "_opera_rw": "iudicii-signum-tellus-sudore-madescet",
+                                "_dubbia": 0,
+                                "_fogli": "f. 156r-v",
+                                "_opera_ordinamento2": "Iudicii signum tellus sudore madescet ",
+                                "opere_vide": [
+                                    {
+                                        "_idopera": 179353,
+                                        "_nome": "Versus Sibyllae de die iudicii"
+                                    }
+                                ],
+                                "opere_santi": [],
+                                "opere_autori_vide": [],
+                                "opere_incipit": [
+                                    {
+                                        "_idopera": 179353,
+                                        "_incipit": "Iudicii signum tellus sudore madescet",
+                                        "_normalizzato": "Iudicii signum tellus sudore madescet"
+                                    }
+                                ]
+                            },
+                            {
+                                "_idsezionemanoscritto": 102298,
+                                "_idopera": 127180,
+                                "_idautore": 42618,
+                                "_autore": "Pelagius monachus",
+                                "_autore_rw": "pelagius-monachus",
+                                "_opera": "Libellus fidei ad Innocentium papam",
+                                "_opera_rw": "libellus-fidei-ad-innocentium-papam",
+                                "_dubbia": 0,
+                                "_fogli": "ff. 54v-57r",
+                                "_opera_ordinamento2": "Libellus fidei ad Innocentium papam Pelagius 00 monachus",
+                                "opere_vide": [],
+                                "opere_santi": [],
+                                "opere_autori_vide": [],
+                                "opere_incipit": [
+                                    {
+                                        "_idopera": 127180,
+                                        "_incipit": "Credimus in Deum Patrem omnipotentem cunctorum visibilium et invisibilium conditorem. Credimus et in Dominum nostrum Iesum Christum, per quem creata sunt omnia: verum Deum, unigenitum et verum Dei Filium, non factum aut adoptivum",
+                                        "_normalizzato": "Credimus in Deum Patrem omnipotentem cunctorum visibilium et invisibilium conditorem. Credimus et in Dominum nostrum Iesum Christum, per quem creata sunt omnia: verum Deum, unigenitum et verum Dei Filium, non factum aut adoptivum"
+                                    }
+                                ]
+                            },
+                            {
+                                "_idsezionemanoscritto": 102298,
+                                "_idopera": 185424,
+                                "_idautore": 19548,
+                                "_autore": "Venantius Fortunatus n. 530, m. 601",
+                                "_autore_rw": "venantius-fortunatus-n-530-m-601",
+                                "_opera": "Expositio fidei catholicae",
+                                "_opera_rw": "expositio-fidei-catholicae",
+                                "_notetitolo": "Fides dicitur credulitas",
+                                "_dubbia": 1,
+                                "_fogli": "ff. 123r-127v",
+                                "_opera_ordinamento2": "Expositio fidei catholicae Venantius Fortunatus 00 n. 530, m. 601",
+                                "opere_vide": [
+                                    {
+                                        "_idopera": 185424,
+                                        "_nome": "Commentarius Fortunati in symbolum Athanasianum"
+                                    }
+                                ],
+                                "opere_santi": [],
+                                "opere_autori_vide": [
+                                    {
+                                        "_idopera": 185424,
+                                        "_autore": "Fortunat"
+                                    },
+                                    {
+                                        "_idopera": 185424,
+                                        "_autore": "Fortunat de Poitiers"
+                                    },
+                                    {
+                                        "_idopera": 185424,
+                                        "_autore": "Fortunat Venance"
+                                    },
+                                    {
+                                        "_idopera": 185424,
+                                        "_autore": "Fortunatus"
+                                    },
+                                    {
+                                        "_idopera": 185424,
+                                        "_autore": "Fortunatus Italicus"
+                                    },
+                                    {
+                                        "_idopera": 185424,
+                                        "_autore": "Fortunatus Venantius"
+                                    },
+                                    {
+                                        "_idopera": 185424,
+                                        "_autore": "Fortunatus Venantius Honorius Clementianus"
+                                    },
+                                    {
+                                        "_idopera": 185424,
+                                        "_autore": "Fortunatus Venantius Honorius Clementius"
+                                    },
+                                    {
+                                        "_idopera": 185424,
+                                        "_autore": "Honorius Venantius Clementianus Fortunatus"
+                                    },
+                                    {
+                                        "_idopera": 185424,
+                                        "_autore": "Venance Fortunat"
+                                    },
+                                    {
+                                        "_idopera": 185424,
+                                        "_autore": "Venantius Honorius Clementianus Fortunatus"
+                                    },
+                                    {
+                                        "_idopera": 185424,
+                                        "_autore": "Venantius Honorius Fortunatus Clementianus"
+                                    },
+                                    {
+                                        "_idopera": 185424,
+                                        "_autore": "Venantius Pictaviensis"
+                                    },
+                                    {
+                                        "_idopera": 185424,
+                                        "_autore": "Venanzio"
+                                    },
+                                    {
+                                        "_idopera": 185424,
+                                        "_autore": "Venanzio Fortunato"
+                                    }
+                                ],
+                                "opere_incipit": [
+                                    {
+                                        "_idopera": 185424,
+                                        "_incipit": "Quicunque vult salvus esse, ante omnia opus est ut teneat catholicam fidem. Fides dicitur credulitas sive credentia. Catholica universalis dicitur, id est recta, quam universa ecclesia tenere debet. Ecclesia dicitur congregatio christianorum",
+                                        "_normalizzato": "Quicunque vult salvus esse, ante omnia opus est ut teneat catholicam fidem. Fides dicitur credulitas sive credentia. Catholica universalis dicitur, id est recta, quam universa ecclesia tenere debet. Ecclesia dicitur congregatio christianorum"
+                                    }
+                                ]
+                            },
+                            {
+                                "_idsezionemanoscritto": 102298,
+                                "_idopera": 185469,
+                                "_opera": "Expositio fidei catholicae",
+                                "_opera_rw": "expositio-fidei-catholicae",
+                                "_notetitolo": "Keefe cat. n. 269",
+                                "_dubbia": 0,
+                                "_fogli": "ff. 123r-127v",
+                                "_opera_ordinamento2": "Expositio fidei catholicae ",
+                                "opere_vide": [
+                                    {
+                                        "_idopera": 185469,
+                                        "_nome": "Fides dicitur credulitas"
+                                    }
+                                ],
+                                "opere_santi": [],
+                                "opere_autori_vide": [],
+                                "opere_incipit": [
+                                    {
+                                        "_idopera": 185469,
+                                        "_incipit": "Quicunque vult salvus esse, ante omnia opus est ut teneat catholicam fidem. Fides dicitur credulitas sive credentia. Catholica universalis dicitur, id est recta, quam universa ecclesia tenere debet. Ecclesia dicitur congregatio christianorum",
+                                        "_normalizzato": "Quicunque vult salvus esse, ante omnia opus est ut teneat catholicam fidem. Fides dicitur credulitas sive credentia. Catholica universalis dicitur, id est recta, quam universa ecclesia tenere debet. Ecclesia dicitur congregatio christianorum"
+                                    }
+                                ]
+                            },
+                            {
+                                "_idsezionemanoscritto": 102298,
+                                "_idopera": 211829,
+                                "_idautore": 31098,
+                                "_autore": "Iacobus scriba fl. saec. VIII ex.-IX in.",
+                                "_autore_rw": "iacobus-scriba-fl-saec-viii-ex-ix-in-",
+                                "_opera": "Versus ad Karolum Magnum",
+                                "_opera_rw": "versus-ad-karolum-magnum",
+                                "_notetitolo": "20 <i>hexametri</i>",
+                                "_dubbia": 0,
+                                "_fogli": "f. 57v",
+                                "_opera_ordinamento2": "Versus ad Karolum Magnum Iacobus 00 scriba fl. saec. VIII ex.-IX in.",
+                                "opere_vide": [],
+                                "opere_santi": [],
+                                "opere_autori_vide": [],
+                                "opere_incipit": [
+                                    {
+                                        "_idopera": 211829,
+                                        "_incipit": "Herbarum species, pulchros cum germine flores / Virgultique comas lente radice revulsas",
+                                        "_normalizzato": "Herbarum species, pulchros cum germine flores / Virgultique comas lente radice revulsas"
+                                    }
+                                ]
+                            }
+                        ],
+                        "tipologia_testuale": [],
+                        "ricabim_inventario": [],
+                        "bibliografia": [
+                            {
+                                "_idmanoscritto": 14286,
+                                "_idsezionemanoscritto": 102298,
+                                "_idbibliografia": 5925,
+                                "_idsigla": 5925,
+                                "_sigla_completa": "Te.Tra. <i>La trasmissione dei testi latini del Medioevo / Mediaeval Latin Texts and their Transmission</i> cur. Paolo Chiesa e Lucia Castaldi, Firenze 2004-",
+                                "_sigla": "Te.Tra.",
+                                "_scioglimento": "<i>La trasmissione dei testi latini del Medioevo / Mediaeval Latin Texts and their Transmission</i> cur. Paolo Chiesa e Lucia Castaldi, Firenze 2004-",
+                                "_anno": 2012,
+                                "_volume": "IV",
+                                "_riferimento": 0,
+                                "_note": "sec. IX-X",
+                                "bibliografia_pagine": [
+                                    {
+                                        "_idmanoscritto": 14286,
+                                        "_idbibliografia": 5925,
+                                        "_pagina_prefisso": "p.",
+                                        "_testo": "222"
+                                    }
+                                ]
+                            },
+                            {
+                                "_idmanoscritto": 14286,
+                                "_idsezionemanoscritto": 102298,
+                                "_idbibliografia": 17669,
+                                "_idsigla": 17669,
+                                "_sigla_completa": "Bischoff <i>Festl\u00e4ndische Hss. III</i> Bernhard Bischoff <i>Katalog der festl\u00e4ndischen Handschriften des neunten Jahrhunderts (mit Ausnahme der wisigotischen) </i>III <i>Padua-Zwickau </i>cur. Birgit Ebersperger, Wiesbaden, Harrassowitz 2014",
+                                "_sigla": "Bischoff <i>Festl\u00e4ndische Hss. III</i>",
+                                "_scioglimento": "Bernhard Bischoff <i>Katalog der festl\u00e4ndischen Handschriften des neunten Jahrhunderts (mit Ausnahme der wisigotischen) </i>III <i>Padua-Zwickau </i>cur. Birgit Ebersperger, Wiesbaden, Harrassowitz 2014",
+                                "_anno": 2014,
+                                "_riferimento": 0,
+                                "bibliografia_pagine": [
+                                    {
+                                        "_idmanoscritto": 14286,
+                                        "_idbibliografia": 17669,
+                                        "_pagina_prefisso": "p.",
+                                        "_testo": "536"
+                                    },
+                                    {
+                                        "_idmanoscritto": 14286,
+                                        "_idbibliografia": 17669,
+                                        "_pagina_prefisso": "n.",
+                                        "_testo": "7577"
+                                    },
+                                    {
+                                        "_idmanoscritto": 14286,
+                                        "_idbibliografia": 17669,
+                                        "_pagina_prefisso": "p.",
+                                        "_testo": "536"
+                                    },
+                                    {
+                                        "_idmanoscritto": 14286,
+                                        "_idbibliografia": 17669,
+                                        "_pagina_prefisso": "n.",
+                                        "_testo": "7578"
+                                    }
+                                ]
+                            }
+                        ],
+                        "attribuzioni_spogli": [],
+                        "manoscrittodatazione": [
+                            {
+                                "IDMANOSCRITTO": 14286,
+                                "IDSEZIONEMANOSCRITTO": 102298,
+                                "DATAZIONE": "900",
+                                "DATA_INIZIO": 900,
+                                "DATA_FINE": 900,
+                                "DATA_PREFISSO": "ca.",
+                                "NOME": "Z\u00fcrich, Zentralbibliothek, C 78 (olim 451; cat. 109)",
+                                "NOME_ORDER": "Z\u00fcrich, Zentralbibliothek, C 078 (olim 451; cat. 109)"
+                            }
+                        ]
+                    }
+                ],
+                "spogli": [],
+                "stampatori": [],
+                "tipologia_notazione": [],
+                "tipologia_rigo": []
+            }
+        }
+    }
+]
+]
