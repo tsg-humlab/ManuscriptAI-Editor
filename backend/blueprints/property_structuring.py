@@ -84,12 +84,9 @@ structurer_agent = ConversableAgent(
     "incipit": "The opening words of the text, if available.",
     "explicit": "The final words of the text, if available.",
     "handwriting_form": "The style of handwriting/script (e.g. 'Gothic textualis', 'Caroline minuscule', etc.)",
-    "handwriting_notes": "Additional notes or remarks on the script (or null)",
-    "decorations": {
-      "types": ["Examples: 'miniatures', 'decorated initials', 'historiated initials, etc.'"],
-      "details": "A text description of decorative features (or null if not described)"
-    },
+    "decorations": "all information regarding decorations such as 'miniatures', 'decorated initials', 'historiated initials, etc.'",
     "binding_type": "Material/style of the binding (e.g. 'leather over wooden boards', 'modern binding', etc.)",
+    "format": "Type of format such as quarto, duodecimo etc., or null",
     "total_folia": "The folio/page notation (e.g. '1r-112v', or null)",
     "ink_type": "Type of ink used (e.g. 'iron gall', 'carbon black', or null if not mentioned)",
     "authors": "List of authors whose works appear in the manuscript, or null if none are identified.",
@@ -99,11 +96,7 @@ structurer_agent = ConversableAgent(
     "illuminators": "List of illuminators (if different from miniaturists), or null if none are identified.",
     "rubricators": "List of individuals who wrote rubrics in red, if known, or null if none are identified.",
     "work_folia": "Mapping of each included work to its corresponding folios (e.g. 'Divina Commedia: 1r-30r')",
-    "extra_information": "Catch-all for any additional data not fitting other fields",
     "data_analyzed": "Raw text  of the data the Analyzer provided",
-    "data_not_identified": "Any leftover data you could not categorize",
-    "mention_of_people": "Any people mentioned",
-    "mention_of_place": "Any place mentioned",
     "restoration_history": "Information about the restoration process the manuscript may have gone through",
     "additional_notes": "any additional notes",
     "ownership_history": "relevant information about who owned the manuscript and where it was and is preserved "
