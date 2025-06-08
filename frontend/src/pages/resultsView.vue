@@ -460,7 +460,6 @@ function setNestedValue(obj, path, newVal) {
 }
 
 /* Buttons below the list */
-/* Buttons below the list */
 .buttons-below-list {
   display: flex;
   flex-direction: column;
