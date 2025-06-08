@@ -223,27 +223,44 @@ function shrinkUri(fullUri) {
   return fullUri.replace("http://", "");
 }
 function downloadTurtle() {
-  // Re-serialize our rdfStore into Turtle so that
-  // any changes (removals) are reflected in the final file.
-  rdflib.serialize(null, rdfStore, "http://example.org/", "text/turtle", (err, data) => {
-    if (err) {
-      console.error("Serialization error:", err);
-      return;
-    }
-    const blob = new Blob([data], { type: "text/turtle" });
-    const url = URL.createObjectURL(blob);
-
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = "manuscripts.ttl";
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    URL.revokeObjectURL(url);
+  // 1) Build a Serializer with the prefixes
+  const serializer = new rdflib.Serializer(rdfStore, {
+    // no `base` field → ex: won’t collapse to <>
+    prefixes: {
+      ex:   "http://example.org/",
+      m:    "http://ontology.tno.nl/manuscriptAI/",
+      rdf:  "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+      rdfs: "http://www.w3.org/2000/01/rdf-schema#",
+      xsd:  "http://www.w3.org/2001/XMLSchema#",
+      ent:  "http://www.wikidata.org/entity/"
+    },
+    explicit: true,
+    shorter:  false
   });
+
+  // 2) Serialize to string
+  let ttlData = serializer.toN3(rdfStore);
+
+  // 3) clean up formatting
+  ttlData = ttlData
+    .replace(/a m:Locus;/g,                  "a m:Locus ;")
+    .replace(/; m:concernsFeature /g,        ";\n    m:concernsFeature ")
+    .replace(/; m:includesText /g,           ";\n    m:includesText ")
+    .replace(/ ; /g,                         " ;\n    ")
+    .replace(/ , /g,                         ",\n        ")
+    .replace(/\.\nex:/g,                    ".\n\nex:");
+
+  // 4) Trigger download
+  const blob = new Blob([ttlData], { type: "text/turtle" });
+  const url  = URL.createObjectURL(blob);
+  const a    = document.createElement("a");
+  a.href     = url;
+  a.download = "manuscripts.ttl";
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
 }
-
-
 /**
  * Removes the given `valueToRemove` for the property `pred` from
  * both the `activeManuscript.properties` *and* the rdfStore so that
