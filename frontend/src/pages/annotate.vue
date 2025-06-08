@@ -370,7 +370,7 @@ function formatFieldName(field) {
 
 <style scoped>
 .content-container {
-  margin-top: 60px;
+  margin-top: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;

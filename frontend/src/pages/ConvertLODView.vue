@@ -214,7 +214,7 @@ function handleGenericText(file, extension) {
 
 <style scoped>
 .content-container {
-  padding-top: 50px;
+  padding-top: 20px;
   padding-bottom: 50px;
 }
 
