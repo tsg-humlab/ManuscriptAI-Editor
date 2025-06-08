@@ -1737,7 +1737,7 @@ addLocus() {
             alert("Please select a binding technique before saving.");
             return;
           }
-          rdfContent = this.appendPhysicalTriple(rdfContent, "MS4AI:hasBinding", `MS4AI:${this.selectedBindingTechnique.trim()}`);
+          rdfContent = this.appendPhysicalTriple(rdfContent, "MS4AI:hasBindingTechnique", `MS4AI:${this.selectedBindingTechnique.trim()}`);
           this.bindingTechniqueDisabled = true;
           break;
         }
@@ -1908,39 +1908,71 @@ footer {
   font-weight: bold;
 }
 
-.content {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  padding: 20px;
+.content{
+  height:calc(100vh - 80px);
+  display:flex;
+  gap:20px;
+  padding:20px;
+  overflow-x:hidden;
 }
 
 .container-left,
-.container-right {
-  background-color: #ffffff;
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  max-width: 45%;
-  width: 100%;
-  box-sizing: border-box;
-  margin: 10px;
-  display: flex;
-  flex-direction: column;
+.container-right{
+  /* may grow (=1), may shrink (=1), base width 45 % */
+  flex:1 1 45%;
+  max-width:45%;
+  min-width:0;
+  min-height:0;
+  background:#fff;
+  padding:20px;
+  border-radius:12px;
+  box-shadow:0 4px 20px rgba(0,0,0,.1);
+  display:flex;
+  flex-direction:column;
+  overflow-y:auto;
+  box-sizing:border-box;
 }
 
-.container-left h1,
-.container-right h1 {
-  margin-bottom: 20px;
-  font-size: 2em;
-  color: #23263C;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  font-weight: bold;
-  text-align: center;
-  line-height: 1.2;
+.container-left{
+  padding-right:1rem;
 }
+
+.rdf-container{
+  padding:10px;
+  margin-bottom:10px;
+  background:#f9f9f9;
+  border-radius:8px;
+  box-shadow:0 2px 10px rgba(0,0,0,.1);
+  font-family:"Courier New",Courier,monospace;
+  max-height:300px;
+  overflow:auto;
+  white-space:pre-wrap;
+}
+
+
+.rdf-container pre,
+#dynamic-rdf{
+  white-space:pre-wrap;
+  overflow-wrap:anywhere;
+  word-break:break-all;
+  overflow-x:auto;
+  font-size: 0.85em;
+  line-height: 1.4;
+}
+
+
+.container-left h1,
+.container-right h1{
+  margin-bottom:20px;
+  font-size:2em;
+  color:#23263C;
+  text-transform:uppercase;
+  letter-spacing:1px;
+  font-weight:bold;
+  text-align:center;
+  line-height:1.2;
+}
+
 
 .pad {
   padding: 20px;
