@@ -117,7 +117,7 @@
                 <v-btn
                   v-if="specialPredicates.includes(pred)"
                   icon
-                  @click="removeUriValue(pred, val)"
+                  @click="openDialog(pred, val)"
                 >
                   <v-icon>mdi-close</v-icon>
                 </v-btn>
@@ -140,7 +140,7 @@
                 <v-btn
                   v-if="specialPredicates.includes(pred)"
                   icon
-                  @click="removeUriValue(pred, obj)"
+                  @click="openDialog(pred, val)"
                 >
                   <v-icon>mdi-close</v-icon>
                 </v-btn>
@@ -235,6 +235,35 @@
         <p>Please select a manuscript on the left.</p>
       </div>
     </section>
+
+    <v-dialog
+  v-model="dialog"
+  max-width="400"
+>
+  <v-card>
+    <v-card-title class="text-h6">
+      Confirm Deletion
+    </v-card-title>
+    <v-card-text>
+      Are you sure you want to delete this item? This action cannot be undone.
+    </v-card-text>
+    <v-card-actions>
+      <v-spacer />
+      <v-btn
+        variant="text"
+        @click="dialog = false"
+      >
+        Cancel
+      </v-btn>
+      <v-btn
+        color="error"
+        @click="confirmDelete"
+      >
+        Delete
+      </v-btn>
+    </v-card-actions>
+  </v-card>
+</v-dialog>
   </v-container>
 </template>
 
@@ -243,6 +272,21 @@ import { ref, computed, onMounted } from "vue";
 import * as rdflib from "rdflib";
 import { useAppStore } from "@/stores/app";
 // import { useRouter } from "vue-router";
+
+const dialog   = ref(false);
+const specPred = ref(null);
+const specObj  = ref(null);
+
+function openDialog(pred, obj) {
+  specPred.value = pred;
+  specObj.value  = obj;
+  dialog.value   = true;
+}
+
+function confirmDelete() {
+  dialog.value = false;
+  removeUriValue(specPred.value, specObj.value);
+}
 
 // Namespaces
 const RDF  = rdflib.Namespace("http://www.w3.org/1999/02/22-rdf-syntax-ns#");
