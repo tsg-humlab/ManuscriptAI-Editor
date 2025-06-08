@@ -706,7 +706,7 @@ export default {
       this.selectedInks.forEach(i => appendTriple("MS4AI:hasInk", i.value, true));
       appendTriple("MS4AI:ink", this.additionalInfoInk);
       // Binding techniques
-      this.selectedBindingTechniques.forEach(b => appendTriple("MS4AI:hasBindingTechnique", b.value, true));
+      this.selectedBindingTechniques.forEach(b => appendTriple("MS4AI:hasBinding", b.value, true));
       appendTriple("MS4AI:binding", this.additionalInfoBindingTechnique);
       // Dimensions and conservation
       appendTriple("MS4AI:width", this.width);

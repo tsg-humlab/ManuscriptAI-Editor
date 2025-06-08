@@ -1737,7 +1737,7 @@ addLocus() {
             alert("Please select a binding technique before saving.");
             return;
           }
-          rdfContent = this.appendPhysicalTriple(rdfContent, "MS4AI:hasBindingTechnique", `MS4AI:${this.selectedBindingTechnique.trim()}`);
+          rdfContent = this.appendPhysicalTriple(rdfContent, "MS4AI:hasBinding", `MS4AI:${this.selectedBindingTechnique.trim()}`);
           this.bindingTechniqueDisabled = true;
           break;
         }
