@@ -272,7 +272,7 @@ async function sendContentToBackend(text, extension) {
 <style scoped>
 /* ========= Layout & Container ========= */
 .content-container {
-  padding-top: 40px;
+  padding-top: 20px;
   padding-bottom: 50px;
 }
 
