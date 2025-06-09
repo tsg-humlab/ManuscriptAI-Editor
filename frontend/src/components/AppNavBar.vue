@@ -1,6 +1,6 @@
 <script setup>
 import { useAuthStore } from '../stores/auth.js'
-import {onMounted} from "vue";
+import { onMounted, computed } from "vue";
 import { useRouter, useRoute } from 'vue-router'
 
 const router = useRouter()
@@ -46,6 +46,9 @@ const showLogin = computed(() => (!(route.name === 'login' || route.name === 're
       </router-link>
     </template>
     <template #append>
+      <router-link to="/info" style="text-decoration: none;">
+        <v-btn text color="white">Info &amp; Tutorials</v-btn>
+      </router-link>
       <div v-if = "authStore.isAuthenticated" >
         <v-menu open-on-hover location="bottom" offset="10">
            <template v-slot:activator="{ props }">
@@ -66,9 +69,6 @@ const showLogin = computed(() => (!(route.name === 'login' || route.name === 're
       <div v-else>
         <v-btn v-if="showLogin" @click="goToLogin">Login</v-btn>
       </div>
-
-
-
     </template>
   </v-app-bar>
 </template>
