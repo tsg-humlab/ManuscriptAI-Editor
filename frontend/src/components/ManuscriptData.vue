@@ -12,10 +12,9 @@ const selectedManuscript = computed(()=>{
 const manuscriptFields = [
   "manuscript_ID", "century_of_creation", "support_type",
   "dimensions_of_the_manuscript_width", "dimensions_of_the_manuscript_length", "dimensions_of_the_manuscript_thickness",
-  "contained_works", "incipit", "explicit", "handwriting_form",
-  "decorations", "binding_type", "format", "total_folia", "ink_type",
+  "contained_works", "incipit", "explicit", "handwriting_form", "decorations", "binding_type", "format", "total_folia", "ink_type",
   "authors", "copyists", "miniaturists", "bookbinders", "illuminators", "rubricators",
-  "work_folia", "restoration_history", "additional_notes", "ownership_history"
+  "restoration_history", "additional_notes", "ownership_history"
 ];
 
 /** Utility to format field labels */

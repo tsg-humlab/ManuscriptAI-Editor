@@ -97,49 +97,70 @@ const removeManuscript = (index)=> {
 const loading = ref(false)
 
 // send the created manuscripts to the Agent
-const sendDataToAgents = async() => {
-  loading.value = true
-  let manData = {}
-  manuscripts.value.forEach((m)=>{
-    manData[m.title] = m.content
-  })
-  console.log("manData", manData)
+const sendDataToAgents = async () => {
+  loading.value = true;
+
+  // build the request body expected by Flask
+  const manData = manuscripts.value.reduce((acc, m) => {
+    acc[m.title] = m.content;
+    return acc;
+  }, {});
 
   try {
-    const jsonData = await structureManuscripts(manData)
+    // ------------- NEW (expects .structured_results) -------
+    const { structured_results } = await structureManuscripts(manData);
 
-    // the structured data is expected here.
+    // 1. unpack each `{ "Manuscript n": "<stringified JSON or JSON[]>" }`
+    const parsedManuscripts = [];
 
-    const resp = await JSON.parse(jsonData.response)
+    structured_results.forEach(item => {
+      // the value is the first (and only) property value
+      const raw = Object.values(item)[0];
+      if (!raw) return;
 
-    if (resp.manuscripts){
-      resp.manuscripts.forEach((m)=>{
-        flattenObject(m)
-        reformat(m)
-      })
+      let parsed;
+      try {
+        parsed = JSON.parse(raw);
+      } catch (e) {
+        console.error('Cannot parse Structurer JSON:', e, raw);
+        return;
+      }
 
-      store.setStructuredData({
-        "manuscripts": resp.manuscripts,
-        "number_of_manuscripts": resp?.all_data?.manuscripts_analyzed
-      })
-    }else {
-      // when the user creates one manuscript, the llm returns a single object instead of an array.
-      flattenObject(resp)
-      reformat(resp)
-      store.setStructuredData({
-        "manuscripts": new Array(resp),
-        "number_of_manuscripts": resp?.all_data?.manuscripts_analyzed
-      })
-    }
+      if (Array.isArray(parsed)) {
+        parsedManuscripts.push(...parsed);
+      } else {
+        parsedManuscripts.push(parsed);
+      }
+    });
 
-    store.setNotification({color:'teal', showNot: true, text: 'The data was structured successfully!'})
-    loading.value = false
+    // 2. flatten / decorate so the rest of the UI can bind
+    parsedManuscripts.forEach(m => {
+      flattenObject(m);
+      reformat(m);
+    });
 
+    // 3. commit to the Pinia/Vue-X store
+    store.setStructuredData({
+      manuscripts: parsedManuscripts,
+      number_of_manuscripts: parsedManuscripts.length
+    });
+
+    store.setNotification({
+      color: 'teal',
+      showNot: true,
+      text: 'The data was structured successfully!'
+    });
   } catch (error) {
-    store.setNotification({color:'red', showNot: true,text:`${error}. There was an issue with the structuring of the data.`})
-    loading.value = false
+    store.setNotification({
+      color: 'red',
+      showNot: true,
+      text: `${error}. There was an issue with the structuring of the data.`
+    });
+  } finally {
+    loading.value = false;
   }
-}
+};
+
 
 // get the highest id of the available manuscripts and sets the id of the new manuscript increased by one.
 // consistency reasons, while creating new manuscripts.
