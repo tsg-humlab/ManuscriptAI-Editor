@@ -9,7 +9,7 @@
 </template>
 
 <script setup>
-import {ref, onMounted, watch, computed} from 'vue';
+import {ref, onMounted, watch, computed, inject} from 'vue';
 import { EditorView, basicSetup } from 'codemirror';
 import { Decoration, ViewPlugin, WidgetType } from '@codemirror/view';
 import { EditorState, StateEffect } from '@codemirror/state';
@@ -26,6 +26,9 @@ const store = useAppStore()
 const editorContainer = ref(null);
 
 let editorView = ref(null)
+
+const addManuscript = inject("addManuscript")
+const getNextTitle = inject('getNextTitle')
 
 const extension = computed(()=> store.recentFileContent.extension)
 const content = computed(()=>store.recentFileContent.content)
@@ -74,10 +77,14 @@ class ActionButtonWidget extends WidgetType {
     btn1.addEventListener('click', () => {
       alert(`You selected: "${this.text}"`);
       // copy the content
-      copyContent()
-      // create a new manuscript
+      copyContent(this.text)
+      let createdMan = { title:null, content: this.text, id: null }
+      // create a new manuscript & paste the content in it
+      const data = store.addManToListOfCreatedManuscripts(createdMan)
 
-      // paste the content in the selected manuscript
+      console.log("from button:", data)
+      // so the container with the manuscript's content
+      store.setSelCreatedManuscript(data)
     });
     div.appendChild(btn1);
 
@@ -88,7 +95,7 @@ class ActionButtonWidget extends WidgetType {
     btn2.addEventListener('click', () => {
       alert(`You selected button 2: "${this.text}"`);
       // copy the content
-      copyContent();
+      copyContent(this.text);
 
     });
     div.appendChild(btn2);
@@ -139,9 +146,9 @@ const highlightPlugin = ViewPlugin.fromClass(class {
   decorations: v => v.decorations
 });
 
-const copyContent = () => {
-  navigator.clipboard.writeText(this.text).then(() => {
-        console.log('Text copied to clipboard:', this.text);
+const copyContent = (text) => {
+  navigator.clipboard.writeText(text).then(() => {
+        console.log('Text copied to clipboard:', text);
         // store.setNotification({color:'info', showNot: true, time:100, text: 'Content has been copied. You can paste it to the manuscript location on the right!'})
         // highlightSelection();
       }).catch(err => {

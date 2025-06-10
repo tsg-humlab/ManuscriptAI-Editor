@@ -1,15 +1,9 @@
 <script setup>
 import { computed, ref, watch } from "vue"
-import {useAppStore} from "@/stores/app.js";
-import {structureManuscripts} from "@/services/ApiServices.js";
+import { useAppStore } from "@/stores/app.js";
+import { structureManuscripts } from "@/services/ApiServices.js";
 
 const store = useAppStore()
-
-
-// the selected manuscript from the list in the left
-const selectedManuscript = computed(()=>{
-  return store.getSelCreatedManuscript
-})
 
 const fileContent = computed(()=>{
   return store.recentFileContent.content
@@ -23,20 +17,49 @@ watch(fileContent, async(newV, oldV)=>{
   manuscripts.value = []
 })
 
-// is updated on user selection. Indicated the selected manuscript in the list of created manuscripts
-const selManuscript = ref(null)
-
-watch(selManuscript,async(newV, oldV)=>{
-  console.log("sel manuscript newV: ", newV, "oldV:", oldV)
-  if(newV.length >0) {
-    console.log(" there is a newV:", newV)
-    await store.setSelCreatedManuscript(newV[0])
-  } else {
-    console.log("there is not!!!", newV)
-    await store.setSelCreatedManuscript(null)
+// sets the selected manuscript. Keeps state management and local option in sync.
+const selManuscript = computed({
+  get() {
+    const selected = store.getSelCreatedManuscript
+    return selected ? [selected] : null
+  },
+  async set(newVal) {
+    if (newVal && newVal.length > 0) {
+      if (!store.getSelCreatedManuscript || store.getSelCreatedManuscript.id !== newVal[0].id) {
+        await store.setSelCreatedManuscript(newVal[0])
+      }
+    } else {
+      if (store.getSelCreatedManuscript !== null) {
+        await store.setSelCreatedManuscript(null)
+      }
+    }
   }
-
 })
+
+// const selManuscript = ref(null)
+// const selManuscriptStore = computed(() => store.getSelCreatedManuscript)
+//
+// // Sync from store to local selection
+// watch(selManuscriptStore, (newVal) => {
+//   if (newVal === null) {
+//     selManuscript.value = null
+//   } else if (!selManuscript.value || selManuscript.value[0]?.id !== newVal.id) {
+//     selManuscript.value = [newVal]
+//   }
+// })
+//
+// // Sync from local selection to store
+// watch(selManuscript, async (newVal) => {
+//   if (newVal && newVal.length > 0) {
+//     if (!selManuscriptStore.value || selManuscriptStore.value.id !== newVal[0].id) {
+//       await store.setSelCreatedManuscript(newVal[0])
+//     }
+//   } else {
+//     if (selManuscriptStore.value !== null) {
+//       await store.setSelCreatedManuscript(null)
+//     }
+//   }
+// })
 
 
 // flattens the work_folia object to a simple list of properties.
@@ -76,18 +99,25 @@ const showTooltip = ref(false)
 
 // the list containing the manuscripts which were added by the user. These manuscripts will be sent to the Agent for
 // structuring
-const manuscripts = ref([])
+// const manuscripts = ref([])
+const manuscripts = computed(()=> {
+  return store.getListOfCreatedManuscripts
+})
 
 // adding a new manuscript when the user presses the 'addManuscript' button
-const addManuscript = ()=>{
-  manuscripts.value.push({ title: getNextTitle(), content:null})
+const addManuscript = async()=>{
+  // manuscripts.value.push({ title: getNextTitle(), content:null})
+  const sel = await store.addManToListOfCreatedManuscripts({title: null, content: null, id:null})
+  console.log("sel", sel)
+  selManuscript.value = [sel]
 }
 
 // removes the clicked manuscript from the list of available manuscripts
 const removeManuscript = (index)=> {
 
-  console.log("about to remove: ", manuscripts.value[index], index, selectedManuscript.value )
-  manuscripts.value.splice(index,1)
+  console.log("about to remove: ", manuscripts.value[index], index)
+  // manuscripts.value.splice(index,1)
+  store.removeManFromListOfCreatedManuscripts(index)
   console.log("after removal:", manuscripts.value)
   // selManuscript.value = null
   // store.setSelCreatedManuscript(null)
@@ -162,34 +192,39 @@ const sendDataToAgents = async () => {
 };
 
 
-// get the highest id of the available manuscripts and sets the id of the new manuscript increased by one.
-// consistency reasons, while creating new manuscripts.
-const getNextTitle = () => {
-  const highestNumber = manuscripts.value.reduce((max, obj) => {
-    const number = parseInt(obj.title.split(' ')[1]);
-    return number > max ? number : max;
-  }, 0);
-  return `Manuscript ${highestNumber + 1}`;
-};
+// // get the highest id of the available manuscripts and sets the id of the new manuscript increased by one.
+// // consistency reasons, while creating new manuscripts.
+// const getNextTitle = () => {
+//   const highestNumber = manuscripts.value.reduce((max, obj) => {
+//     const number = parseInt(obj.title.split(' ')[1]);
+//     return number > max ? number : max;
+//   }, 0);
+//   return `Manuscript ${highestNumber + 1}`;
+// };
 
 
 </script>
 
 <template>
   <div id="created-manuscripts">
-    <v-card variant="text" subtitle="Created manuscripts">
+    <v-card
+      variant="text"
+      subtitle="Created manuscripts"
+    >
       <div id="card-content">
         <v-list
           v-model:selected="selManuscript"
+          item-value="id"
           bg-color="white"
           class="mt-0 pt-0"
           max-height="600"
         >
-<!--          <v-list-subheader>CREATED MANUSCRIPTS</v-list-subheader>-->
-          <div v-if="manuscripts.length>0">
+          <div
+            v-if="manuscripts.length>0"
+          >
             <v-list-item
               v-for="(man,index) in manuscripts"
-              :key="'manuscript'+index"
+              :key="man.id"
               :title="`Manuscript ${index+1}`"
               :value="man"
               color="primary"
@@ -207,9 +242,12 @@ const getNextTitle = () => {
               </template>
             </v-list-item>
           </div>
-          <div v-else class="pa-4">
+            <div v-else class="pa-4">
             You have not created any manuscripts yet!
           </div>
+<!--          <v-list-subheader>CREATED MANUSCRIPTS</v-list-subheader>-->
+
+
           <div class="text-center">
             <v-tooltip v-model="showTooltip" location="top">
               <template v-slot:activator="{props}">
