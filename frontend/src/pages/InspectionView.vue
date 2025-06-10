@@ -30,9 +30,9 @@ import ListOfCreatedManuscripts from "@/components/ListOfCreatedManuscripts.vue"
       </v-col>
       <v-col cols="6">
         <!-- The editor goes here -->
-        <Editor />
+<!--        <Editor />-->
         <!-- TODO: test this component for creating manuscripts.  -->
-        <!--        <EditorTest></EditorTest>-->
+        <EditorTest></EditorTest>
       </v-col>
 
     </v-row>
