@@ -8,7 +8,6 @@ const selectedManuscript = computed(()=>{
   return store.getSelectedManuscript
 })
 
-
 const manuscriptFields = [
   "manuscript_ID", "century_of_creation", "support_type",
   "dimensions_of_the_manuscript_width", "dimensions_of_the_manuscript_length", "dimensions_of_the_manuscript_thickness",
@@ -42,6 +41,7 @@ const formatFieldName = (field) => {
       <v-card-actions>
         <strong>Actions:</strong>
         <v-btn
+          v-if="!selectedManuscript.reviewed"
           size="small"
           variant="flat"
           class="secondary-btn"
@@ -49,6 +49,16 @@ const formatFieldName = (field) => {
           @click="()=>{console.log('selectedManuscript:', selectedManuscript);selectedManuscript.reviewed = true;}"
         >
           Mark as reviewed
+        </v-btn>
+        <v-btn
+          v-else
+          size="small"
+          variant="flat"
+          class="secondary-btn"
+          color="secondary"
+          @click="()=>{console.log('selectedManuscript:', selectedManuscript);selectedManuscript.reviewed = false;}"
+        >
+          Undo review
         </v-btn>
       </v-card-actions>
       <v-divider />

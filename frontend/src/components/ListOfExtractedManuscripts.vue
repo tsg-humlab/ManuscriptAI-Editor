@@ -168,6 +168,7 @@ const convertManuscriptsToRDF = async(e) => {
           :disabled="!manuscripts.every((m)=> m.reviewed === true)"
           :loading="loading"
           class="primary-btn"
+          size="default"
           @click="convertManuscriptsToRDF"
         >
           Convert to turtle
