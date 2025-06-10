@@ -352,7 +352,7 @@ function removeSpecialPredicate(pred, valueToRemove) {
                 @click="updateSelection(index)"
               >
                 <template #prepend>
-                  <v-avatar color="grey-lighten-1">
+                  <v-avatar>
                     <v-icon>mdi-book-open-blank-variant-outline</v-icon>
                   </v-avatar>
                 </template>
@@ -413,12 +413,24 @@ function removeSpecialPredicate(pred, valueToRemove) {
           <v-card-item>
             <strong>Actions:</strong>
             <v-btn
-              class="ml-2 secondary-btn"
+              v-if="!manuscripts[selectedIndex].reviewed"
               size="small"
+              variant="flat"
+              class="ml-2 secondary-btn"
               color="secondary"
               @click="()=>{ manuscripts[selectedIndex].reviewed = true;}"
             >
               Mark as reviewed
+            </v-btn>
+            <v-btn
+              v-else
+              size="small"
+              variant="flat"
+              class="ml-2 secondary-btn"
+              color="secondary"
+              @click="()=>{ manuscripts[selectedIndex].reviewed = false;}"
+            >
+              Undo review
             </v-btn>
           </v-card-item>
           <!-- Properties -->
