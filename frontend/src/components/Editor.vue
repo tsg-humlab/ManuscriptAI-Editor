@@ -55,7 +55,7 @@ const highlightEffect = StateEffect.define();
 const removeHighlightEffect = StateEffect.define();
 
 const highlightDecoration = Decoration.mark({
-   class: 'cm-highlight-yellow',
+   class: 'highlight',
 });
 
 class ActionButtonWidget extends WidgetType {
@@ -189,15 +189,19 @@ watch(content, (newValue, oldValue) => {
 <style>
 .editor-container {
   border: 1px solid #ccc;
-  border-radius: 4px;
+  border-radius: 5px;
   min-height: 200px;
   font-family: monospace;
+  overflow: auto;
+  height: 675px;
+  padding: 2px;
 }
 
-.cm-highlight-yellow {
+.highlight {
   background-color: #FFECB3 !important;
   border-radius: 3px !important;
-  padding: 1px 2px !important;}
+  padding: 1px 2px !important;
+}
 
 .highlight-btn {
   background: #fffbe6;
