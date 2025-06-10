@@ -1,49 +1,106 @@
 <template>
-  <div ref="editorContainer" class="editor-container" />
+  <v-card variant="text" subtitle="File content">
+    <div
+      id="editorContainer"
+      ref="editorContainer"
+      class="editor-container"
+    />
+  </v-card>
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue';
+import {ref, onMounted, watch, computed} from 'vue';
+import { EditorView, basicSetup } from 'codemirror';
 import { Decoration, ViewPlugin, WidgetType } from '@codemirror/view';
 import { EditorState, StateEffect } from '@codemirror/state';
-import { EditorView, basicSetup } from 'codemirror';
+import { xml } from "@codemirror/lang-xml"
+import { json } from "@codemirror/lang-json"
+import { markdown } from "@codemirror/lang-markdown"
+import { languages } from "@codemirror/language-data"
+import { StreamLanguage } from '@codemirror/language';
+import { turtle } from '@codemirror/legacy-modes/mode/turtle';
+import { useAppStore} from "@/stores/app.js";
+
+const store = useAppStore()
 
 const editorContainer = ref(null);
 
-let view = null;
+let editorView = ref(null)
 
-onMounted(() => {
-  const highlightEffect = StateEffect.define();
-  const removeHighlightEffect = StateEffect.define();
+const extension = computed(()=> store.recentFileContent.extension)
+const content = computed(()=>store.recentFileContent.content)
 
-  const highlightDecoration = Decoration.mark({
-    class: 'cm-highlight-yellow',
-  });
+const langConfig = computed(() => {
+  console.log("extension:", extension.value)
+  // let selection = null
+  switch (extension.value) {
+    case 'json':
+      return json()
 
-  class ActionButtonWidget extends WidgetType {
-    constructor(text) {
-      super();
-      this.text = text;
-    }
+    case 'xml':
+      return xml()
 
-    toDOM() {
-      const btn1 = document.createElement('button');
-      btn1.textContent = '🔍';
-      btn1.className = 'highlight-btn';
-      btn1.addEventListener('click', () => {
-        alert(`You selected: "${this.text}"`);
-      });
+    case 'ttl':
+      return StreamLanguage.define(turtle)
 
+    default:
+      return markdown({codeLanguages: languages})
 
-      return btn1;
-    }
-
-    ignoreEvent() {
-      return false;
-    }
   }
 
-  const highlightPlugin = ViewPlugin.fromClass(class {
+})
+
+// state effects to manage highlights
+const highlightEffect = StateEffect.define();
+const removeHighlightEffect = StateEffect.define();
+
+const highlightDecoration = Decoration.mark({
+   class: 'cm-highlight-yellow',
+});
+
+class ActionButtonWidget extends WidgetType {
+  constructor(text) {
+    super();
+    this.text = text;
+  }
+
+  toDOM() {
+    const div = document.createElement('div');
+    div.className = 'btn-container';
+    const btn1 = document.createElement('button');
+    btn1.textContent = '+';
+    btn1.className = 'highlight-btn';
+    btn1.title = 'Create a new manuscript containing the highlighted content';  // Tooltip text for button 1
+    btn1.addEventListener('click', () => {
+      alert(`You selected: "${this.text}"`);
+      // copy the content
+      copyContent()
+      // create a new manuscript
+
+      // paste the content in the selected manuscript
+    });
+    div.appendChild(btn1);
+
+    const btn2 = document.createElement('button');
+    btn2.innerHTML = '&#10063;';
+    btn2.className = 'highlight-btn';
+    btn2.title = 'Copy the highlighted content';  // Tooltip text for button 2
+    btn2.addEventListener('click', () => {
+      alert(`You selected button 2: "${this.text}"`);
+      // copy the content
+      copyContent();
+
+    });
+    div.appendChild(btn2);
+
+    return div;
+  }
+  ignoreEvent() {
+    return false;
+  }
+}
+
+const highlightPlugin = ViewPlugin.fromClass(class {
     constructor(view) {
       this.decorations = Decoration.none;
     }
@@ -56,7 +113,7 @@ onMounted(() => {
             const deco = [
               highlightDecoration.range(from, to),
               Decoration.widget({
-                widget: new ActionButtonWidget(view.state.doc.sliceString(from, to)),
+                widget: new ActionButtonWidget(editorView.value.state.doc.sliceString(from, to)),
                 side: -1,
               }).range(from)
             ];
@@ -79,17 +136,32 @@ onMounted(() => {
       this._decorations = value;
     }
   }, {
-    decorations: v => v.decorations
-  });
+  decorations: v => v.decorations
+});
 
-  view = new EditorView({
+const copyContent = () => {
+  navigator.clipboard.writeText(this.text).then(() => {
+        console.log('Text copied to clipboard:', this.text);
+        // store.setNotification({color:'info', showNot: true, time:100, text: 'Content has been copied. You can paste it to the manuscript location on the right!'})
+        // highlightSelection();
+      }).catch(err => {
+        console.error('Failed to copy text:', err);
+      });
+}
+
+const initializeEditor = () => {
+
+  editorView.value = new EditorView({
     state: EditorState.create({
-      doc: 'Select any part of this text to highlight it. The editor is read-only.',
+      doc: content.value,
       extensions: [
         basicSetup,
+        langConfig.value,
+        EditorState.readOnly.of(true),
         EditorView.editable.of(false),
         EditorView.domEventHandlers({
           mouseup(event, view) {
+            console.log("button 1 or button 2: ", view, event)
             const sel = view.state.selection.main;
             if (!sel.empty) {
               view.dispatch({
@@ -101,9 +173,20 @@ onMounted(() => {
         highlightPlugin,
       ]
     }),
-    parent: editorContainer.value
+    parent: editorContainer.value // attach editor to the DOM
   });
+}
+
+onMounted(() => {
+  initializeEditor()
 });
+
+watch(content, (newValue, oldValue) => {
+  console.log(`keyB changed from ${oldValue} to ${newValue}`);
+  if(editorView.value) editorView.value.destroy()
+  initializeEditor();
+});
+
 </script>
 
 <style>
@@ -115,8 +198,9 @@ onMounted(() => {
 }
 
 .cm-highlight-yellow {
-  background-color: yellow;
-}
+  background-color: #FFECB3 !important;
+  border-radius: 3px !important;
+  padding: 1px 2px !important;}
 
 .highlight-btn {
   background: #fffbe6;
@@ -126,5 +210,11 @@ onMounted(() => {
   font-size: 12px;
   cursor: pointer;
   margin-right: 4px;
+}
+
+.btn-container{
+  display: inline-flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 </style>
