@@ -151,7 +151,7 @@ const convertManuscriptsToRDF = async(e) => {
             nav
           >
             <template #prepend>
-              <v-avatar color="grey-lighten-1">
+              <v-avatar>
                 <v-icon>mdi-book-open-blank-variant-outline</v-icon>
               </v-avatar>
             </template>
@@ -167,6 +167,7 @@ const convertManuscriptsToRDF = async(e) => {
         <v-btn
           :disabled="!manuscripts.every((m)=> m.reviewed === true)"
           :loading="loading"
+          class="primary-btn"
           @click="convertManuscriptsToRDF"
         >
           Convert to turtle

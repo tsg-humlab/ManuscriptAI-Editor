@@ -151,7 +151,7 @@ const inspectFile = async(file) => {
                   <div class="ml-2">
                     <v-btn
                       v-if="store.recentFileContent.content !== file.content"
-                      class="btn"
+                      class="primary-btn"
                       variant="flat"
                       size="small"
                       color="#cb8a05"
@@ -162,7 +162,7 @@ const inspectFile = async(file) => {
                     </v-btn>
                     <v-btn
                       v-if="store.recentFileContent.content === file.content"
-                      class="btn"
+                      class="primary-btn"
                       variant="flat"
                       size="small"
                       color="#cb8a05"
@@ -185,9 +185,10 @@ const inspectFile = async(file) => {
           <template #browse="{props: itemProps}">
             <v-btn
               variant="flat"
-              color="#cb8a05"
+              color="secondary"
               v-bind="itemProps"
-              class="btn"
+              class="secondary-btn"
+              size="default"
             />
           </template>
         </v-file-upload>
@@ -202,10 +203,4 @@ const inspectFile = async(file) => {
   font-size: 0.8125rem;
   font-weight: 500;
 }
-
-.btn:hover{
-  background-color: teal !important;
-}
-
-
 </style>

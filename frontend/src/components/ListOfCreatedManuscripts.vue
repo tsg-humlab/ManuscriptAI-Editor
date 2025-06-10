@@ -196,7 +196,7 @@ const getNextTitle = () => {
               nav
             >
               <template #prepend>
-                <v-avatar color="grey-lighten-1">
+                <v-avatar>
                   <v-icon>mdi-book-open-blank-variant-outline</v-icon>
                 </v-avatar>
               </template>
@@ -213,7 +213,7 @@ const getNextTitle = () => {
           <div class="text-center">
             <v-tooltip v-model="showTooltip" location="top">
               <template v-slot:activator="{props}">
-                <v-btn  icon v-bind="props" size="small" @click="addManuscript">
+                <v-btn  icon v-bind="props" size="small" color="secondary" @click="addManuscript">
                   <v-icon>mdi-plus</v-icon>
                 </v-btn>
               </template>
@@ -224,8 +224,7 @@ const getNextTitle = () => {
         <v-card-actions class="justify-center">
           <v-btn
             variant="flat"
-            class="btn"
-            color="primary"
+            class="primary-btn"
             :loading="loading"
             @click="sendDataToAgents"
             :disabled="!manuscripts.every(m=> m.content !== null)"

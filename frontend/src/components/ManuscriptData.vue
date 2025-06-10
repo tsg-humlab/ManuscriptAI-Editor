@@ -44,6 +44,8 @@ const formatFieldName = (field) => {
         <v-btn
           size="small"
           variant="flat"
+          class="secondary-btn"
+          color="secondary"
           @click="()=>{console.log('selectedManuscript:', selectedManuscript);selectedManuscript.reviewed = true;}"
         >
           Mark as reviewed
@@ -75,6 +77,8 @@ const formatFieldName = (field) => {
             <v-btn
               v-if="selectedManuscript[field].disabled"
               size="small"
+              color="secondary"
+              class="secondary-btn"
               :disabled="!selectedManuscript[field].disabled"
               @click="()=>{ selectedManuscript[field].disabled = false; }"
             >
@@ -83,6 +87,8 @@ const formatFieldName = (field) => {
             <v-btn
               v-if="!selectedManuscript[field].disabled"
               size="small"
+              color="secondary"
+              class="secondary-btn"
               :disabled="selectedManuscript[field].disabled"
               @click="()=>{ selectedManuscript[field].disabled = true; }"
             >

@@ -368,6 +368,8 @@ function removeSpecialPredicate(pred, valueToRemove) {
             <v-btn
               :disabled="!manuscripts.every((m)=> m.reviewed === true)"
               @click="downloadTurtle"
+              color="primary"
+              class="primary-btn"
             >
               download turtle
             </v-btn>
@@ -411,8 +413,9 @@ function removeSpecialPredicate(pred, valueToRemove) {
           <v-card-item>
             <strong>Actions:</strong>
             <v-btn
-              class="ml-2"
+              class="ml-2 secondary-btn"
               size="small"
+              color="secondary"
               @click="()=>{ manuscripts[selectedIndex].reviewed = true;}"
             >
               Mark as reviewed

@@ -19,6 +19,19 @@ import { createVuetify } from 'vuetify'
 export default createVuetify({
   theme: {
     defaultTheme: 'light',
+    themes:{
+      light:{
+        dark:false,
+        colors:{
+          primary: '#6750A4',
+          secondary: '#546E7A',
+          teal:'#009688',
+          // success: '#00BFA6',
+          // error: '#FF6B6B',
+          info: '#5C8DF6'
+        }
+      }
+    }
   },
   blueprint: md3,
   components:{
