@@ -5,30 +5,26 @@
       ref="editorContainer"
       class="editor-container"
     />
-
-
   </v-card>
 </template>
 
 <script setup>
-// Import necessary CodeMirror 6 modules
-import { ref, computed, onMounted, watch } from "vue";
-import { basicSetup, EditorView } from "codemirror";
+import {ref, onMounted, watch, computed, inject} from 'vue';
+import { EditorView, basicSetup } from 'codemirror';
+import { Decoration, ViewPlugin, WidgetType } from '@codemirror/view';
+import { EditorState, StateEffect } from '@codemirror/state';
 import { xml } from "@codemirror/lang-xml"
-import {json} from "@codemirror/lang-json"
-import {markdown} from "@codemirror/lang-markdown"
-import {languages} from "@codemirror/language-data"
+import { json } from "@codemirror/lang-json"
+import { markdown } from "@codemirror/lang-markdown"
+import { languages } from "@codemirror/language-data"
 import { StreamLanguage } from '@codemirror/language';
 import { turtle } from '@codemirror/legacy-modes/mode/turtle';
-import { EditorState, StateField, StateEffect } from '@codemirror/state';
-import { Decoration } from '@codemirror/view';
 import { useAppStore} from "@/stores/app.js";
 
 const store = useAppStore()
 
-const editorContainer = ref(null)
+const editorContainer = ref(null);
 
-// a computed ref
 let editorView = ref(null)
 
 const extension = computed(()=> store.recentFileContent.extension)
@@ -54,89 +50,133 @@ const langConfig = computed(() => {
 
 })
 
-// StateEffect to manage highlights
-const addHighlight = StateEffect.define();
-const removeHighlight = StateEffect.define();
+// state effects to manage highlights
+const highlightEffect = StateEffect.define();
+const removeHighlightEffect = StateEffect.define();
 
-// StateField to store highlights persistently
-const highlightField = StateField.define({
-  create() {
-    return Decoration.none;
-  },
-  update(highlights, tr) {
-    highlights = highlights.map(tr.changes);
-
-    for (let effect of tr.effects) {
-      if (effect.is(addHighlight)) {
-        highlights = highlights.update({ add: effect.value });
-      } else if (effect.is(removeHighlight)) {
-        highlights = Decoration.none;
-      }
-    }
-    return highlights;
-  },
-  provide: (f) => EditorView.decorations.from(f),
+const highlightDecoration = Decoration.mark({
+   class: 'cm-highlight-yellow',
 });
 
-// Function to highlight selected text
-const highlightSelection = () => {
-  if (!editorView.value) return;
-
-  let { state } = editorView.value;
-  let decorations = [];
-
-  // Capture selected text and create decorations
-  for (let range of state.selection.ranges) {
-    if (!range.empty) {
-      decorations.push(
-        Decoration.mark({ class: "highlight" }).range(range.from, range.to)
-      );
-    }
+class ActionButtonWidget extends WidgetType {
+  constructor(text) {
+    super();
+    this.text = text;
   }
 
-  // Apply highlights to the state
-  editorView.value.dispatch({
-    effects: addHighlight.of(decorations),
-  });
-};
+  toDOM() {
+    const div = document.createElement('div');
+    div.className = 'btn-container';
+    const btn1 = document.createElement('button');
+    btn1.textContent = '+';
+    btn1.className = 'highlight-btn';
+    btn1.title = 'Create a new manuscript containing the highlighted content';  // Tooltip text for button 1
+    btn1.addEventListener('click', () => {
+      // copy the content
+      copyContent(this.text)
+      let createdMan = { title:null, content: this.text, id: null }
+      // create a new manuscript & paste the content in it
+      const data = store.addManToListOfCreatedManuscripts(createdMan)
+      // set the manuscript as selected in the list of manuscripts
+      store.setSelCreatedManuscript(data)
+    });
+    div.appendChild(btn1);
 
+    const btn2 = document.createElement('button');
+    btn2.innerHTML = '&#10063;';
+    btn2.className = 'highlight-btn';
+    btn2.title = 'Copy the highlighted content';  // Tooltip text for button 2
+    btn2.addEventListener('click', () => {
+      // copy the content
+      copyContent(this.text);
+    });
+    div.appendChild(btn2);
+
+    return div;
+  }
+  ignoreEvent() {
+    return false;
+  }
+}
+
+const highlightPlugin = ViewPlugin.fromClass(class {
+    constructor(view) {
+      this.decorations = Decoration.none;
+    }
+
+    update(update) {
+      for (let tr of update.transactions) {
+        for (let effect of tr.effects) {
+          if (effect.is(highlightEffect)) {
+            const { from, to } = effect.value;
+            const deco = [
+              highlightDecoration.range(from, to),
+              Decoration.widget({
+                widget: new ActionButtonWidget(editorView.value.state.doc.sliceString(from, to)),
+                side: -1,
+              }).range(from)
+            ];
+            this.decorations = Decoration.set(deco, true);
+          }
+          if (effect.is(removeHighlightEffect)) {
+            this.decorations = Decoration.none;
+          }
+        }
+      }
+    }
+
+    destroy() {}
+
+    get decorations() {
+      return this._decorations;
+    }
+
+    set decorations(value) {
+      this._decorations = value;
+    }
+  }, {
+  decorations: v => v.decorations
+});
+
+const copyContent = (text) => {
+  navigator.clipboard.writeText(text).then(() => {
+        console.log('Text copied to clipboard:', text);
+      }).catch(err => {
+        console.error('Failed to copy text:', err);
+      });
+}
 
 const initializeEditor = () => {
 
-  //     if (editorView) editorView.destroy();
-      // Initialize the CodeMirror 6 editor
-      editorView.value = new EditorView({
-        state: EditorState.create({
-          doc: content.value,
-          extensions: [basicSetup, langConfig.value, EditorState.readOnly.of(true),highlightField],
+  editorView.value = new EditorView({
+    state: EditorState.create({
+      doc: content.value,
+      extensions: [
+        basicSetup,
+        langConfig.value,
+        EditorState.readOnly.of(true),
+        EditorView.editable.of(false),
+        EditorView.domEventHandlers({
+          mouseup(event, view) {
+            console.log("button 1 or button 2: ", view, event)
+            const sel = view.state.selection.main;
+            if (!sel.empty) {
+              view.dispatch({
+                effects: highlightEffect.of({ from: sel.from, to: sel.to })
+              });
+            }
+          }
         }),
-        parent: editorContainer.value, // Attach editor to the DOM container
-      })
-
-      editorView.value.dom.addEventListener('mouseup', () => {
-        const selection = editorView.value.state.selection.main;
-        if (!selection.empty) {
-          editorView.value.dispatch({
-            selection: { anchor: selection.from, head: selection.to }
-          });
-          const selectedText = editorView.value.state.doc.sliceString(selection.from, selection.to);
-          navigator.clipboard.writeText(selectedText).then(() => {
-            console.log('Text copied to clipboard:', selectedText);
-            store.setNotification({color:'info', showNot: true, time:100, text: 'Content has been copied. You can paste it to the manuscript location on the right!'})
-            highlightSelection();
-          }).catch(err => {
-            console.error('Failed to copy text:', err);
-          });
-        }
-      });
-
+        highlightPlugin,
+      ]
+    }),
+    parent: editorContainer.value // attach editor to the DOM
+  });
 }
-//
-onMounted(()=>{
-  console.log("mounting the editor!")
-  initializeEditor();
-})
 
+onMounted(() => {
+  initializeEditor()
+});
 
 watch(content, (newValue, oldValue) => {
   console.log(`keyB changed from ${oldValue} to ${newValue}`);
@@ -144,29 +184,34 @@ watch(content, (newValue, oldValue) => {
   initializeEditor();
 });
 
-
-
 </script>
 
 <style>
 .editor-container {
-  background: #f5f5f5;
-  border-radius: 5px;
-  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  min-height: 200px;
   font-family: monospace;
-  overflow: auto;
-  height: 675px;
-
-
 }
 
-.cm-editor{
-  height: 100%;
-}
-
-.highlight {
+.cm-highlight-yellow {
   background-color: #FFECB3 !important;
   border-radius: 3px !important;
-  padding: 1px 2px !important;
+  padding: 1px 2px !important;}
+
+.highlight-btn {
+  background: #fffbe6;
+  border: 1px solid #999;
+  border-radius: 4px;
+  padding: 2px 5px;
+  font-size: 12px;
+  cursor: pointer;
+  margin-right: 4px;
+}
+
+.btn-container{
+  display: inline-flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 </style>

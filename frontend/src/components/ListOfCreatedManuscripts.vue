@@ -10,8 +10,8 @@ const fileContent = computed(()=>{
 })
 
 // check for file update and resets
-watch(fileContent, async(newV, oldV)=>{
-  console.log("in list of created of manuscripts ==== the uploaded file has changed time to reset:", newV)
+watch(fileContent, async()=>{
+  console.log("fileContent updated! Resetting values!")
   selManuscript.value = null
   // store.setSelCreatedManuscript(null)
   manuscripts.value = []
@@ -35,32 +35,6 @@ const selManuscript = computed({
     }
   }
 })
-
-// const selManuscript = ref(null)
-// const selManuscriptStore = computed(() => store.getSelCreatedManuscript)
-//
-// // Sync from store to local selection
-// watch(selManuscriptStore, (newVal) => {
-//   if (newVal === null) {
-//     selManuscript.value = null
-//   } else if (!selManuscript.value || selManuscript.value[0]?.id !== newVal.id) {
-//     selManuscript.value = [newVal]
-//   }
-// })
-//
-// // Sync from local selection to store
-// watch(selManuscript, async (newVal) => {
-//   if (newVal && newVal.length > 0) {
-//     if (!selManuscriptStore.value || selManuscriptStore.value.id !== newVal[0].id) {
-//       await store.setSelCreatedManuscript(newVal[0])
-//     }
-//   } else {
-//     if (selManuscriptStore.value !== null) {
-//       await store.setSelCreatedManuscript(null)
-//     }
-//   }
-// })
-
 
 // flattens the work_folia object to a simple list of properties.
 const flattenObject = (obj)=> {
@@ -107,7 +81,7 @@ const manuscripts = computed(()=> {
 // adding a new manuscript when the user presses the 'addManuscript' button
 const addManuscript = async()=>{
   // manuscripts.value.push({ title: getNextTitle(), content:null})
-  const sel = await store.addManToListOfCreatedManuscripts({title: null, content: null, id:null})
+  const sel = store.addManToListOfCreatedManuscripts({title: null, content: null, id: null})
   console.log("sel", sel)
   selManuscript.value = [sel]
 }

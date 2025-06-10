@@ -1,5 +1,4 @@
 <script setup>
-import ManuscriptArea from "@/components/ManuscriptArea.vue";
 import ManuscriptContent from "@/components/ManuscriptContent.vue";
 import Editor from "@/components/Editor.vue";
 import ListOfCreatedManuscripts from "@/components/ListOfCreatedManuscripts.vue";
@@ -20,24 +19,16 @@ import ListOfCreatedManuscripts from "@/components/ListOfCreatedManuscripts.vue"
     </v-card>
     <v-row class="mt-2">
       <v-col cols="3">
-        <list-of-created-manuscripts></list-of-created-manuscripts>
+        <list-of-created-manuscripts />
       </v-col>
       <v-col>
-        <!-- The manuscript editing area goes here -->
-        <!-- This is the old version -->
-        <!--        <ManuscriptArea />-->
+        <!-- The manuscript editing area goes here. The prev version is in the ManuscriptArea component. -->
         <ManuscriptContent />
       </v-col>
       <v-col cols="6">
-        <!-- The editor goes here -->
-<!--        <Editor />-->
-        <!-- TODO: test this component for creating manuscripts.  -->
-        <EditorTest></EditorTest>
+        <!-- New annotation mechanism -->
+        <Editor />
       </v-col>
-
     </v-row>
   </div>
 </template>
-
-<style scoped>
-</style>
