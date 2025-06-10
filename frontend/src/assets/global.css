@@ -1,10 +1,35 @@
-.btn{
-    background-color: #cb8a05 !important;
+.primary-btn{
+    background-color: #6750A4 !important;
+    font-weight: bold !important;
 }
 
-.btn:hover{
-    background-color: teal !important;
-    /*background-color: #E76F51 !important;*/
+.primary-btn:hover{
+    background-color: #473673 !important;
+}
+
+.secondary-btn {
+    /*background-color: #90A4AE;*/
+    background-color: #546E7A !important;
+}
+
+.secondary-btn:hover {
+    background-color: #394852 !important;
+}
+
+.teal {
+    background-color: #009688 !important;
+}
+
+.error {
+    background-color: #FF6B6B !important;
+}
+
+.info {
+    background-color: #5C8DF6 !important;
+}
+
+.success {
+    background-color: #00BFA6 !important;
 }
 
 .section-label {
