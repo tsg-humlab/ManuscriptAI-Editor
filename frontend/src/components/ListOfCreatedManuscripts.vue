@@ -146,7 +146,7 @@ const sendDataToAgents = async () => {
     });
 
     store.setNotification({
-      color: 'teal',
+      color: 'success',
       showNot: true,
       text: 'The data was structured successfully!'
     });

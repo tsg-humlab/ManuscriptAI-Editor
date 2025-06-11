@@ -84,7 +84,7 @@ const convertManuscriptsToRDF = async(e) => {
   try{
     const ttlString = await convertToRdf(data)
     store.setRdfOutput(ttlString)
-    store.setNotification({color:'teal', showNot: true, text: 'The data was converted to RDF successfully!'})
+    store.setNotification({color:'success', showNot: true, text: 'The data was converted to RDF successfully!'})
     store.setStep(3)
 
   } catch(err){

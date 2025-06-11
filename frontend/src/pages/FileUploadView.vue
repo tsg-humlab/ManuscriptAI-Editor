@@ -75,7 +75,7 @@ const inspectFile = async(file) => {
         }catch (e) {
           isLoading[file.name] = false
           file.read = true
-          store.setNotification({color:'red', showNot: true,text:`${e.message}`})
+          store.setNotification({color:'error', showNot: true,text:`${e.message}`})
           throw Error(e)
         }
 

@@ -26,9 +26,9 @@ export default createVuetify({
           primary: '#6750A4',
           secondary: '#546E7A',
           teal:'#009688',
-          // success: '#00BFA6',
-          // error: '#FF6B6B',
-          info: '#5C8DF6'
+          success: '#006a5c',
+          error: '#a94442',
+          info: '#1A3C87'
         }
       }
     }
