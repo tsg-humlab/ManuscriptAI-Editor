@@ -16,6 +16,7 @@ const isLoading = reactive([])
 const resetStore = async()=>{
   console.log("resetting store!")
   await store.setSelCreatedManuscript([])
+  store.listOfCreatedManuscripts = []
   await store.setSelectedManuscript(null)
   await store.setRdfOutput("")
   await store.setStructuredData({"manuscripts": [], "number_of_manuscripts": 0 })
@@ -36,53 +37,48 @@ const inspectFile = async(file) => {
         const ext = file.name.split('.').pop();
         try{
           switch (ext) {
-          case 'json':
-            file.content = JSON.stringify(JSON.parse(content), null, 2);
-            store.setFileContent({content: file.content, extension: 'json', name: file.name})
-
-            console.log("fileContent:", file.content)
-            // initializeEditor(fileContent.value, json());
-            break;
-          case 'xml':
-            console.log("xml content:", content)
-            parser = new DOMParser();
-            const xmlDoc = parser.parseFromString(content, "text/xml");
-            const parsedContent = new XMLSerializer().serializeToString(xmlDoc);
-            console.log("parsedContent:", parsedContent)
-            file.content = parsedContent
-            store.setFileContent({content: file.content, extension: 'xml', name: file.name})
-            break;
-          case 'csv':
-             const data = Papa.parse(content, { header: true,
-              complete: function(e){
-               console.log("e", e)
-                file.content = JSON.stringify(e.data,null, 2)
-                store.setFileContent({content: file.content, extension: 'json', name: file.name})
-              }
-             })
-            break;
-          case 'ttl':
+            case 'json':
+              file.content = JSON.stringify(JSON.parse(content), null, 2);
+              store.setFileContent({content: file.content, extension: 'json', name: file.name})
+              console.log("fileContent:", file.content)
+              // initializeEditor(fileContent.value, json());
+              break;
+            case 'xml':
+              console.log("xml content:", content)
+              parser = new DOMParser();
+              const xmlDoc = parser.parseFromString(content, "text/xml");
+              const parsedContent = new XMLSerializer().serializeToString(xmlDoc);
+              console.log("parsedContent:", parsedContent)
+              file.content = parsedContent
+              store.setFileContent({content: file.content, extension: 'xml', name: file.name})
+              break;
+            case 'csv':
+              const data = Papa.parse(content, { header: true,
+                complete: function(e){
+                console.log("e", e)
+                  file.content = JSON.stringify(e.data,null, 2)
+                  store.setFileContent({content: file.content, extension: 'json', name: file.name})
+                }
+              })
+              break;
+            case 'ttl':
               file.content = content
               store.setFileContent({content: file.content, extension: 'ttl', name: file.name})
-            break;
-          default:
-            alert('Unsupported file type');
-        }
+              break;
+            default:
+              alert('Unsupported file type');
+          }
           resetStore()
           isLoading[file.name] = false
           file.read = true
-
         }catch (e) {
           isLoading[file.name] = false
           file.read = true
           store.setNotification({color:'error', showNot: true,text:`${e.message}`})
           throw Error(e)
         }
-
       };
       reader.readAsText(file);
-
-
 }
 </script>
 
