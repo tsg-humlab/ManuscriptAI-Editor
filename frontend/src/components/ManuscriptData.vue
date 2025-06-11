@@ -46,6 +46,7 @@ const formatFieldName = (field) => {
           variant="flat"
           class="secondary-btn"
           color="secondary"
+          rounded="small"
           @click="()=>{console.log('selectedManuscript:', selectedManuscript);selectedManuscript.reviewed = true;}"
         >
           Mark as reviewed
@@ -56,6 +57,7 @@ const formatFieldName = (field) => {
           variant="flat"
           class="secondary-btn"
           color="secondary"
+          rounded="small"
           @click="()=>{console.log('selectedManuscript:', selectedManuscript);selectedManuscript.reviewed = false;}"
         >
           Undo review
@@ -88,7 +90,9 @@ const formatFieldName = (field) => {
               v-if="selectedManuscript[field].disabled"
               size="small"
               color="secondary"
+              variant="flat"
               class="secondary-btn"
+              rounded="small"
               :disabled="!selectedManuscript[field].disabled"
               @click="()=>{ selectedManuscript[field].disabled = false; }"
             >
@@ -98,7 +102,9 @@ const formatFieldName = (field) => {
               v-if="!selectedManuscript[field].disabled"
               size="small"
               color="secondary"
+              variant="flat"
               class="secondary-btn"
+              rounded="small"
               :disabled="selectedManuscript[field].disabled"
               @click="()=>{ selectedManuscript[field].disabled = true; }"
             >

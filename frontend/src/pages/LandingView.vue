@@ -21,7 +21,9 @@
             </span>
           </p>
           <v-btn
+            color="mainBg"
             class="primary-btn"
+            rounded="small"
             @click="goToStructure"
           >
             Start
@@ -40,7 +42,9 @@
             </span>
           </p>
           <v-btn
+            color="mainBg"
             class="primary-btn"
+            rounded="small"
             @click="goToConvertLOD"
           >
             Start
@@ -61,6 +65,8 @@
             </span>
           </p>
           <v-btn
+            color="mainBg"
+            rounded="small"
             class="primary-btn"
             @click="goToStepper"
           >
@@ -83,7 +89,9 @@
           </div>
 
           <v-btn
+            color="mainBg"
             class="primary-btn"
+            rounded="small"
             @click="goToDropClassify"
           >
             Start

@@ -371,7 +371,7 @@ function removeSpecialPredicate(pred, valueToRemove) {
               <v-btn
                 :disabled="!manuscripts.every((m)=> m.reviewed === true)"
                 @click="downloadTurtle"
-                color="primary"
+                color="mainBg"
                 class="primary-btn"
                 variant="flat"
               >
@@ -397,6 +397,7 @@ function removeSpecialPredicate(pred, valueToRemove) {
               v-if="!manuscripts[selectedIndex].reviewed"
               size="small"
               variant="flat"
+              rounded="small"
               class="ml-2 secondary-btn"
               color="secondary"
               @click="()=>{ manuscripts[selectedIndex].reviewed = true;}"
@@ -409,6 +410,7 @@ function removeSpecialPredicate(pred, valueToRemove) {
               variant="flat"
               class="ml-2 secondary-btn"
               color="secondary"
+              rounded="small"
               @click="()=>{ manuscripts[selectedIndex].reviewed = false;}"
             >
               Undo review

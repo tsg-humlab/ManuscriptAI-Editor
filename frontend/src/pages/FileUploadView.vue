@@ -152,9 +152,9 @@ const inspectFile = async(file) => {
                     <v-btn
                       v-if="store.recentFileContent.content !== file.content"
                       class="primary-btn"
+                      color="mainBg"
                       variant="flat"
                       size="small"
-                      color="#cb8a05"
                       :loading="isLoading[file.name] || false"
                       @click="inspectFile(file)"
                     >
@@ -163,9 +163,9 @@ const inspectFile = async(file) => {
                     <v-btn
                       v-if="store.recentFileContent.content === file.content"
                       class="primary-btn"
+                      color="mainBg"
                       variant="flat"
                       size="small"
-                      color="#cb8a05"
                       @click="store.setStep(1)"
                     >
                       Analyze
@@ -186,6 +186,7 @@ const inspectFile = async(file) => {
             <v-btn
               variant="flat"
               color="secondary"
+              rounded="small"
               v-bind="itemProps"
               class="secondary-btn"
               size="default"

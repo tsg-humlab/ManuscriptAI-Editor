@@ -167,6 +167,7 @@ const convertManuscriptsToRDF = async(e) => {
         <v-btn
           :disabled="!manuscripts.every((m)=> m.reviewed === true)"
           :loading="loading"
+          color="mainBg"
           class="primary-btn"
           size="default"
           variant="flat"

@@ -234,6 +234,7 @@ const getNextTitle = () => {
         <v-card-actions class="justify-center">
           <v-btn
             variant="flat"
+            class="primary-btn"
             color="mainBg"
             :loading="loading"
             @click="sendDataToAgents"

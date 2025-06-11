@@ -1,6 +1,5 @@
 .primary-btn{
     background-color: #6750A4 !important;
-    font-weight: bold !important;
 }
 
 .primary-btn:hover{
@@ -32,8 +31,12 @@
     background-color: #00BFA6 !important;
 }
 
-.main {
+.mainBg {
     background-color: #23263C !important;
+}
+
+.mainBg:hover {
+    background-color: #45475d !important;
 }
 
 .section-label {
