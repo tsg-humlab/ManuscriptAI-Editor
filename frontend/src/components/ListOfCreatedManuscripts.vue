@@ -234,10 +234,10 @@ const getNextTitle = () => {
         <v-card-actions class="justify-center">
           <v-btn
             variant="flat"
-            class="primary-btn"
+            color="mainBg"
             :loading="loading"
             @click="sendDataToAgents"
-            :disabled="!manuscripts.every(m=> m.content !== null)"
+            :disabled="manuscripts.length === 0 || !manuscripts.every(m=> m.content !== null)"
           >
             Structure content
             <v-tooltip
