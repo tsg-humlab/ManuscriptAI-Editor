@@ -659,6 +659,7 @@ function removeSpecialPredicate(pred, valueToRemove) {
           <v-spacer />
           <v-btn
             variant="text"
+            color="black"
             @click="dialog = false"
           >
             Cancel

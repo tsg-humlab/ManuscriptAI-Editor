@@ -250,6 +250,7 @@
     <v-card-actions>
       <v-spacer />
       <v-btn
+        color="black"
         variant="text"
         @click="dialog = false"
       >
