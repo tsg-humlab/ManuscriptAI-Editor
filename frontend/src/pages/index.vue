@@ -31,7 +31,7 @@
               :disabled="!fileContentExist"
               :editable="fileContentExist"
               :complete="step>1"
-              @click="step=1"
+              @click="store.setStep(1)"
             />
             <v-divider />
             <v-stepper-item
@@ -43,7 +43,7 @@
               :disabled="!dataStructuredExist"
               :editable="dataStructuredExist"
               :complete="step>2"
-              @click="step=2"
+              @click="store.setStep(2)"
             />
             <v-divider />
             <v-stepper-item
@@ -54,7 +54,7 @@
               value="4"
               :disabled="!rdfOutputExist"
               :editable="rdfOutputExist"
-              @click="step=3"
+              @click="store.setStep(3)"
             />
           </v-stepper-header>
           <v-stepper-window class="mt-0">
@@ -62,7 +62,7 @@
               key="window-1"
               value="1"
             >
-              <FileUploadView @go-to-next-step="(n)=> { step = n;}" />
+              <FileUploadView />
             </v-stepper-window-item>
             <v-stepper-window-item
               key="window-2"
@@ -94,14 +94,22 @@
 <script setup>
   //
   import FileUploadView from "@/pages/FileUploadView.vue";
-  import { ref, computed } from 'vue'
+  import { computed } from 'vue'
   import InspectionView from "@/pages/InspectionView.vue";
   import FeedbackView from "@/pages/FeedbackView.vue";
   import NotificationComponent from "@/components/NotificationComponent.vue";
   import {useAppStore} from "@/stores/app.js";
   import MappingConceptsView from "@/pages/MappingConceptsView.vue";
   // developing purpose set to 2
-  const step = ref(0);
+  // const step =
+  const step = computed({
+    get() {
+      return store.getStep
+    },
+    set(value) {
+      store.setStep(value)
+    }
+  })
 
   const store = useAppStore()
 

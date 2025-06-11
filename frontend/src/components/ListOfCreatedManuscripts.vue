@@ -1,5 +1,5 @@
 <script setup>
-import { computed, ref, watch } from "vue"
+import { computed, ref, watch, defineEmits } from "vue"
 import {useAppStore} from "@/stores/app.js";
 import {structureManuscripts} from "@/services/ApiServices.js";
 
@@ -150,6 +150,9 @@ const sendDataToAgents = async () => {
       showNot: true,
       text: 'The data was structured successfully!'
     });
+
+    store.setStep(2)
+
   } catch (error) {
     store.setNotification({
       color: 'red',

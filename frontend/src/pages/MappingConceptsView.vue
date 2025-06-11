@@ -364,7 +364,7 @@ function removeSpecialPredicate(pred, valueToRemove) {
               </v-list-item>
             </v-list>
           </v-card-item>
-          <v-card-item>
+          <v-card-item class="justify-center">
             <v-btn
               :disabled="!manuscripts.every((m)=> m.reviewed === true)"
               @click="downloadTurtle"
@@ -384,32 +384,8 @@ function removeSpecialPredicate(pred, valueToRemove) {
       <v-col>
         <v-card
           v-if="selManuscript?.length>0"
-          title="RDF Triples"
           variant="text"
         >
-          <!-- Prefixes -->
-          <v-card-item>
-            <div class="prefixes-box">
-              <h3 class="props-heading">
-                Prefixes
-              </h3>
-              <div class="prefix-row">
-                <code>ex: http://example.org/</code>
-              </div>
-              <div class="prefix-row">
-                <code>rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#</code>
-              </div>
-              <div class="prefix-row">
-                <code>rdfs: http://www.w3.org/2000/01/rdf-schema#</code>
-              </div>
-              <div class="prefix-row">
-                <code>xsd: http://www.w3.org/2001/XMLSchema#</code>
-              </div>
-              <div class="prefix-row">
-                <code>ms4ai: http://ontology.tno.nl/manuscriptAI/</code>
-              </div>
-            </div>
-          </v-card-item>
           <v-card-item>
             <strong>Actions:</strong>
             <v-btn
@@ -433,6 +409,30 @@ function removeSpecialPredicate(pred, valueToRemove) {
               Undo review
             </v-btn>
           </v-card-item>
+          <!-- Prefixes -->
+          <v-card-item title="RDF triples">
+            <div class="prefixes-box">
+              <h3 class="props-heading">
+                Prefixes
+              </h3>
+              <div class="prefix-row">
+                <code>ex: http://example.org/</code>
+              </div>
+              <div class="prefix-row">
+                <code>rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#</code>
+              </div>
+              <div class="prefix-row">
+                <code>rdfs: http://www.w3.org/2000/01/rdf-schema#</code>
+              </div>
+              <div class="prefix-row">
+                <code>xsd: http://www.w3.org/2001/XMLSchema#</code>
+              </div>
+              <div class="prefix-row">
+                <code>ms4ai: http://ontology.tno.nl/manuscriptAI/</code>
+              </div>
+            </div>
+          </v-card-item>
+
           <!-- Properties -->
           <v-card-item class="pt-0">
             <p><strong>Properties</strong></p>

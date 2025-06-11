@@ -166,7 +166,7 @@ const inspectFile = async(file) => {
                       variant="flat"
                       size="small"
                       color="#cb8a05"
-                      @click="$emit('goToNextStep',1)"
+                      @click="store.setStep(1)"
                     >
                       Analyze
                     </v-btn>

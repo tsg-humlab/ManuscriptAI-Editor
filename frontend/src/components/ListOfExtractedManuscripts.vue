@@ -85,6 +85,7 @@ const convertManuscriptsToRDF = async(e) => {
     const ttlString = await convertToRdf(data)
     store.setRdfOutput(ttlString)
     store.setNotification({color:'teal', showNot: true, text: 'The data was converted to RDF successfully!'})
+    store.setStep(3)
 
   } catch(err){
     console.log("err", err)
@@ -163,7 +164,7 @@ const convertManuscriptsToRDF = async(e) => {
           </v-list-item>
         </v-list>
       </v-card-item>
-      <v-card-item>
+      <v-card-item class="justify-center">
         <v-btn
           :disabled="!manuscripts.every((m)=> m.reviewed === true)"
           :loading="loading"

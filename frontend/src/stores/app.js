@@ -21,6 +21,7 @@ export const useAppStore = defineStore('app', {
     selectedManuscript: null, // feedback view
     selCreatedManuscript: null, // inspection view
     rdfOutput: "",
+    step: 0
   }),
   getters: {
     recentFileContent: (state)=> state.fileContent,
@@ -29,6 +30,7 @@ export const useAppStore = defineStore('app', {
     getSelectedManuscript: (state)=> state.selectedManuscript,
     getSelCreatedManuscript: (state)=> state.selCreatedManuscript,
     getRdfOutput: (state)=> state.rdfOutput,
+    getStep: (state)=>state.step
   },
   actions: {
     setFileContent(content){
@@ -59,6 +61,10 @@ export const useAppStore = defineStore('app', {
     setRdfOutput(turtle) {
       this.rdfOutput = turtle;
       console.log("this.rdfOutput in pinia:", this.rdfOutput);
+    },
+    setStep(step){
+      this.step = step
     }
+
   }
 })
