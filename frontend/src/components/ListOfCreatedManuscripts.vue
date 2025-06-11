@@ -145,6 +145,9 @@ const sendDataToAgents = async () => {
       number_of_manuscripts: parsedManuscripts.length
     });
 
+    // disable selectedMan in feedback view, if any
+    store.setSelectedManuscript(null)
+
     store.setNotification({
       color: 'success',
       showNot: true,
