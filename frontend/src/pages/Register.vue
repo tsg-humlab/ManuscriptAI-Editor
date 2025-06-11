@@ -44,7 +44,7 @@
               clearable>
             </v-text-field>
           </div>
-          <v-btn class="mt-2" :loading="loading" :disabled="!form" type="submit" block>Register</v-btn>
+          <v-btn class="mt-2 primary-btn" color="mainBg" :loading="loading" :disabled="!form" type="submit" block>Register</v-btn>
         </v-form>
 
       </v-card-text>
@@ -91,16 +91,18 @@ export default {
         })
         const data = await response.json()
         if (response.ok) {
+          console.log("response ok!")
+          this.error = ''
           this.success = `Registration successful!`
-          setTimeout(() => {
-            // this.$router.push('/login')
-          }, 1000)
+
         } else {
+          console.log("response not ok!")
           this.error = data.error || 'Registration failed'
           this.form = false
         }
         this.loading = false
       } catch (err) {
+        console.log("error during registration:", err)
         this.error = 'An error occurred during registration: ' + err
         this.loading = false
         this.form = false

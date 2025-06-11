@@ -27,7 +27,6 @@
             @input="resetError"
             required
             clearable>
-
           </v-text-field>
         </div>
         <div>
@@ -44,7 +43,7 @@
             clearable>
           </v-text-field>
         </div>
-        <v-btn class="mt-2" :loading="loading" :disabled="!form" type="submit" block>Login</v-btn>
+        <v-btn class="mt-2 primary-btn" :loading="authStore.isLoading" :disabled="!form || authStore.isLoading" type="submit" color="mainBg" block>Login</v-btn>
       </v-form>
       </v-card-text>
     </v-card>
@@ -81,13 +80,14 @@ export default {
   methods: {
     async login() {
       if (!this.form) return
-      this.loading = true
-      await this.authStore.login(this.email, this.password, this.$router)
+      // this.loading = true
+      const resp = await this.authStore.login(this.email, this.password, this.$router)
+      console.log("resp:", resp)
       if (!this.authStore.isAuthenticated) {
         this.error = 'Invalid email or password. Please check your credentials.'
         this.form = false
       }
-      this.loading = false
+      // this.loading = false
     },
     resetError() {
       this.error = ""

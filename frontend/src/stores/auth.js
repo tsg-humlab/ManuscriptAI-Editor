@@ -11,6 +11,7 @@ export const useAuthStore = defineStore('auth', {
       : {
           user: null,
           isAuthenticated: false,
+          isLoading: false,  // added loading state
         }
   },
   actions: {
@@ -22,32 +23,40 @@ export const useAuthStore = defineStore('auth', {
     },
 
     async login(email, password, router = null) {
-      const response = await fetch('http://localhost:8000/api/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'X-CSRFToken': getCSRFToken(),
-        },
-        body: JSON.stringify({
-          email,
-          password,
-        }),
-        credentials: 'include',
-      })
-      const data = await response.json()
-      if (data.success) {
-        this.isAuthenticated = true
-        this.saveState()
-        if (router) {
-          await router.push({
-            name: 'landing',
-          })
+      this.isLoading = true;  // start loading
+      try {
+        const response = await fetch('http://localhost:8000/api/login', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'X-CSRFToken': getCSRFToken(),
+          },
+          body: JSON.stringify({
+            email,
+            password,
+          }),
+          credentials: 'include',
+        })
+        const data = await response.json()
+        if (data.success) {
+          this.isAuthenticated = true
+          this.saveState()
+          if (router) {
+            await router.push({
+              name: 'landing',
+            })
+          }
+        } else {
+          this.user = null
+          this.isAuthenticated = false
+          this.saveState()
         }
-      } else {
-        this.user = null
-        this.isAuthenticated = false
-        this.saveState()
+      } catch (error) {
+        console.error('Login failed', error)
+      } finally {
+        this.isLoading = false;  // stop loading in all cases
       }
+
     },
 
     async logout(router = null) {
