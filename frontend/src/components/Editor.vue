@@ -122,7 +122,7 @@ const initializeEditor = () => {
           const selectedText = editorView.value.state.doc.sliceString(selection.from, selection.to);
           navigator.clipboard.writeText(selectedText).then(() => {
             console.log('Text copied to clipboard:', selectedText);
-            store.setNotification({color:'info', showNot: true, time:100, text: 'Content has been copied. You can paste it to the manuscript location on the right!'})
+            store.setNotification({color:'info', showNot: true, time:100, text: 'Content has been copied. You can paste it to the manuscript location!'})
             highlightSelection();
           }).catch(err => {
             console.error('Failed to copy text:', err);

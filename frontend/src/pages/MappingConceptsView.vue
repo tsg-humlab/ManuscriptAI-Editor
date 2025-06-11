@@ -63,7 +63,10 @@ const numberOfManuscripts = computed(()=>{
 const rdfStore = rdflib.graph();
 
 // Local state
-const manuscripts = ref([]);
+const manuscripts = ref([])
+// const manuscripts = computed(()=>{
+//   return store.getStructuredData.manuscripts
+// });
 const selectedIndex = ref(null);
 
 const activeManuscript = computed(() => {
@@ -318,6 +321,7 @@ function removeSpecialPredicate(pred, valueToRemove) {
           id="list-of-reviewed-manuscripts"
           variant="text"
         >
+          <!-- info area showing file and number of manuscripts -->
           <v-list
             lines="two"
             bg-color="white"
@@ -336,7 +340,7 @@ function removeSpecialPredicate(pred, valueToRemove) {
             </v-list-item>
           </v-list>
           <v-divider />
-          <v-card-item>
+          <div id="card-content">
             <v-list
               v-model:selected="selManuscript"
               bg-color="white"
@@ -345,7 +349,7 @@ function removeSpecialPredicate(pred, valueToRemove) {
               <v-list-item
                 v-for="(man,index) in manuscripts"
                 :key="'reviewed-manuscript'+index"
-                :title="man.shortLabel? man.shortLabel : 'Manuscript'+index+1"
+                :title="man.shortLabel ? man.shortLabel : 'Manuscript'+index+1"
                 :value="man"
                 color="info"
                 nav
@@ -363,17 +367,18 @@ function removeSpecialPredicate(pred, valueToRemove) {
                 </template>
               </v-list-item>
             </v-list>
-          </v-card-item>
-          <v-card-item class="justify-center">
-            <v-btn
-              :disabled="!manuscripts.every((m)=> m.reviewed === true)"
-              @click="downloadTurtle"
-              color="primary"
-              class="primary-btn"
-            >
-              download turtle
-            </v-btn>
-          </v-card-item>
+            <v-card-actions class="justify-center">
+              <v-btn
+                :disabled="!manuscripts.every((m)=> m.reviewed === true)"
+                @click="downloadTurtle"
+                color="primary"
+                class="primary-btn"
+                variant="flat"
+              >
+                download turtle
+              </v-btn>
+            </v-card-actions>
+          </div>
         </v-card>
       </v-col>
       <v-divider
@@ -460,6 +465,7 @@ function removeSpecialPredicate(pred, valueToRemove) {
                   >
                     <v-text-field
                       class="highlighted-uri"
+                      max-width="500"
                       :value="shrinkUri(locusUri)"
                       dense
                       hide-details
@@ -472,6 +478,7 @@ function removeSpecialPredicate(pred, valueToRemove) {
                   <!-- single-locus case -->
                   <v-textarea
                     class="highlighted-uri"
+                    max-width="500"
                     :value="shrinkUri(obj)"
                     dense
                     hide-details
@@ -491,6 +498,7 @@ function removeSpecialPredicate(pred, valueToRemove) {
                       <v-text-field
                         class="highlighted-uri"
                         :value="shrinkUri(val)"
+                        max-width="500"
                         dense
                         hide-details
                         outlined
@@ -519,6 +527,7 @@ function removeSpecialPredicate(pred, valueToRemove) {
                       <v-text-field
                         class="highlighted-uri"
                         :value="shrinkUri(obj)"
+                        max-width="500"
                         dense
                         hide-details
                         outlined
@@ -548,6 +557,7 @@ function removeSpecialPredicate(pred, valueToRemove) {
                   >
                     <v-text-field
                       :value="shrinkUri(val)"
+                      max-width="500"
                       dense
                       hide-details
                       outlined
@@ -560,10 +570,30 @@ function removeSpecialPredicate(pred, valueToRemove) {
                 <template v-else>
                   <v-text-field
                     v-model="activeManuscript.properties[pred]"
+                    max-width="500"
                     dense
                     hide-details
                     outlined
                   />
+<!--                  <v-btn-->
+<!--                    v-if="activeManuscript.properties[pred]"-->
+<!--                    size="small"-->
+<!--                    color="secondary"-->
+<!--                    class="secondary-btn"-->
+<!--                    @click="()=>{ activeManuscript.properties[pred] }"-->
+<!--                  >-->
+<!--                    Edit-->
+<!--                  </v-btn>-->
+<!--                  <v-btn-->
+<!--                    v-if="!selectedManuscript[field].disabled"-->
+<!--                    size="small"-->
+<!--                    color="secondary"-->
+<!--                    class="secondary-btn"-->
+<!--                    :disabled="selectedManuscript[field].disabled"-->
+<!--                    @click="()=>{ selectedManuscript[field].disabled = true; }"-->
+<!--                  >-->
+<!--                    Save-->
+<!--                  </v-btn>-->
                 </template>
               </div>
             </div>
@@ -638,7 +668,7 @@ function removeSpecialPredicate(pred, valueToRemove) {
         <v-card
           v-else
           variant="text"
-          class="pa-10"
+          class="pa-10 text-body-2"
         >
           No selected manuscript. Please select a manuscript from the list of extracted manuscripts on the left.
         </v-card>
@@ -646,7 +676,7 @@ function removeSpecialPredicate(pred, valueToRemove) {
     </v-row>
     <v-dialog
       v-model="dialog"
-      max-width="400"
+      max-width="500"
     >
       <v-card>
         <v-card-title class="text-h6">
@@ -685,6 +715,7 @@ function removeSpecialPredicate(pred, valueToRemove) {
   padding: 1rem;
   margin-bottom: 1rem;
   margin-top: .5rem;
+  max-width: 550px;
 }
 .prefix-row {
   margin-bottom: 6px;
@@ -738,6 +769,7 @@ function removeSpecialPredicate(pred, valueToRemove) {
   border-radius: 8px;
   padding: 1rem;
   margin-bottom: 1.5rem;
+  max-width: 500px;
 }
 .turtle-line {
   margin: 0.3rem 0;
@@ -757,5 +789,12 @@ function removeSpecialPredicate(pred, valueToRemove) {
 .highlighted-uri {
   color: #1565c0 !important;
   font-weight: 600;
+}
+
+#card-content{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  //height: 55vh;
 }
 </style>

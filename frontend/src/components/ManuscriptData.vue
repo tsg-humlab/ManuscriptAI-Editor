@@ -111,7 +111,7 @@ const formatFieldName = (field) => {
     <v-card
       v-else
       variant="text"
-      class="pa-10"
+      class="pa-10 text-body-2"
     >
       No selected manuscript. Please select a manuscript from the list of extracted manuscripts on the left.
     </v-card>
@@ -120,7 +120,7 @@ const formatFieldName = (field) => {
 
 <style scoped>
 #property-container{
-  max-height: 57vh;
+  //max-height: 52vh;
   overflow-y: auto;
 }
 .field-container{

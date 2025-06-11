@@ -151,7 +151,8 @@ const sendDataToAgents = async () => {
     store.setNotification({
       color: 'success',
       showNot: true,
-      text: 'The data was structured successfully!'
+      text: 'The data was structured successfully!',
+      time:100,
     });
 
     store.setStep(2)

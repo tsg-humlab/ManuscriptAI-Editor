@@ -34,11 +34,10 @@ watch(time, (newValue, oldValue) => {
       v-model="show"
       location="top"
       :timeout="timeout"
-      :timer="time === -1 ? false : 'info'"
       :content-class="color === 'success' ? 'custom-success' : color=== 'error' ? 'custom-error' : 'custom-info'"
     >
       <template #text>
-        <div class="d-flex justify-start align-center ">
+        <div class="d-flex justify-start align-center">
           <div v-if="color==='success'">
             <v-icon color="success">
               mdi-check-circle
@@ -57,7 +56,6 @@ watch(time, (newValue, oldValue) => {
         </div>
       </template>
       <template
-        v-if="time === -1"
         #actions
       >
         <v-btn
