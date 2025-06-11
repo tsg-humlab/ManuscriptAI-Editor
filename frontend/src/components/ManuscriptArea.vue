@@ -76,7 +76,7 @@ const sendDataToAgents = async() => {
       })
     }
 
-    store.setNotification({color:'teal', showNot: true, text: 'The data was structured successfully!'})
+    store.setNotification({color:'success',time:100, showNot: true, text: 'The data was structured successfully!'})
     loading.value = false
 
   } catch (error) {

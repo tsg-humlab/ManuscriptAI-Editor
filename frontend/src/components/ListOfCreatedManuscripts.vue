@@ -10,8 +10,8 @@ const fileContent = computed(()=>{
 })
 
 // check for file update and resets
-watch(fileContent, async()=>{
-  console.log("fileContent updated! Resetting values!")
+watch(fileContent, async(newV, oldV)=>{
+  console.log("fileContent updated! Resetting values!", newV)
   selManuscript.value = null
   // store.setSelCreatedManuscript(null)
   manuscripts.value = []
@@ -149,11 +149,18 @@ const sendDataToAgents = async () => {
       number_of_manuscripts: parsedManuscripts.length
     });
 
+    // disable selectedMan in feedback view, if any
+    store.setSelectedManuscript(null)
+
     store.setNotification({
-      color: 'teal',
+      color: 'success',
       showNot: true,
-      text: 'The data was structured successfully!'
+      text: 'The data was structured successfully!',
+      time:100,
     });
+
+    store.setStep(2)
+
   } catch (error) {
     store.setNotification({
       color: 'red',
@@ -201,11 +208,11 @@ const sendDataToAgents = async () => {
               :key="man.id"
               :title="`Manuscript ${index+1}`"
               :value="man"
-              color="primary"
+              color="info"
               nav
             >
               <template #prepend>
-                <v-avatar color="grey-lighten-1">
+                <v-avatar>
                   <v-icon>mdi-book-open-blank-variant-outline</v-icon>
                 </v-avatar>
               </template>
@@ -216,16 +223,28 @@ const sendDataToAgents = async () => {
               </template>
             </v-list-item>
           </div>
-            <div v-else class="pa-4">
+          <div
+            v-else
+            class="pa-4 text-sm-body-2"
+          >
             You have not created any manuscripts yet!
           </div>
 <!--          <v-list-subheader>CREATED MANUSCRIPTS</v-list-subheader>-->
 
 
           <div class="text-center">
-            <v-tooltip v-model="showTooltip" location="top">
-              <template v-slot:activator="{props}">
-                <v-btn  icon v-bind="props" size="small" @click="addManuscript">
+            <v-tooltip
+              v-model="showTooltip"
+              location="top"
+            >
+              <template #activator="{props}">
+                <v-btn
+                  icon
+                  v-bind="props"
+                  size="small"
+                  color="secondary"
+                  @click="addManuscript"
+                >
                   <v-icon>mdi-plus</v-icon>
                 </v-btn>
               </template>
@@ -236,11 +255,11 @@ const sendDataToAgents = async () => {
         <v-card-actions class="justify-center">
           <v-btn
             variant="flat"
-            class="btn"
-            color="primary"
+            class="primary-btn"
+            color="mainBg"
             :loading="loading"
+            :disabled="manuscripts.length === 0 || !manuscripts.every(m=> m.content !== null)"
             @click="sendDataToAgents"
-            :disabled="!manuscripts.every(m=> m.content !== null)"
           >
             Structure content
             <v-tooltip

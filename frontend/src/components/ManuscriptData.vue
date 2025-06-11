@@ -8,7 +8,6 @@ const selectedManuscript = computed(()=>{
   return store.getSelectedManuscript
 })
 
-
 const manuscriptFields = [
   "manuscript_ID", "century_of_creation", "support_type",
   "dimensions_of_the_manuscript_width", "dimensions_of_the_manuscript_length", "dimensions_of_the_manuscript_thickness",
@@ -42,11 +41,26 @@ const formatFieldName = (field) => {
       <v-card-actions>
         <strong>Actions:</strong>
         <v-btn
+          v-if="!selectedManuscript.reviewed"
           size="small"
           variant="flat"
+          class="secondary-btn"
+          color="secondary"
+          rounded="small"
           @click="()=>{console.log('selectedManuscript:', selectedManuscript);selectedManuscript.reviewed = true;}"
         >
           Mark as reviewed
+        </v-btn>
+        <v-btn
+          v-else
+          size="small"
+          variant="flat"
+          class="secondary-btn"
+          color="secondary"
+          rounded="small"
+          @click="()=>{console.log('selectedManuscript:', selectedManuscript);selectedManuscript.reviewed = false;}"
+        >
+          Undo review
         </v-btn>
       </v-card-actions>
       <v-divider />
@@ -75,6 +89,10 @@ const formatFieldName = (field) => {
             <v-btn
               v-if="selectedManuscript[field].disabled"
               size="small"
+              color="secondary"
+              variant="flat"
+              class="secondary-btn"
+              rounded="small"
               :disabled="!selectedManuscript[field].disabled"
               @click="()=>{ selectedManuscript[field].disabled = false; }"
             >
@@ -83,6 +101,10 @@ const formatFieldName = (field) => {
             <v-btn
               v-if="!selectedManuscript[field].disabled"
               size="small"
+              color="secondary"
+              variant="flat"
+              class="secondary-btn"
+              rounded="small"
               :disabled="selectedManuscript[field].disabled"
               @click="()=>{ selectedManuscript[field].disabled = true; }"
             >
@@ -95,7 +117,7 @@ const formatFieldName = (field) => {
     <v-card
       v-else
       variant="text"
-      class="pa-10"
+      class="pa-10 text-body-2"
     >
       No selected manuscript. Please select a manuscript from the list of extracted manuscripts on the left.
     </v-card>
@@ -104,7 +126,7 @@ const formatFieldName = (field) => {
 
 <style scoped>
 #property-container{
-  max-height: 57vh;
+  //max-height: 52vh;
   overflow-y: auto;
 }
 .field-container{

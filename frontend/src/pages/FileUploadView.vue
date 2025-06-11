@@ -75,7 +75,7 @@ const inspectFile = async(file) => {
         }catch (e) {
           isLoading[file.name] = false
           file.read = true
-          store.setNotification({color:'red', showNot: true,text:`${e.message}`})
+          store.setNotification({color:'error', showNot: true,text:`${e.message}`})
           throw Error(e)
         }
 
@@ -151,10 +151,10 @@ const inspectFile = async(file) => {
                   <div class="ml-2">
                     <v-btn
                       v-if="store.recentFileContent.content !== file.content"
-                      class="btn"
+                      class="primary-btn"
+                      color="mainBg"
                       variant="flat"
                       size="small"
-                      color="#cb8a05"
                       :loading="isLoading[file.name] || false"
                       @click="inspectFile(file)"
                     >
@@ -162,11 +162,11 @@ const inspectFile = async(file) => {
                     </v-btn>
                     <v-btn
                       v-if="store.recentFileContent.content === file.content"
-                      class="btn"
+                      class="primary-btn"
+                      color="mainBg"
                       variant="flat"
                       size="small"
-                      color="#cb8a05"
-                      @click="$emit('goToNextStep',1)"
+                      @click="store.setStep(1)"
                     >
                       Analyze
                     </v-btn>
@@ -185,9 +185,11 @@ const inspectFile = async(file) => {
           <template #browse="{props: itemProps}">
             <v-btn
               variant="flat"
-              color="#cb8a05"
+              color="secondary"
+              rounded="small"
               v-bind="itemProps"
-              class="btn"
+              class="secondary-btn"
+              size="default"
             />
           </template>
         </v-file-upload>
@@ -202,10 +204,4 @@ const inspectFile = async(file) => {
   font-size: 0.8125rem;
   font-weight: 500;
 }
-
-.btn:hover{
-  background-color: teal !important;
-}
-
-
 </style>

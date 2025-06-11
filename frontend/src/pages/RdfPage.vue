@@ -30,8 +30,8 @@
 
       <!-- Mark as Reviewed Button -->
       <v-btn
-        color="primary"
-        class="reviewed-btn"
+        class="secondary-btn"
+        color="secondary"
         style="margin-top: auto; margin-bottom: 10px;"
         @click="markReviewed"
       >
@@ -41,7 +41,8 @@
       <!-- Download Turtle Button: only visible if "reviewed" is true -->
       <v-btn
         v-if="reviewed"
-        class="extract-btn"
+        class="primary-btn"
+        color="mainBg"
         @click="downloadTurtle"
       >
         Download Turtle
@@ -250,6 +251,7 @@
     <v-card-actions>
       <v-spacer />
       <v-btn
+        color="black"
         variant="text"
         @click="dialog = false"
       >

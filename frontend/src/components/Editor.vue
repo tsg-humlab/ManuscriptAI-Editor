@@ -9,7 +9,8 @@
 </template>
 
 <script setup>
-import {ref, onMounted, watch, computed, inject} from 'vue';
+import { ref, onMounted, watch, computed } from 'vue';
+// Import necessary CodeMirror 6 modules
 import { EditorView, basicSetup } from 'codemirror';
 import { Decoration, ViewPlugin, WidgetType } from '@codemirror/view';
 import { EditorState, StateEffect } from '@codemirror/state';
@@ -25,6 +26,7 @@ const store = useAppStore()
 
 const editorContainer = ref(null);
 
+// a computed ref
 let editorView = ref(null)
 
 const extension = computed(()=> store.recentFileContent.extension)
@@ -89,6 +91,8 @@ class ActionButtonWidget extends WidgetType {
     btn2.addEventListener('click', () => {
       // copy the content
       copyContent(this.text);
+      // show notification
+      store.setNotification({color:'info', showNot: true, time:100, text: 'Content has been copied. You can paste it to the manuscript location!'})
     });
     div.appendChild(btn2);
 
@@ -175,6 +179,7 @@ const initializeEditor = () => {
 }
 
 onMounted(() => {
+  console.log("mounting the editor!")
   initializeEditor()
 });
 

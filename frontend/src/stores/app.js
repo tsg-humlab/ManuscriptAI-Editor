@@ -23,6 +23,7 @@ export const useAppStore = defineStore('app', {
     selCreatedManuscript: [], // inspection view
     rdfOutput: "",
     listOfCreatedManuscripts: [],
+    step: 0
   }),
   getters: {
     recentFileContent: (state)=> state.fileContent,
@@ -31,7 +32,8 @@ export const useAppStore = defineStore('app', {
     getSelectedManuscript: (state)=> state.selectedManuscript,
     getSelCreatedManuscript: (state)=> state.selCreatedManuscript,
     getRdfOutput: (state)=> state.rdfOutput,
-    getListOfCreatedManuscripts: (state)=> state.listOfCreatedManuscripts
+    getListOfCreatedManuscripts: (state)=> state.listOfCreatedManuscripts,
+    getStep: (state)=>state.step
   },
   actions: {
     setFileContent(content){
@@ -77,7 +79,10 @@ export const useAppStore = defineStore('app', {
     },
     removeManFromListOfCreatedManuscripts(index){
         this.listOfCreatedManuscripts.splice(index,1)
-
+    },
+    setStep(step){
+      this.step = step
     }
+
   }
 })
