@@ -77,8 +77,8 @@
             </div>
 
             <v-btn
-              color="primary"
-              class="mt-5"
+              color="mainBg"
+              class="mt-5 primary-btn"
               :disabled="!selectedFile"
               @click="inspectFile"
             >
