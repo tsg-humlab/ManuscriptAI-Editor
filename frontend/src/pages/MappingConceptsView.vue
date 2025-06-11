@@ -347,7 +347,7 @@ function removeSpecialPredicate(pred, valueToRemove) {
                 :key="'reviewed-manuscript'+index"
                 :title="man.shortLabel? man.shortLabel : 'Manuscript'+index+1"
                 :value="man"
-                color="primary"
+                color="info"
                 nav
                 @click="updateSelection(index)"
               >

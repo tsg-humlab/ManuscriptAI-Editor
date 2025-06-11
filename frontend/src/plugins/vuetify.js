@@ -28,7 +28,8 @@ export default createVuetify({
           teal:'#009688',
           success: '#006a5c',
           error: '#a94442',
-          info: '#1A3C87'
+          info: '#1A3C87',
+          mainBg: '#23263C'
         }
       }
     }

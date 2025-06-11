@@ -148,7 +148,7 @@ const convertManuscriptsToRDF = async(e) => {
             :key="'manuscript'+index"
             :title="man.manuscript_ID.value? man.manuscript_ID.value : 'Manuscript'+index+1"
             :value="man"
-            color="primary"
+            color="info"
             nav
           >
             <template #prepend>

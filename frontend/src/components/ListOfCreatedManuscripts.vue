@@ -195,7 +195,7 @@ const getNextTitle = () => {
               :key="'manuscript'+index"
               :title="`Manuscript ${index+1}`"
               :value="man"
-              color="primary"
+              color="info"
               nav
             >
               <template #prepend>
@@ -210,7 +210,10 @@ const getNextTitle = () => {
               </template>
             </v-list-item>
           </div>
-          <div v-else class="pa-4">
+          <div
+            v-else
+            class="pa-4 text-sm-body-2"
+          >
             You have not created any manuscripts yet!
           </div>
           <div class="text-center">
