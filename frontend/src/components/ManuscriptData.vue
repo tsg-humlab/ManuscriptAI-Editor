@@ -42,8 +42,6 @@ const markAsReviewed = () =>{
 
 <template>
   <div id="manuscript-data">
-        {{selectedManuscript}}
-
     <v-card
       v-if="selectedManuscript"
       class="pa-3"
