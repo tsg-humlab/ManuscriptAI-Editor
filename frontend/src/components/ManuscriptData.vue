@@ -8,6 +8,8 @@ const selectedManuscript = computed(()=>{
   return store.getSelectedManuscript
 })
 
+const showDialog = ref(false)
+
 const manuscriptFields = [
   "manuscript_ID", "century_of_creation", "support_type",
   "dimensions_of_the_manuscript_width", "dimensions_of_the_manuscript_length", "dimensions_of_the_manuscript_thickness",
@@ -26,10 +28,22 @@ const formatFieldName = (field) => {
     .trim()
     .replace(/^./, (m) => m.toUpperCase());
 };
+
+const markAsReviewed = () =>{
+  console.log("marking as reviewed!", selectedManuscript.value, )
+  if(!selectedManuscript.value.manuscript_ID.value){
+    showDialog.value = true
+    return
+  }
+  selectedManuscript.value.reviewed = true;
+}
+
 </script>
 
 <template>
   <div id="manuscript-data">
+        {{selectedManuscript}}
+
     <v-card
       v-if="selectedManuscript"
       class="pa-3"
@@ -47,7 +61,7 @@ const formatFieldName = (field) => {
           class="secondary-btn"
           color="secondary"
           rounded="small"
-          @click="()=>{console.log('selectedManuscript:', selectedManuscript);selectedManuscript.reviewed = true;}"
+          @click="markAsReviewed"
         >
           Mark as reviewed
         </v-btn>
@@ -93,7 +107,7 @@ const formatFieldName = (field) => {
               variant="flat"
               class="secondary-btn"
               rounded="small"
-              :disabled="!selectedManuscript[field].disabled"
+              :disabled="!selectedManuscript[field].disabled || selectedManuscript.reviewed"
               @click="()=>{ selectedManuscript[field].disabled = false; }"
             >
               Edit
@@ -105,7 +119,7 @@ const formatFieldName = (field) => {
               variant="flat"
               class="secondary-btn"
               rounded="small"
-              :disabled="selectedManuscript[field].disabled"
+              :disabled="selectedManuscript[field].disabled ||  selectedManuscript.reviewed"
               @click="()=>{ selectedManuscript[field].disabled = true; }"
             >
               Save
@@ -121,6 +135,27 @@ const formatFieldName = (field) => {
     >
       No selected manuscript. Please select a manuscript from the list of extracted manuscripts on the left.
     </v-card>
+    <v-dialog
+      v-model="showDialog"
+      max-width="500"
+    >
+      <v-card prepend-icon="mdi-alert-box" title="Warning">
+        <v-divider></v-divider>
+        <v-card-text>
+          You are about to mark as reviewed a manuscript without an ID. An ID is an essential field. Please fill in an ID for this manuscript.
+        </v-card-text>
+        <v-card-actions>
+          <v-btn
+            variant="text"
+            color="black"
+            @click="showDialog = false"
+          >
+            Close
+          </v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
+
   </div>
 </template>
 
