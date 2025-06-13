@@ -6,24 +6,14 @@ const store = useAppStore()
 
 const color = computed(() => store.getNotificationInfo.color);
 const text = computed(() => store.getNotificationInfo.text);
+const time = computed(()=> store.getNotificationInfo.time)
 const show = computed({
   get() {
     return store.getNotificationInfo.showNot
   },
   set(newV){
-    console.log("newV:", newV)
-    store.setNotification({show:newV, color:"info", time:100})
+    store.setNotification({show:newV, color:color.value})
   }
-});
-const time = computed(()=> store.getNotificationInfo.time)
-const timer = 4000
-
-const timeout = ref(4000)
-
-watch(time, (newValue, oldValue) => {
-  console.log(`color changed from ${oldValue} to ${newValue}`);
-  timeout.value = newValue === -1 ? -1 : timer;
-
 });
 
 </script>
@@ -33,7 +23,7 @@ watch(time, (newValue, oldValue) => {
     <v-snackbar
       v-model="show"
       location="top"
-      :timeout="timeout"
+      :timeout="time"
       :content-class="color === 'success' ? 'custom-success' : color=== 'error' ? 'custom-error' : 'custom-info'"
     >
       <template #text>

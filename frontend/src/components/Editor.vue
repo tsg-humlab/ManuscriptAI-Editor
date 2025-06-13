@@ -92,7 +92,7 @@ class ActionButtonWidget extends WidgetType {
       // copy the content
       copyContent(this.text);
       // show notification
-      store.setNotification({color:'info', showNot: true, time:100, text: 'Content has been copied. You can paste it to the manuscript location!'})
+      store.setNotification({color:'info', showNot: true, time:4000, text: 'Content has been copied. You can paste it to the manuscript location!'})
     });
     div.appendChild(btn2);
 

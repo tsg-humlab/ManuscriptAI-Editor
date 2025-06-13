@@ -156,16 +156,17 @@ const sendDataToAgents = async () => {
       color: 'success',
       showNot: true,
       text: 'The data was structured successfully!',
-      time:100,
+      time: 4000,
     });
 
     store.setStep(2)
 
   } catch (error) {
     store.setNotification({
-      color: 'red',
+      color: 'error',
       showNot: true,
-      text: `${error}. There was an issue with the structuring of the data.`
+      text: `${error}. There was an issue with the structuring of the data.`,
+      time: -1,
     });
   } finally {
     loading.value = false;
