@@ -1,5 +1,6 @@
 // Utilities
 import { defineStore } from 'pinia'
+import {getNextTitle} from "@/tools/index.js";
 
 export const useAppStore = defineStore('app', {
   state: () => ({
@@ -19,8 +20,10 @@ export const useAppStore = defineStore('app', {
       "number_of_manuscripts": 0
     },
     selectedManuscript: null, // feedback view
-    selCreatedManuscript: null, // inspection view
+    selCreatedManuscript: [], // inspection view
     rdfOutput: "",
+    listOfCreatedManuscripts: [],
+    step: 0
   }),
   getters: {
     recentFileContent: (state)=> state.fileContent,
@@ -29,6 +32,8 @@ export const useAppStore = defineStore('app', {
     getSelectedManuscript: (state)=> state.selectedManuscript,
     getSelCreatedManuscript: (state)=> state.selCreatedManuscript,
     getRdfOutput: (state)=> state.rdfOutput,
+    getListOfCreatedManuscripts: (state)=> state.listOfCreatedManuscripts,
+    getStep: (state)=>state.step
   },
   actions: {
     setFileContent(content){
@@ -59,6 +64,25 @@ export const useAppStore = defineStore('app', {
     setRdfOutput(turtle) {
       this.rdfOutput = turtle;
       console.log("this.rdfOutput in pinia:", this.rdfOutput);
+    },
+    addManToListOfCreatedManuscripts(manData){
+      console.log("updating list of created manuscripts:", manData)
+      let id = 0
+      if (this.listOfCreatedManuscripts.length === 0){
+        id = 1
+      }else {
+        id = getNextTitle(this.listOfCreatedManuscripts)
+      }
+      const content = {title: `Manuscript ${id}`, id: id,content: manData.content}
+      this.listOfCreatedManuscripts.push(content)
+      return content
+    },
+    removeManFromListOfCreatedManuscripts(index){
+        this.listOfCreatedManuscripts.splice(index,1)
+    },
+    setStep(step){
+      this.step = step
     }
+
   }
 })

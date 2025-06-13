@@ -16,6 +16,7 @@ const isLoading = reactive([])
 const resetStore = async()=>{
   console.log("resetting store!")
   await store.setSelCreatedManuscript([])
+  store.listOfCreatedManuscripts = []
   await store.setSelectedManuscript(null)
   await store.setRdfOutput("")
   await store.setStructuredData({"manuscripts": [], "number_of_manuscripts": 0 })
@@ -36,53 +37,48 @@ const inspectFile = async(file) => {
         const ext = file.name.split('.').pop();
         try{
           switch (ext) {
-          case 'json':
-            file.content = JSON.stringify(JSON.parse(content), null, 2);
-            store.setFileContent({content: file.content, extension: 'json', name: file.name})
-
-            console.log("fileContent:", file.content)
-            // initializeEditor(fileContent.value, json());
-            break;
-          case 'xml':
-            console.log("xml content:", content)
-            parser = new DOMParser();
-            const xmlDoc = parser.parseFromString(content, "text/xml");
-            const parsedContent = new XMLSerializer().serializeToString(xmlDoc);
-            console.log("parsedContent:", parsedContent)
-            file.content = parsedContent
-            store.setFileContent({content: file.content, extension: 'xml', name: file.name})
-            break;
-          case 'csv':
-             const data = Papa.parse(content, { header: true,
-              complete: function(e){
-               console.log("e", e)
-                file.content = JSON.stringify(e.data,null, 2)
-                store.setFileContent({content: file.content, extension: 'json', name: file.name})
-              }
-             })
-            break;
-          case 'ttl':
+            case 'json':
+              file.content = JSON.stringify(JSON.parse(content), null, 2);
+              store.setFileContent({content: file.content, extension: 'json', name: file.name})
+              console.log("fileContent:", file.content)
+              // initializeEditor(fileContent.value, json());
+              break;
+            case 'xml':
+              console.log("xml content:", content)
+              parser = new DOMParser();
+              const xmlDoc = parser.parseFromString(content, "text/xml");
+              const parsedContent = new XMLSerializer().serializeToString(xmlDoc);
+              console.log("parsedContent:", parsedContent)
+              file.content = parsedContent
+              store.setFileContent({content: file.content, extension: 'xml', name: file.name})
+              break;
+            case 'csv':
+              const data = Papa.parse(content, { header: true,
+                complete: function(e){
+                console.log("e", e)
+                  file.content = JSON.stringify(e.data,null, 2)
+                  store.setFileContent({content: file.content, extension: 'json', name: file.name})
+                }
+              })
+              break;
+            case 'ttl':
               file.content = content
               store.setFileContent({content: file.content, extension: 'ttl', name: file.name})
-            break;
-          default:
-            alert('Unsupported file type');
-        }
+              break;
+            default:
+              alert('Unsupported file type');
+          }
           resetStore()
           isLoading[file.name] = false
           file.read = true
-
         }catch (e) {
           isLoading[file.name] = false
           file.read = true
-          store.setNotification({color:'red', showNot: true,text:`${e.message}`})
+          store.setNotification({color:'error', showNot: true, time: -1, text:`${e.message}`})
           throw Error(e)
         }
-
       };
       reader.readAsText(file);
-
-
 }
 </script>
 
@@ -99,7 +95,7 @@ const inspectFile = async(file) => {
       <v-card-title>Convert digitized catalogue data on medieval manuscripts to Linked Open Data</v-card-title>
       <v-card-text>Use ManuscriptAI to identify different types of metadata on medieval manuscripts in your dataset and convert them to the ManuscriptAI standardised vocabulary. You can download the converted catalogue data and use them for further analysis or presentation of your manuscript collection.</v-card-text>
       <v-card-text><b>File format guidelines</b></v-card-text>
-      <v-card-text>Upload manuscript data in .json, .xml, .csv, .xlsx, or .ttl format. Each file can contain information about multiple manuscripts.</v-card-text>
+      <v-card-text>Upload manuscript data in .json, .xml, .csv, or .ttl format. Each file can contain information about multiple manuscripts.</v-card-text>
     </v-card>
     <v-card
       variant="flat"
@@ -151,10 +147,10 @@ const inspectFile = async(file) => {
                   <div class="ml-2">
                     <v-btn
                       v-if="store.recentFileContent.content !== file.content"
-                      class="btn"
+                      class="primary-btn"
+                      color="mainBg"
                       variant="flat"
                       size="small"
-                      color="#cb8a05"
                       :loading="isLoading[file.name] || false"
                       @click="inspectFile(file)"
                     >
@@ -162,11 +158,11 @@ const inspectFile = async(file) => {
                     </v-btn>
                     <v-btn
                       v-if="store.recentFileContent.content === file.content"
-                      class="btn"
+                      class="primary-btn"
+                      color="mainBg"
                       variant="flat"
                       size="small"
-                      color="#cb8a05"
-                      @click="$emit('goToNextStep',1)"
+                      @click="store.setStep(1)"
                     >
                       Analyze
                     </v-btn>
@@ -185,9 +181,11 @@ const inspectFile = async(file) => {
           <template #browse="{props: itemProps}">
             <v-btn
               variant="flat"
-              color="#cb8a05"
+              color="secondary"
+              rounded="small"
               v-bind="itemProps"
-              class="btn"
+              class="secondary-btn"
+              size="default"
             />
           </template>
         </v-file-upload>
@@ -202,10 +200,4 @@ const inspectFile = async(file) => {
   font-size: 0.8125rem;
   font-weight: 500;
 }
-
-.btn:hover{
-  background-color: teal !important;
-}
-
-
 </style>

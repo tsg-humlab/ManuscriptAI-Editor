@@ -9,7 +9,6 @@
       <p class="intro-text">
         Hereunder, we have prepared several options for you to create Linked Open Data (LOD) using Manuscript-AI Ontology, allowing you to explore and determine what works best for your needs. Each option is designed to help you structure your data in a machine-understandable format, making it ready to be seamlessly linked with other collections of data.
       </p>
-
       <div class="boxes-wrapper">
         <div class="box">
           <h3>Create LOD</h3>
@@ -22,7 +21,9 @@
             </span>
           </p>
           <v-btn
-            class="action-btn"
+            color="mainBg"
+            class="primary-btn"
+            rounded="small"
             @click="goToStructure"
           >
             Start
@@ -41,7 +42,9 @@
             </span>
           </p>
           <v-btn
-            class="action-btn"
+            color="mainBg"
+            class="primary-btn"
+            rounded="small"
             @click="goToConvertLOD"
           >
             Start
@@ -62,7 +65,9 @@
             </span>
           </p>
           <v-btn
-            class="action-btn"
+            color="mainBg"
+            rounded="small"
+            class="primary-btn"
             @click="goToStepper"
           >
             Start
@@ -84,7 +89,9 @@
           </div>
 
           <v-btn
-            class="action-btn"
+            color="mainBg"
+            class="primary-btn"
+            rounded="small"
             @click="goToDropClassify"
           >
             Start
@@ -99,6 +106,7 @@
 import { useRouter } from 'vue-router'
 
 const router = useRouter()
+
 
 const goToStepper = () => {
   router.push({name: 'stepper'})

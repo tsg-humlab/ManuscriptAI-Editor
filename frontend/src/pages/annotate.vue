@@ -83,7 +83,7 @@
               </select>
 
               <button
-                class="assignButton"
+                class="assignButton secondary-btn"
                 @click="appendSnippet(activeManuscript)"
               >
                 ADD SELECTED TEXT
@@ -123,7 +123,8 @@
     <!-- Submit Button -->
     <div class="submit-container">
       <v-btn
-        color="primary"
+        color="mainBg"
+        class="primary-btn"
         :disabled="isLoading"
         @click="submitManuscripts"
       >
@@ -370,7 +371,7 @@ function formatFieldName(field) {
 
 <style scoped>
 .content-container {
-  margin-top: 60px;
+  margin-top: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;

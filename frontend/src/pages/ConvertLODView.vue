@@ -77,8 +77,8 @@
             </div>
 
             <v-btn
-              color="primary"
-              class="mt-5"
+              color="mainBg"
+              class="mt-5 primary-btn"
               :disabled="!selectedFile"
               @click="inspectFile"
             >
@@ -214,7 +214,7 @@ function handleGenericText(file, extension) {
 
 <style scoped>
 .content-container {
-  padding-top: 50px;
+  padding-top: 20px;
   padding-bottom: 50px;
 }
 

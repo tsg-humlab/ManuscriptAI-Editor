@@ -1,15 +1,9 @@
 <script setup>
 import { computed, ref, watch } from "vue"
-import {useAppStore} from "@/stores/app.js";
-import {structureManuscripts} from "@/services/ApiServices.js";
+import { useAppStore } from "@/stores/app.js";
+import { structureManuscripts } from "@/services/ApiServices.js";
 
 const store = useAppStore()
-
-
-// the selected manuscript from the list in the left
-const selectedManuscript = computed(()=>{
-  return store.getSelCreatedManuscript
-})
 
 const fileContent = computed(()=>{
   return store.recentFileContent.content
@@ -17,27 +11,30 @@ const fileContent = computed(()=>{
 
 // check for file update and resets
 watch(fileContent, async(newV, oldV)=>{
-  console.log("in list of created of manuscripts ==== the uploaded file has changed time to reset:", newV)
+  console.log("fileContent updated! Resetting values!", newV)
   selManuscript.value = null
   // store.setSelCreatedManuscript(null)
   manuscripts.value = []
 })
 
-// is updated on user selection. Indicated the selected manuscript in the list of created manuscripts
-const selManuscript = ref(null)
-
-watch(selManuscript,async(newV, oldV)=>{
-  console.log("sel manuscript newV: ", newV, "oldV:", oldV)
-  if(newV.length >0) {
-    console.log(" there is a newV:", newV)
-    await store.setSelCreatedManuscript(newV[0])
-  } else {
-    console.log("there is not!!!", newV)
-    await store.setSelCreatedManuscript(null)
+// sets the selected manuscript. Keeps state management and local option in sync.
+const selManuscript = computed({
+  get() {
+    const selected = store.getSelCreatedManuscript
+    return selected ? [selected] : null
+  },
+  async set(newVal) {
+    if (newVal && newVal.length > 0) {
+      if (!store.getSelCreatedManuscript || store.getSelCreatedManuscript.id !== newVal[0].id) {
+        await store.setSelCreatedManuscript(newVal[0])
+      }
+    } else {
+      if (store.getSelCreatedManuscript !== null) {
+        await store.setSelCreatedManuscript(null)
+      }
+    }
   }
-
 })
-
 
 // flattens the work_folia object to a simple list of properties.
 const flattenObject = (obj)=> {
@@ -76,18 +73,25 @@ const showTooltip = ref(false)
 
 // the list containing the manuscripts which were added by the user. These manuscripts will be sent to the Agent for
 // structuring
-const manuscripts = ref([])
+// const manuscripts = ref([])
+const manuscripts = computed(()=> {
+  return store.getListOfCreatedManuscripts
+})
 
 // adding a new manuscript when the user presses the 'addManuscript' button
-const addManuscript = ()=>{
-  manuscripts.value.push({ title: getNextTitle(), content:null})
+const addManuscript = async()=>{
+  // manuscripts.value.push({ title: getNextTitle(), content:null})
+  const sel = store.addManToListOfCreatedManuscripts({title: null, content: null, id: null})
+  console.log("sel", sel)
+  selManuscript.value = [sel]
 }
 
 // removes the clicked manuscript from the list of available manuscripts
 const removeManuscript = (index)=> {
 
-  console.log("about to remove: ", manuscripts.value[index], index, selectedManuscript.value )
-  manuscripts.value.splice(index,1)
+  console.log("about to remove: ", manuscripts.value[index], index)
+  // manuscripts.value.splice(index,1)
+  store.removeManFromListOfCreatedManuscripts(index)
   console.log("after removal:", manuscripts.value)
   // selManuscript.value = null
   // store.setSelCreatedManuscript(null)
@@ -97,85 +101,119 @@ const removeManuscript = (index)=> {
 const loading = ref(false)
 
 // send the created manuscripts to the Agent
-const sendDataToAgents = async() => {
-  loading.value = true
-  let manData = {}
-  manuscripts.value.forEach((m)=>{
-    manData[m.title] = m.content
-  })
-  console.log("manData", manData)
+const sendDataToAgents = async () => {
+  loading.value = true;
+
+  // build the request body expected by Flask
+  const manData = manuscripts.value.reduce((acc, m) => {
+    acc[m.title] = m.content;
+    return acc;
+  }, {});
 
   try {
-    const jsonData = await structureManuscripts(manData)
+    // ------------- NEW (expects .structured_results) -------
+    const { structured_results } = await structureManuscripts(manData);
 
-    // the structured data is expected here.
+    // 1. unpack each `{ "Manuscript n": "<stringified JSON or JSON[]>" }`
+    const parsedManuscripts = [];
 
-    const resp = await JSON.parse(jsonData.response)
+    structured_results.forEach(item => {
+      // the value is the first (and only) property value
+      const raw = Object.values(item)[0];
+      if (!raw) return;
 
-    if (resp.manuscripts){
-      resp.manuscripts.forEach((m)=>{
-        flattenObject(m)
-        reformat(m)
-      })
+      let parsed;
+      try {
+        parsed = JSON.parse(raw);
+      } catch (e) {
+        console.error('Cannot parse Structurer JSON:', e, raw);
+        return;
+      }
 
-      store.setStructuredData({
-        "manuscripts": resp.manuscripts,
-        "number_of_manuscripts": resp?.all_data?.manuscripts_analyzed
-      })
-    }else {
-      // when the user creates one manuscript, the llm returns a single object instead of an array.
-      flattenObject(resp)
-      reformat(resp)
-      store.setStructuredData({
-        "manuscripts": new Array(resp),
-        "number_of_manuscripts": resp?.all_data?.manuscripts_analyzed
-      })
-    }
+      if (Array.isArray(parsed)) {
+        parsedManuscripts.push(...parsed);
+      } else {
+        parsedManuscripts.push(parsed);
+      }
+    });
 
-    store.setNotification({color:'teal', showNot: true, text: 'The data was structured successfully!'})
-    loading.value = false
+    // 2. flatten / decorate so the rest of the UI can bind
+    parsedManuscripts.forEach(m => {
+      flattenObject(m);
+      reformat(m);
+    });
+
+    // 3. commit to the Pinia/Vue-X store
+    store.setStructuredData({
+      manuscripts: parsedManuscripts,
+      number_of_manuscripts: parsedManuscripts.length
+    });
+
+    // disable selectedMan in feedback view, if any
+    store.setSelectedManuscript(null)
+
+    store.setNotification({
+      color: 'success',
+      showNot: true,
+      text: 'The data was structured successfully!',
+      time: 4000,
+    });
+
+    store.setStep(2)
 
   } catch (error) {
-    store.setNotification({color:'red', showNot: true,text:`${error}. There was an issue with the structuring of the data.`})
-    loading.value = false
+    store.setNotification({
+      color: 'error',
+      showNot: true,
+      text: `${error}. There was an issue with the structuring of the data.`,
+      time: -1,
+    });
+  } finally {
+    loading.value = false;
   }
-}
-
-// get the highest id of the available manuscripts and sets the id of the new manuscript increased by one.
-// consistency reasons, while creating new manuscripts.
-const getNextTitle = () => {
-  const highestNumber = manuscripts.value.reduce((max, obj) => {
-    const number = parseInt(obj.title.split(' ')[1]);
-    return number > max ? number : max;
-  }, 0);
-  return `Manuscript ${highestNumber + 1}`;
 };
+
+
+// // get the highest id of the available manuscripts and sets the id of the new manuscript increased by one.
+// // consistency reasons, while creating new manuscripts.
+// const getNextTitle = () => {
+//   const highestNumber = manuscripts.value.reduce((max, obj) => {
+//     const number = parseInt(obj.title.split(' ')[1]);
+//     return number > max ? number : max;
+//   }, 0);
+//   return `Manuscript ${highestNumber + 1}`;
+// };
 
 
 </script>
 
 <template>
   <div id="created-manuscripts">
-    <v-card variant="text" subtitle="Created manuscripts">
+    <v-card
+      variant="text"
+      subtitle="Created manuscripts"
+    >
       <div id="card-content">
         <v-list
           v-model:selected="selManuscript"
+          item-value="id"
           bg-color="white"
           class="mt-0 pt-0"
           max-height="600"
         >
-<!--          <v-list-subheader>CREATED MANUSCRIPTS</v-list-subheader>-->
-          <div v-if="manuscripts.length>0">
+          <div
+            v-if="manuscripts.length>0"
+          >
             <v-list-item
               v-for="(man,index) in manuscripts"
-              :key="'manuscript'+index"
+              :key="man.id"
               :title="`Manuscript ${index+1}`"
               :value="man"
-              color="primary"
+              color="info"
               nav
             >
               <template #prepend>
-                <v-avatar color="grey-lighten-1">
+                <v-avatar>
                   <v-icon>mdi-book-open-blank-variant-outline</v-icon>
                 </v-avatar>
               </template>
@@ -186,13 +224,28 @@ const getNextTitle = () => {
               </template>
             </v-list-item>
           </div>
-          <div v-else class="pa-4">
+          <div
+            v-else
+            class="pa-4 text-sm-body-2"
+          >
             You have not created any manuscripts yet!
           </div>
+<!--          <v-list-subheader>CREATED MANUSCRIPTS</v-list-subheader>-->
+
+
           <div class="text-center">
-            <v-tooltip v-model="showTooltip" location="top">
-              <template v-slot:activator="{props}">
-                <v-btn  icon v-bind="props" size="small" @click="addManuscript">
+            <v-tooltip
+              v-model="showTooltip"
+              location="top"
+            >
+              <template #activator="{props}">
+                <v-btn
+                  icon
+                  v-bind="props"
+                  size="small"
+                  color="secondary"
+                  @click="addManuscript"
+                >
                   <v-icon>mdi-plus</v-icon>
                 </v-btn>
               </template>
@@ -203,11 +256,11 @@ const getNextTitle = () => {
         <v-card-actions class="justify-center">
           <v-btn
             variant="flat"
-            class="btn"
-            color="primary"
+            class="primary-btn"
+            color="mainBg"
             :loading="loading"
+            :disabled="manuscripts.length === 0 || !manuscripts.every(m=> m.content !== null)"
             @click="sendDataToAgents"
-            :disabled="!manuscripts.every(m=> m.content !== null)"
           >
             Structure content
             <v-tooltip

@@ -84,11 +84,12 @@ const convertManuscriptsToRDF = async(e) => {
   try{
     const ttlString = await convertToRdf(data)
     store.setRdfOutput(ttlString)
-    store.setNotification({color:'teal', showNot: true, text: 'The data was converted to RDF successfully!'})
+    store.setNotification({color:'success', showNot: true,time:4000, text: 'The data was converted to RDF successfully!'})
+    store.setStep(3)
 
   } catch(err){
     console.log("err", err)
-    store.setNotification({color:'red', showNot: true,text:`${err}. There was in issue with the conversion of the manuscript data to RDF.`})
+    store.setNotification({color:'error', showNot: true, time: -1, text:`${err}. There was in issue with the conversion of the manuscript data to RDF.`})
   }
     loading.value = false
 
@@ -136,7 +137,7 @@ const convertManuscriptsToRDF = async(e) => {
       </v-list>
       <v-divider />
       <!--      <v-card-title>Extracted manuscripts</v-card-title>-->
-      <v-card-item>
+      <div id="card-content">
         <v-list
           v-model:selected="selManuscript"
           bg-color="white"
@@ -147,11 +148,11 @@ const convertManuscriptsToRDF = async(e) => {
             :key="'manuscript'+index"
             :title="man.manuscript_ID.value? man.manuscript_ID.value : 'Manuscript'+index+1"
             :value="man"
-            color="primary"
+            color="info"
             nav
           >
             <template #prepend>
-              <v-avatar color="grey-lighten-1">
+              <v-avatar>
                 <v-icon>mdi-book-open-blank-variant-outline</v-icon>
               </v-avatar>
             </template>
@@ -162,20 +163,30 @@ const convertManuscriptsToRDF = async(e) => {
             </template>
           </v-list-item>
         </v-list>
-      </v-card-item>
-      <v-card-item>
+        <v-card-actions class="justify-center">
         <v-btn
           :disabled="!manuscripts.every((m)=> m.reviewed === true)"
           :loading="loading"
+          color="mainBg"
+          class="primary-btn"
+          size="default"
+          variant="flat"
           @click="convertManuscriptsToRDF"
         >
           Convert to turtle
         </v-btn>
-      </v-card-item>
+        </v-card-actions>
+      </div>
     </v-card>
   </div>
 </template>
 
 <style scoped>
+#card-content{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  //height: 55vh;
+}
 
 </style>

@@ -21,8 +21,9 @@ import annotate from '@/pages/annotate.vue';
 import RdfPage from "@/pages/RdfPage.vue";
 import AutoClassifyView from "@/pages/AutoClassifyView.vue";
 import ResultsView from "@/pages/resultsView.vue";
-
-
+import Login from "@/pages/Login.vue"
+import Register from "@/pages/Register.vue";
+import InfoPage from '@/pages/InfoPage.vue'
 
 //TODO: update all the routes..
 const routes = [
@@ -184,6 +185,46 @@ const routes = [
       ]
     }
 
+  },
+    {
+      path: '/login',
+      name: 'login',
+      component: Login,
+      meta: {
+        title: 'Login page',
+        breadcrumb: 'Login',
+        breadcrumbTrail: [
+          { text: 'Main', to: '/'},
+          { text: 'Login', to: null}
+        ]
+      }
+
+  },
+  {
+    path: '/register',
+    name: 'register',
+    component: Register,
+    meta: {
+        title: 'Registration page',
+        breadcrumb: 'Register',
+        breadcrumbTrail: [
+          { text: 'Main', to: '/'},
+          { text: 'Register', to: null}
+        ]
+      }
+  },
+  {
+    path: '/info',
+    name: 'info',
+    component: InfoPage,
+    meta: {
+      title: 'Info & Tutorials',
+      breadcrumb: 'Info & Tutorials',
+      breadcrumbTrail: [
+        { text: 'Main', to: '/' },
+        { text: 'Info & Tutorials', to: null }
+      ]
+    }
   },
 ];
 
