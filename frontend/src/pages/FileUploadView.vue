@@ -74,7 +74,7 @@ const inspectFile = async(file) => {
         }catch (e) {
           isLoading[file.name] = false
           file.read = true
-          store.setNotification({color:'error', showNot: true,text:`${e.message}`})
+          store.setNotification({color:'error', showNot: true, time: -1, text:`${e.message}`})
           throw Error(e)
         }
       };
@@ -95,7 +95,7 @@ const inspectFile = async(file) => {
       <v-card-title>Convert digitized catalogue data on medieval manuscripts to Linked Open Data</v-card-title>
       <v-card-text>Use ManuscriptAI to identify different types of metadata on medieval manuscripts in your dataset and convert them to the ManuscriptAI standardised vocabulary. You can download the converted catalogue data and use them for further analysis or presentation of your manuscript collection.</v-card-text>
       <v-card-text><b>File format guidelines</b></v-card-text>
-      <v-card-text>Upload manuscript data in .json, .xml, .csv, .xlsx, or .ttl format. Each file can contain information about multiple manuscripts.</v-card-text>
+      <v-card-text>Upload manuscript data in .json, .xml, .csv, or .ttl format. Each file can contain information about multiple manuscripts.</v-card-text>
     </v-card>
     <v-card
       variant="flat"

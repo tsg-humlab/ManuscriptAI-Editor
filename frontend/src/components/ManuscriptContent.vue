@@ -40,7 +40,7 @@ const updateContent = () => {
   <div id="manuscript-content-area">
     <v-card
       variant="text"
-      subtitle="Manuscript Content"
+      subtitle="Manuscript content"
     >
           <v-textarea
             id="text-box"

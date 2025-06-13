@@ -76,11 +76,11 @@ const sendDataToAgents = async() => {
       })
     }
 
-    store.setNotification({color:'success',time:100, showNot: true, text: 'The data was structured successfully!'})
+    store.setNotification({color:'success',time:4000, showNot: true, text: 'The data was structured successfully!'})
     loading.value = false
 
   } catch (error) {
-    store.setNotification({color:'red', showNot: true,text:`${error}. There was an issue with the structuring of the data.`})
+    store.setNotification({color:'error', showNot: true, time: -1, text:`${error}. There was an issue with the structuring of the data.`})
     loading.value = false
   }
 }

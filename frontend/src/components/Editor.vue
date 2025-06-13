@@ -85,14 +85,14 @@ class ActionButtonWidget extends WidgetType {
     div.appendChild(btn1);
 
     const btn2 = document.createElement('button');
-    btn2.innerHTML = '&#10063;';
+    btn2.innerHTML = '&#128203;';
     btn2.className = 'highlight-btn';
     btn2.title = 'Copy the highlighted content';  // Tooltip text for button 2
     btn2.addEventListener('click', () => {
       // copy the content
       copyContent(this.text);
       // show notification
-      store.setNotification({color:'info', showNot: true, time:100, text: 'Content has been copied. You can paste it to the manuscript location!'})
+      store.setNotification({color:'info', showNot: true, time:4000, text: 'Content has been copied. You can paste it to the manuscript location!'})
     });
     div.appendChild(btn2);
 
