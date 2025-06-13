@@ -85,7 +85,7 @@ class ActionButtonWidget extends WidgetType {
     div.appendChild(btn1);
 
     const btn2 = document.createElement('button');
-    btn2.innerHTML = '&#10063;';
+    btn2.innerHTML = '&#128203;';
     btn2.className = 'highlight-btn';
     btn2.title = 'Copy the highlighted content';  // Tooltip text for button 2
     btn2.addEventListener('click', () => {
