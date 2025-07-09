@@ -2,7 +2,7 @@ services:
   backend:
     build:
       context: ./backend_django
-    command: gunicorn manuscriptai_ru_backend_v2.wsgi:application --bind 0.0.0.0:5001 --log-level debug --workers=${NUMBER_OF_WORKERS:-4}
+    command: gunicorn manuscriptai_ru_backend_v2.wsgi:application --bind 0.0.0.0:5001 --log-level debug --workers=${NUMBER_OF_WORKERS:-4} --timeout 900
     volumes:
       - static_volume:/home/app/web/staticfiles
       - tmp_volume:/home/app/web/tmp
