@@ -10,8 +10,6 @@ export async function convertToRdf(manuscripts){
     });
 
     if(res.ok){
-
-
       const turtleString = await res.text();
       console.log("Got RDF (Turtle):", turtleString);
       return turtleString
@@ -19,6 +17,13 @@ export async function convertToRdf(manuscripts){
       // Custom message for failed HTTP codes
       if (res.status === 404) throw new Error('404, Not found');
       if (res.status === 500) throw new Error('500, internal server error');
+      if (res.status === 302) {
+        setTimeout(() => {
+          window.location = '/login';
+        }, "2000");
+
+        throw new Error('302, Unauthorized access. You will be redirected to the login page!');
+      }
       // For any other server error
       throw new Error(res.status);
   }
@@ -41,8 +46,6 @@ export async function structureManuscripts(data){
       body: JSON.stringify(data)
     });
 
-
-
     if(response.ok) {
       // the structured data is expected here.
       return await response.json();
@@ -51,6 +54,13 @@ export async function structureManuscripts(data){
       // Custom message for failed HTTP codes
       if (response.status === 404) throw new Error('404, Not found');
       if (response.status === 500) throw new Error('500, internal server error');
+      if (response.status === 302) {
+        setTimeout(() => {
+          window.location = '/login';
+        }, "2000");
+
+        throw new Error('302, Unauthorized access. You will be redirected to the login page!');
+      }
       // For any other server error
       throw new Error(response.status);
     }
@@ -71,6 +81,12 @@ export async function dropClassify({ content, extension }) {
     if (!response.ok) {
       if (response.status === 404) throw new Error("404, Not found");
       if (response.status === 500) throw new Error("500, internal server error");
+      if (response.status === 302) {
+        setTimeout(() => {
+          window.location = '/login';
+        }, "2000");
+        throw new Error('302, Unauthorized access. You will be redirected to the login page!');
+      }
       throw new Error(`HTTP error: ${response.status}`);
     }
 
