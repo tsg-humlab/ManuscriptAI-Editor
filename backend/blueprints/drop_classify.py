@@ -84,7 +84,7 @@ structurer_agent = ConversableAgent(
     "incipit": "The full incipit text exactly as in the source (preserving line breaks and punctuation); null if not present",
     "explicit": "The full explicit text exactly as in the source (preserving line breaks and punctuation); null if not present",
     "handwriting_form": "The script style string exactly as given (e.g. ‘Littera gothica textualis’), or null if not specified",
-    "decorations": The exact decoration‐related text as in the source, including any mentions of miniatures, decorated initials, historiated initials, borders, marginal illustrations, headpieces, tailpieces, frames, etc.; if multiple, concatenate verbatim separated by commas; null if none",
+    "decorations": "The exact decoration‐related text as in the source, including any mentions of miniatures, decorated initials, historiated initials, borders, marginal illustrations, headpieces, tailpieces, frames, etc.; if multiple, concatenate verbatim separated by commas; null if none",
     "binding": "The exact binding description string as in the source; null if not present",
     "total_folia_count": "The sum total of leaves computed: guard leaves + numbered folios (e.g. 2 + 191 = 193), or null",
     "ink": "The exact ink description string as in the source; null if not present",
