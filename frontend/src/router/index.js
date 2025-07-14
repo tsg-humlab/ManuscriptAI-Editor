@@ -23,7 +23,8 @@ import AutoClassifyView from "@/pages/AutoClassifyView.vue";
 import ResultsView from "@/pages/resultsView.vue";
 import Login from "@/pages/Login.vue"
 import Register from "@/pages/Register.vue";
-import InfoPage from '@/pages/InfoPage.vue'
+import InfoPage from '@/pages/InfoPage.vue';
+import PageNotFound from "@/components/PageNotFound.vue";
 
 //TODO: update all the routes..
 const routes = [
@@ -186,7 +187,7 @@ const routes = [
     }
 
   },
-    {
+  {
       path: '/login',
       name: 'login',
       component: Login,
@@ -226,6 +227,7 @@ const routes = [
       ]
     }
   },
+  { path: "/:pathMatch(.*)*", component: PageNotFound },
 ];
 
 const router = createRouter({
