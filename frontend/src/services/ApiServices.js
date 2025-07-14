@@ -20,7 +20,7 @@ export async function convertToRdf(manuscripts){
       if (res.status === 302) {
         setTimeout(() => {
           window.location = '/login';
-        }, "2000");
+        }, "4000");
 
         throw new Error('302, Unauthorized access. You will be redirected to the login page!');
       }
@@ -57,7 +57,7 @@ export async function structureManuscripts(data){
       if (response.status === 302) {
         setTimeout(() => {
           window.location = '/login';
-        }, "2000");
+        }, "4000");
 
         throw new Error('302, Unauthorized access. You will be redirected to the login page!');
       }
@@ -84,7 +84,7 @@ export async function dropClassify({ content, extension }) {
       if (response.status === 302) {
         setTimeout(() => {
           window.location = '/login';
-        }, "2000");
+        }, "4000");
         throw new Error('302, Unauthorized access. You will be redirected to the login page!');
       }
       throw new Error(`HTTP error: ${response.status}`);
