@@ -177,8 +177,13 @@ const goToDropClassify = () => {
 
 .boxes-wrapper {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+@media (max-width: 600px) {
+  .boxes-wrapper {
+    grid-template-columns: 1fr; 
+  }
 }
 
 

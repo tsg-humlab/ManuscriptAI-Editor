@@ -236,34 +236,22 @@ onMounted(() => {
   }
 });
 
-/**
- * On mouseup, try to highlight the selected snippet in the displayed HTML.
- * We do a simple substring search. If the user selects across multiple <td> cells,
- * it may not highlight fully. Typically the user highlights text within a single cell or line.
- */
+/** to grab the user text selection */
 function captureSelection() {
+  // Grab the user’s text selection
   const selection = window.getSelection();
   const selectedText = selection?.toString().trim();
+
+  // If nothing meaningful was selected, bail out
   if (!selectedText) return;
 
+  // Back up the current HTML in case appendSnippet needs it
   highlightedDataBackup.value = highlightedData.value;
-  lastSelection.value = selectedText;
 
-  // naive substring search
-  const textHtml = highlightedData.value;
-  const idx = textHtml.indexOf(selectedText);
-  if (idx >= 0) {
-    const before = textHtml.slice(0, idx);
-    const match = textHtml.slice(idx, idx + selectedText.length);
-    const after = textHtml.slice(idx + selectedText.length);
-    // highlight in yellow
-    highlightedData.value = `
-      ${before}
-      <span style="background-color: yellow;">${escapeHtml(match)}</span>
-      ${after}
-    `;
-  }
+  // Store the plain text for “ADD SELECTED TEXT”
+  lastSelection.value = selectedText;
 }
+
 
 /** Append the last selected snippet to the chosen field of the active manuscript */
 async function appendSnippet(manuscriptIdx) {
@@ -436,31 +424,59 @@ function formatFieldName(field) {
 }
 
 .manuscript-tabs {
-  flex-shrink: 0;
-  padding: 10px;
-  background-color: #f1f1f1;
   display: flex;
-  gap: 10px;
-  justify-content: center;
-  border-bottom: 1px solid #ccc;
+  gap: 0.5rem;
+  padding: 0.5rem;
 }
 
+
 .tab-button {
-  padding: 10px 20px;
-  border: none;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  margin: 0 0.5rem;
+  padding: 0.5rem 1rem;
   background: #e0e0e0;
   cursor: pointer;
-  font-weight: 600;
-  border-radius: 5px;
-  transition: background 0.3s ease-in-out;
+  transition: background 0.2s, border-color 0.2s;
+  text-align: center;
 }
+
+
+@media (max-width: 768px) {
+  .manuscript-tabs {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .tab-button {
+    flex: 0 0 auto;
+    min-width: 8rem;
+  }
+}
+
+
+@media (min-width: 769px) {
+  .manuscript-tabs {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .tab-button {
+    flex: 1 1 auto;
+    min-width: 10rem;
+  }
+}
+
 .tab-button:hover {
   background: #c8c8c8;
+  border-color: #aaa;
 }
+
 .tab-button.active {
   background: #6750a4;
   color: #fff;
+  border-color: #45326e;
 }
+
 
 .form-area {
   flex: 1;
