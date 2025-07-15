@@ -1,11 +1,16 @@
 /*
  * The function converts the manuscript data to RDF
  */
+import { getCSRFToken } from '../stores/auth'
+
 export async function convertToRdf(manuscripts){
   try {
     const res = await fetch(`/api/transform`, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: {
+        'Content-Type': 'application/json',
+        'X-CSRFToken': getCSRFToken(),
+      },
       body: JSON.stringify(manuscripts),
     });
 
@@ -41,7 +46,8 @@ export async function structureManuscripts(data){
     const response = await fetch(`/api/send_manuscripts`,{
       method: "POST",
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
+        'X-CSRFToken': getCSRFToken(),
       },
       body: JSON.stringify(data)
     });
@@ -74,7 +80,10 @@ export async function dropClassify({ content, extension }) {
   try {
     const response = await fetch(`/api/drop-classify`, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: {
+        'Content-Type': 'application/json',
+        'X-CSRFToken': getCSRFToken(),
+      },
       body: JSON.stringify({ content, extension }),
     });
 

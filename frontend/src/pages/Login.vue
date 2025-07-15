@@ -16,14 +16,14 @@
          </v-alert>
         <v-form v-model="form" @submit.prevent="login" lazy-validation>
         <div>
-          <label for="email">E-mail: </label>
+          <label for="username">Username: </label>
           <v-text-field
-            v-model="email"
-            id="email"
-            type="email"
-            placeholder="johndoe@gmail.com"
+            v-model="username"
+            id="username"
+            type="username"
+            placeholder="johndoe"
             :readonly="loading"
-            :rules="emailRules"
+            :rules="usernameRules"
             @input="resetError"
             required
             clearable>
@@ -62,14 +62,13 @@ export default {
   },
   data() {
     return {
-      email: "",
+      username: "",
       password: "",
       error: "",
       loading: false,
       form: false,
-      emailRules: [
-        v => !!v || 'E-mail is required',
-        v => /.+@.+\..+/.test(v) || 'E-mail must be valid',
+      usernameRules: [
+        v => !!v || 'Username is required',
       ],
       passwordRules: [
         v => !!v || 'Password is required',
@@ -81,10 +80,10 @@ export default {
     async login() {
       if (!this.form) return
       // this.loading = true
-      const resp = await this.authStore.login(this.email, this.password, this.$router)
+      const resp = await this.authStore.login(this.username, this.password, this.$router)
       console.log("resp:", resp)
       if (!this.authStore.isAuthenticated) {
-        this.error = 'Invalid email or password. Please check your credentials.'
+        this.error = 'Invalid username or password. Please check your credentials.'
         this.form = false
       }
       // this.loading = false

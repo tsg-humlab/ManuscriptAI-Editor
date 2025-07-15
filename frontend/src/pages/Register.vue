@@ -21,12 +21,12 @@
         <v-form v-model="form" @submit.prevent="register" lazy-validation>
           <div>
             <v-text-field
-              v-model="email"
-              id="email"
-              type="email"
+              v-model="username"
+              id="username"
+              type="username"
               placeholder="johndoe@gmail.com"
               :readonly="loading"
-              :rules="emailRules"
+              :rules="usernameRules"
               required
               clearable>
             </v-text-field>
@@ -57,15 +57,14 @@ import { getCSRFToken } from '../stores/auth'
 export default {
   data() {
     return {
-      email: '',
+      username: '',
       password: '',
       error: '',
       success: '',
       form: false,
       loading: false,
-      emailRules: [
-        v => !!v || 'E-mail is required',
-        v => /.+@.+\..+/.test(v) || 'E-mail must be valid',
+      usernameRules: [
+        v => !!v || 'Username is required',
       ],
       passwordRules: [
         v => !!v || 'Password is required',
@@ -77,14 +76,14 @@ export default {
     async register() {
       try {
         this.loading = true
-        const response = await fetch('http://localhost:8000/api/register', {
+        const response = await fetch('/api/register', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
             'X-CSRFToken': getCSRFToken()
           },
           body: JSON.stringify({
-            email: this.email,
+            username: this.username,
             password: this.password
           }),
           credentials: 'include'
