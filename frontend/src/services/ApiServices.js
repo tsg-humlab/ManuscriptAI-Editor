@@ -23,7 +23,7 @@ export async function convertToRdf(manuscripts){
       // Custom message for failed HTTP codes
       if (res.status === 404) throw new Error('404, Not found');
       if (res.status === 500) throw new Error('500, internal server error');
-      if (response.type === "opaqueredirect") {
+      if (res.type === "opaqueredirect") {
         setTimeout(() => {
           window.location = '/login';
         }, "4000");
