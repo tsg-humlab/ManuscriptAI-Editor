@@ -7,6 +7,7 @@ export async function convertToRdf(manuscripts){
   try {
     const res = await fetch(`/api/transform`, {
       method: "POST",
+      redirect: 'manual',
       headers: {
         'Content-Type': 'application/json',
         'X-CSRFToken': getCSRFToken(),
@@ -22,7 +23,7 @@ export async function convertToRdf(manuscripts){
       // Custom message for failed HTTP codes
       if (res.status === 404) throw new Error('404, Not found');
       if (res.status === 500) throw new Error('500, internal server error');
-      if (res.status === 302) {
+      if (response.type === "opaqueredirect") {
         setTimeout(() => {
           window.location = '/login';
         }, "4000");
@@ -45,6 +46,7 @@ export async function structureManuscripts(data){
   try {
     const response = await fetch(`/api/send_manuscripts`,{
       method: "POST",
+      redirect: 'manual',
       headers: {
         'Content-Type': 'application/json',
         'X-CSRFToken': getCSRFToken(),
@@ -60,7 +62,7 @@ export async function structureManuscripts(data){
       // Custom message for failed HTTP codes
       if (response.status === 404) throw new Error('404, Not found');
       if (response.status === 500) throw new Error('500, internal server error');
-      if (response.status === 302) {
+      if (response.type === "opaqueredirect") {
         setTimeout(() => {
           window.location = '/login';
         }, "4000");
@@ -80,6 +82,7 @@ export async function dropClassify({ content, extension }) {
   try {
     const response = await fetch(`/api/drop-classify`, {
       method: "POST",
+      redirect: 'manual',
       headers: {
         'Content-Type': 'application/json',
         'X-CSRFToken': getCSRFToken(),
@@ -90,7 +93,7 @@ export async function dropClassify({ content, extension }) {
     if (!response.ok) {
       if (response.status === 404) throw new Error("404, Not found");
       if (response.status === 500) throw new Error("500, internal server error");
-      if (response.status === 302) {
+      if (response.type === "opaqueredirect") {
         setTimeout(() => {
           window.location = '/login';
         }, "4000");
