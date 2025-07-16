@@ -263,7 +263,7 @@ async function sendContentToBackend(text, extension) {
     })
   } catch (err) {
     console.error('Backend request error:', err)
-    alert('An error occurred while sending data to the server.')
+    alert('An error occurred while sending data to the server:\n\n' + err)
     isLoading.value = false
   }
 }
